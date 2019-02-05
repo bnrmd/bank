@@ -11,7 +11,10 @@ Java banking application to help users better organize their finances.
 ## Features
 
 ### Accounts
+Allows users to view their current accounts, such as chequing and savings accounts. User will be able to add or delete their accounts from the settings page.
 
 ### Goals
+Allows users to set financial goals using their budget and by optionally setting a date. Either gives a set amount to save if date is given, or tracks progess of goals without dates.
 
 ### Budget
+Allows users to track how they spend their money. Will be able to choose categories such as rent, utilities, food, etc. Allocates a portion of their income to each category.
