@@ -21,6 +21,28 @@ The service package is to represent actions, operations, behaviours on your pojo
 ### Datastore
 This package is to simulate the persistence of the domain objects. Usually you will have one repository type per domain object.
 
+## Development Practices
+Note: Never develop against master branch
++ Clone the project
+```bash
+git clone https://github.com/dlnet/bank.git
+```
++ Create a feature branch (branch name cannot have spaces)
+```bash
+git checkout -b <branch_name>
+```
++ Set up your local branch to be remote
+```bash
+git push --set-upstream <branch name> origin/<branch_name>
+```
++ Add your code, commit, and push
+```bash
+git add .
+git commit -m "Your Commit Message"
+git push
+```
++ Once finished, create a pull request from github
+
 ## Features
 
 ### Accounts
