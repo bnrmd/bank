@@ -8,6 +8,18 @@ Java banking application to help users better organize their finances.
 + Allows users to check their account balances on a day-to-day basis
 + Checks that users meet their goals and follow their budget
 
+## Design
+
+### Domain
+The domain package is to represent all the pojo [Plain Old Java Object](https://en.wikipedia.org/wiki/Plain_old_Java_object) entity of a bank business.
+For example, Account.java is a representation of raw data for an account. This means that the Account.java will have properties such as ID, Account Balance, etc.
+These pojo should contain no or very little behaviours (setter and getters).
+
+### Services
+The service package is to represent actions, operations, behaviours on your pojo. Usually the service package will use the datastore package to save, update, read, delete the pojos.
+
+### Datastore
+This package is to simulate the persistence of the domain objects. Usually you will have one repository type per domain object.
 
 ## Features
 

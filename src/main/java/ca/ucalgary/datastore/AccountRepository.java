@@ -1,4 +1,4 @@
-package ca.ucalgary.store;
+package ca.ucalgary.datastore;
 
 public class AccountRepository {
 }
