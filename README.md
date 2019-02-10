@@ -33,7 +33,7 @@ git checkout -b <branch_name>
 ```
 + Set up your local branch to be remote
 ```bash
-git push --set-upstream <branch name> origin/<branch_name>
+git push --set-upstream origin <branch_name>
 ```
 + Add your code, commit, and push
 ```bash
