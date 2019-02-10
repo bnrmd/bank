@@ -11,7 +11,7 @@ Java banking application to help users better organize their finances.
 ## Design
 
 ### Domain
-The domain package is to represent all the pojo [Plain Old Java Object](https://en.wikipedia.org/wiki/Plain_old_Java_object) entity of a bank business.
+The domain package is to represent all the pojo [(Plain Old Java Object)](https://en.wikipedia.org/wiki/Plain_old_Java_object) entity of a bank business.
 For example, Account.java is a representation of raw data for an account. This means that the Account.java will have properties such as ID, Account Balance, etc.
 These pojo should contain no or very little behaviours (setter and getters).
 
