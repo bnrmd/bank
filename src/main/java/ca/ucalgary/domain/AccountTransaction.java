@@ -8,8 +8,8 @@ import java.util.UUID;
  * Representation of an audit trail of all the operations done on an account domain object
  */
 public class AccountTransaction {
-    private UUID id; // Identify individual transactions
-    private UUID accountId; // Identify account
+    private String id; // Identify individual transactions
+    private String accountId; // Identify account
     private String type; // Type of a transaction, e.g. 'Deposit', 'Withdraw', or 'Create'
     private double amount; // Amount of money to be part of this transaction, if any
     private String status; // To represent if the transaction was successful, or failed
@@ -19,8 +19,8 @@ public class AccountTransaction {
         // We should never create an empty transaction
     }
 
-    public AccountTransaction(UUID accountId, String type, double amount){
-        this.id = UUID.randomUUID();
+    public AccountTransaction(String accountId, String type, double amount){
+        this.id = UUID.randomUUID().toString();
         this.accountId = accountId;
         this.type = type;
         this.amount = amount;
@@ -68,11 +68,11 @@ public class AccountTransaction {
         this.status = status;
     }
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
-    public UUID getAccountId() {
+    public String getAccountId() {
         return accountId;
     }
 

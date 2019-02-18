@@ -7,19 +7,19 @@ import java.util.UUID;
  * This Account class represents the amount of money for this account type.
  */
 public class Account {
-    private UUID id; // Represents a Unique ID to identify an account
+    private String id; // Represents a Unique ID to identify an account
     private double balance; // Represents the current funds on this account
     private String type; // What kind of type of account it is (Saving, Chequing)
 
     public Account() {
         this.balance = 0.0;
-        this.id = UUID.randomUUID();
+        this.id = UUID.randomUUID().toString();
         this.type = "CHEQUING";
     }
 
     public Account(String type) {
         this.balance = 0.0;
-        this.id = UUID.randomUUID();
+        this.id = UUID.randomUUID().toString();
         this.type = type;
     }
 
@@ -49,7 +49,7 @@ public class Account {
         return Objects.hash(id, balance, type);
     }
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
