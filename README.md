@@ -3,6 +3,8 @@
 Java banking application to help users better organize their finances.
 
 ## How to Run
+1. Clone the project 
+2. Run AddDemoOne in bank/src/main/java/ca/ucalgary/tui
 
 ## Overview
 
