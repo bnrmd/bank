@@ -62,4 +62,4 @@ Allows users to set financial goals using their budget and by optionally setting
 Allows users to track how they spend their money. Will be able to choose categories such as rent, utilities, food, etc. Allocates a portion of their income to each category.
 
 ### Invest
-Allows user to search different stocks by symbool, and they will be given a brief overview of the stock. Users can purchase stocks and add them their portfolio. Users can manage their portfolio theough the app.
+Allows user to search different stocks by symbol, and they will be given a brief overview of the stock. Users can purchase stocks and add them their portfolio. Users can manage their portfolio through the app.
