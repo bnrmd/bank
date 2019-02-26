@@ -18,14 +18,26 @@ public class CLI {
         CLI cli = new CLI();
         Scanner scanner = new Scanner(System.in);  // Create a Scanner object
         Account account = null;
-
-        while (true) {
-            System.out.println("----------\n" +
+        
+        boolean run = true;
+        while (run) {
+            System.out.println("--------------------------------------------\n" +
                                "[1] create an account    [4] display all transactions    [7] display every transaction ever     |     amount of accounts:        " + cli.getNumberOfAccounts() + "\n" +
                                "[2] deposit              [5] display all accounts        [8]                                    |     current account id:        " + cli.getAccountIdIfExists(account) + "\n" +
                                "[3] withdraw             [6] switch account              [q] quit                               |     current account balance:   " + cli.getAccountBalIfExists(account) +"\n");
-
+            
+			// selection 
+            System.out.print("Enter Selection: ");
             String operation = scanner.nextLine();
+           
+			while (!(operation.equals("1")||operation.equals("2")||operation.equals("3") ||operation.equals("4") 
+					||operation.equals("5")||operation.equals("6")||operation.equals("7")||operation.equals("8") 
+					||operation.equals("q"))) {
+				// invalid input
+				System.out.println("Invalid Input! Try again... \n");
+				System.out.print("Enter Selection: ");
+				operation = scanner.nextLine();
+			}
 
             switch (operation) {
                 case "1":
@@ -60,9 +72,9 @@ public class CLI {
                     cli.displayAllTransactionsOfAllAccounts();
                     break;
                 case "q":
-                    System.exit(1);
-                default:
-                    System.out.println("Wrong Entry");
+                    run = false;
+                    break;
+                default: // will never run
                     break;
             }
         }
