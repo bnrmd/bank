@@ -55,7 +55,7 @@ git push
 ### Accounts
 Allows users to view their current accounts, such as chequing and savings accounts. User will be able to add or delete their accounts from the settings page.
 
-### Goals
+### Goal
 Allows users to set financial goals using their budget and by optionally setting a date. Either gives a set amount to save if date is given, or tracks progess of goals without dates.
 
 ### Budget
