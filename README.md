@@ -2,6 +2,9 @@
 
 Java banking application to help users better organize their finances.
 
+## Where to find Demo 1 Version
+Demo 1 version is located here: bank/src/main/java/ca/ucalgary/
+
 ## How to Run
 1. Clone the project 
 2. Run AddDemoOne in bank/src/main/java/ca/ucalgary/tui
