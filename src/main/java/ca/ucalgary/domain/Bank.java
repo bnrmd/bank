@@ -1,139 +1,19 @@
-package ca.ucalgary.tui;
+package ca.ucalgary.domain;
 
-/**
- * G02 T07
- * App Demo 1
- */
-
-// Imports
+// Imports 
 import java.util.Scanner;
 import ca.ucalgary.domain.Budget;
 import ca.ucalgary.domain.Invest;
 import ca.ucalgary.domain.RegistrationForm;
+//import ca.ucalgary.tui.CLI;
 import ca.ucalgary.domain.Goal;
 
-// Main Class
-public class AppDemoOne {
+/**
+ * Bank 
+ * Contains control/menu methods 
+ */
+public class Bank {
 
-	// Main Method
-	public static void main(String[] args) {
-		
-		// declare variables 
-		Scanner input;
-		String userSelection;
-	
-		// initialize variables
-		input = new Scanner(System.in);  
-		userSelection = "";
-		
-		while (true) {
-			
-			// welcome message
-			System.out.println("--------------------------------------------");
-			System.out.println("            Welcome to myMoney!");
-			System.out.println("--------------------------------------------");
-			System.out.println("[1] Sign-In  [2] Sign-Up  [q] Quit \n");
-			
-			// selection 
-			System.out.print("Enter Selection: ");
-			userSelection = input.nextLine();
-			
-			while (!(userSelection.equals("1")||userSelection.equals("2")||userSelection.equals("q"))) {
-				// invalid input
-				System.out.println("Invalid Input! Try again... \n");
-				System.out.print("Enter Selection: ");
-				userSelection = input.nextLine();
-			}
-			
-			switch (userSelection) {
-			
-			case "1":
-				// call SignInSelected method
-				SignInSelected();
-				break;
-
-			case "2":
-				// call SignUpSelected method
-				SignUpSelected();
-				break;
-			
-			case "q":
-				System.out.println("\nHave a Nice Day!");
-				System.exit(1);
-
-			default:  // will never run 
-				break;
-			}
-			
-		}
-				
-	}
-	
-	// Menu Method
-	public static void Menu() {
-		
-		// declare variables 
-		Scanner input ;
-		String userSelection;
-		boolean run;
-		
-		// initialize variables
-		input = new Scanner(System.in);  
-		userSelection = "";
-		run = true;
-		
-		// menu
-		while (run) {
-			
-			// message
-			System.out.println("\n--------------------------------------------");
-			System.out.println("                   Menu");
-			System.out.println("--------------------------------------------");
-			System.out.println("[1] Account  [2] Budget  [3] Goal  [4] Invest  [q] Quit \n");
-
-			// selection 
-			System.out.print("Enter Selection: ");
-			userSelection = input.nextLine();
-			
-			while (!(userSelection.equals("1")||userSelection.equals("2")||userSelection.equals("3")||userSelection.equals("4")||userSelection.equals("q"))) {
-				// invalid input
-				System.out.println("Invalid Input! Try again... \n");
-				System.out.print("Enter Selection: ");
-				userSelection = input.nextLine();
-			}
-			
-			switch (userSelection) {
-			case "1":
-				// call AccountSelected method
-				AccountSelected();
-				break;
-
-			case "2":
-				// call BudgetSelected method
-				BudgetSelected();
-				break;
-				
-			case "3":
-				// call GoalsSelected method
-				GoalsSelected();
-				break;
-				
-			case "4":
-				// call InvestSelected method
-				InvestSelected();
-				break;
-			
-			case "q":
-				System.out.println();
-				run = false;
-				break;
-
-			default:  // will never run
-				break;
-			}
-		}
-	}
-	
 	// Sign-In Selected Method
 	public static void SignInSelected() {
 		
@@ -150,7 +30,7 @@ public class AppDemoOne {
 		String password = input.nextLine();
 		
 		// call Menu method
-		Menu();
+		//Menu();
 		
 	}
 		
@@ -172,7 +52,7 @@ public class AppDemoOne {
 		myRegistrationForm.main(null);  
 		
 		// call Menu method
-		Menu();
+		//Menu();
 	}
 	
 	// 1.Account Selected Method
@@ -184,7 +64,7 @@ public class AppDemoOne {
 		//System.out.println("--------------------------------------------");
 		
 		// run CLI class
-		CLI myCLI = new CLI();
+		AccountCLI myCLI = new AccountCLI();
 		myCLI.main(null);
 		
 	}
@@ -423,4 +303,3 @@ public class AppDemoOne {
 	}
 	
 }
-
