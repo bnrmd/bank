@@ -1,4 +1,4 @@
-//package ca.ucalgary.domain;
+package ca.ucalgary.domain;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Budget {
@@ -35,6 +35,10 @@ public class Budget {
 		}
 		
 	}
+	public void setIncome(double toSet) {
+		this.income = toSet;
+	}
+	
 	//takes amount of dollars for expense
 	public void addExpense(String name, double amount){
 		double leftOver = this.getLeftoverIncome();

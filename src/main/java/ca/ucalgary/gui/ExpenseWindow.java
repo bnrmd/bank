@@ -1,3 +1,7 @@
+package ca.ucalgary.gui;
+
+import ca.ucalgary.domain.Budget;
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;

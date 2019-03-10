@@ -1,3 +1,6 @@
+package ca.ucalgary.gui;
+import ca.ucalgary.domain.Budget;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;
