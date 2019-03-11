@@ -49,7 +49,7 @@ public class RepositoryService {
             String JSON = "";
             // Read the file into the JSON string
 
-            List<Account> accounts = mapper.readValue(getFile("data-stores/account-repository.json"), new TypeReference<List<Account>>(){});
+            List<Account> accounts = mapper.readValue(getFile(""), new TypeReference<List<Account>>(){});
 
             accounts.forEach(account -> System.out.println(account));
             AccountRepository.setAllAccounts(accounts);
@@ -58,7 +58,14 @@ public class RepositoryService {
         }
     }
 
-    private File getFile(String path) throws URISyntaxException {
+    public File getFile(String path) throws URISyntaxException {
+        //URL testurl = AccountRepository.class.getResource("data-stores/account-repository.json");
+        //System.out.println("Current location: " + testurl.getPath());
+        /*URL testurl = AccountRepository.class.getResource("/data-stores/account-repository.json");
+        System.out.println("Current location: " + testurl.getPath());
+        URL url = AccountRepository.class.getResource("/resources/data-stores/account-repository.json");
+        Path location = Paths.get(url.toURI());*/
+
         URL url = AccountRepository.class.getClassLoader().getResource(path);
         Path location = Paths.get(url.toURI());
         return location.toFile();
