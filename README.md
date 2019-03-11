@@ -2,12 +2,15 @@
 
 Java banking application to help users better organize their finances.
 
-## Demo 1 Version Location
-Demo 1 version is located here: bank/src/main/java/ca/ucalgary/
+## Demo 2 Location (*To be updated*)
+Demo 2 is located here: `bank/src/main/java/ca/ucalgary/`
 
 ## How to Run
-1. Clone the project 
-2. Run AddDemoOne in bank/src/main/java/ca/ucalgary/tui
++ Clone the project
+```bash
+git clone https://github.com/dlnet/bank.git
+``` 
++ Run AddDemoOne in `bank/src/main/java/ca/ucalgary/tui`
 
 ## Overview
 
@@ -54,9 +57,6 @@ git push
 
 ### Accounts
 Allows users to view their current accounts, such as chequing and savings accounts. User will be able to add or delete their accounts from the settings page.
-
-### Goal
-Allows users to set financial goals using their budget and by optionally setting a date. Either gives a set amount to save if date is given, or tracks progess of goals without dates.
 
 ### Budget
 Allows users to track how they spend their money. Will be able to choose categories such as rent, utilities, food, etc. Allocates a portion of their income to each category.
