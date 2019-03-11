@@ -10,7 +10,7 @@ Demo 2 is located here: `bank/src/main/java/ca/ucalgary/`
 ```bash
 git clone https://github.com/dlnet/bank.git
 ``` 
-+ Run AddDemoOne in `bank/src/main/java/ca/ucalgary/tui`
++ Run `AddDemoOne` in `bank/src/main/java/ca/ucalgary/tui`
 
 ## Overview
 
