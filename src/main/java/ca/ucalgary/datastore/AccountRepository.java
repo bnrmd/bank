@@ -68,12 +68,18 @@ public class AccountRepository {
         throw new RuntimeException("This account ID does not exist and cannot be updated: " + accountId);
     }
 
-    public List<Account> getAllAccounts(){
+    public static List<Account> getAllAccounts(){
         return store.values().stream().collect(Collectors.toList());
+    }
+
+    public static void setAllAccounts(List<Account> accounts){
+        store = accounts.stream().collect(Collectors.toMap(Account::getId,account -> account));
     }
 
     public static void printAllAccounts(){
         store.entrySet().stream().forEach(entry -> System.out.println(entry.getValue()));
     }
+
+
 }
 
