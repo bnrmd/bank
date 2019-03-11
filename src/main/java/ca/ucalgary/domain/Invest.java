@@ -1,7 +1,5 @@
 package ca.ucalgary.domain;
 
-import java.io.*;
-
 /**
  * Salim Kassouri
  * Feb 25, 2019
@@ -9,6 +7,7 @@ import java.io.*;
  */
 
 // Imports 
+import java.io.*;
 import java.util.*;
 
 // Main Class
@@ -19,8 +18,17 @@ public class Invest {
 	private File StocksFile;
 	private Scanner StocksScanner;
 	
+	// Getters
+	/**
+	 * return myStocks
+	 * @return myStocks
+	 */
+	public ArrayList<String> getMyStoks() {
+		return this.myStocks;
+	}
+	
 	// Constructor
-	public Invest() {
+ 	public Invest() {
 		
 		// initialize instance variables
 		this.StocksSymbolList = new ArrayList<String>();
@@ -199,4 +207,11 @@ public class Invest {
 		
 	}
 
+	/**
+	 * add to myStocks portfolio
+	 */
+	public void addStock(String symbol, int amount) {
+		this.myStocks.add(symbol);
+		this.myStocks.add(String.valueOf(amount));
+	}
 }
