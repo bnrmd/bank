@@ -42,8 +42,8 @@ public class RepositoryService {
     }
 
     public void restoreAllRepositories(){
-        // Read from account-repository.json and use mapper to transform it into a list of accounts
-        // Take the list of accounts and create a map of String, Account
+        /* Read from account-repository.json and use mapper to transform it into a list of accounts
+           Take the list of accounts and create a map of String, Account */
         try {
             ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT).disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
             String JSON = "";
@@ -58,6 +58,12 @@ public class RepositoryService {
         }
     }
 
+    /**
+     * 
+     * @param path the path of the file location
+     * @return the location of file in File format
+     * @throws URISyntaxException
+     */
     public File getFile(String path) throws URISyntaxException {
         //URL testurl = AccountRepository.class.getResource("data-stores/account-repository.json");
         //System.out.println("Current location: " + testurl.getPath());
