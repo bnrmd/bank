@@ -1,7 +1,6 @@
 package ca.ucalgary.domain;
 import java.util.ArrayList;
 import java.util.Scanner;
-
 public class Budget {
 	
 	private double income;
@@ -11,7 +10,10 @@ public class Budget {
 	public Budget(double income){
 		this.income = income;
 	}
-	
+	public Budget(Budget toCopy){
+		this.income = toCopy.getIncome();
+		this.expenses = toCopy.getAllExpenses();
+	}
 	//setters
 	public void addExpense(String name, int percent){
 		double leftOver = this.getLeftoverIncome();
@@ -33,7 +35,11 @@ public class Budget {
 		}
 		
 	}
+	public void setIncome(double toSet) {
+		this.income = toSet;
+	}
 	
+	//takes amount of dollars for expense
 	public void addExpense(String name, double amount){
 		double leftOver = this.getLeftoverIncome();
 		if (leftOver <= amount) {
@@ -54,17 +60,11 @@ public class Budget {
 		}
 			
 	}
-	
-	public void setIncome(double income) {
-		this.income = income;
-	}
-	
 	//getters
 	public double getIncome(){
 		double income = this.income;
 		return income;
 	}
-	
 	public Expense getExpense(String str){
 		Expense copy  = null;
 		for (Expense x : expenses){
@@ -75,14 +75,12 @@ public class Budget {
 			return null;
 		else return copy;
 	}
-	
 	public double getLeftoverIncome() {
 		double leftOver = this.income;
 		for (Expense x : expenses)
 			leftOver -= x.getDollars();
 		return leftOver;
 	}
-	
 	public double getTotalExpenses() {
 		double total = 0.0;
 		for (Expense x: expenses) {
@@ -91,17 +89,19 @@ public class Budget {
 		return total;
 	}
 	
+	public ArrayList<Expense> getAllExpenses(){
+		ArrayList<Expense> toReturn = new ArrayList<Expense>();
+		toReturn = expenses;
+		return toReturn;
+	}
 	//methods
 	public String toString(){
-		String str = "------------------myBudget------------------\n";
-		str += "Income: $" + this.getIncome() + "\n";
+		String str = "";
 		for (Expense x : expenses){
 			str += x.getName() + ": $" + x.getDollars() + "\n";
 		}
-		str += "Total Expenses: $" + this.getTotalExpenses() + "\n";
-		str += "Total Left: $" + this.getLeftoverIncome();
+		str += "Total Expenses: " + this.getTotalExpenses() + "\n";
+		str += "Total Left: " + this.getLeftoverIncome();
 		return str;
 	}
-
 }
-
