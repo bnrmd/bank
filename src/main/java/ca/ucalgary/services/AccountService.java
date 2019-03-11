@@ -16,6 +16,9 @@ public class AccountService {
 
     private static AccountRepository accountRepository = new AccountRepository();
 
+    /**
+     * @return an account that has been created and added to the accountRepository
+     */
     public Account createAccount() {
         Account account = new Account();
         accountRepository.addAccount(account);
@@ -25,6 +28,11 @@ public class AccountService {
         return account;
     }
 
+    /**
+     * 
+     * @param type the type of account
+     * @return an account that has been created and added to the accountRepository
+     */
     public Account createAccount(String type) {
         Account account = new Account(type);
         accountRepository.addAccount(account);
@@ -34,6 +42,12 @@ public class AccountService {
         return account;
     }
 
+    /**
+     * 
+     * @param type the type of account
+     * @param balance amount in dollars to initialize in account's balance
+     * @return an account that has been created and added to the accountRepository
+     */
     public Account createAccount(String type, double balance) {
         Account account = new Account(type);
         account.setBalance(balance);
@@ -44,10 +58,19 @@ public class AccountService {
         return account;
     }
 
+    /**
+     * 
+     * @param accountId the account id of a specific account to return
+     * @return the account based on it's id, found within the accountRepository map
+     */
     public Account getAccount(String accountId) {
         return accountRepository.getAccount(accountId);
     }
 
+    /**
+     * 
+     * @param accountId the account id of a specific account to delete
+     */
     public void deleteAccount(String accountId) {
         Account a = AccountRepository.getAccount(accountId);
         AccountTransaction accountTransaction = new AccountTransaction(accountId,"DELETE", a.getBalance());
@@ -56,17 +79,29 @@ public class AccountService {
         accountRepository.deleteAccount(accountId);
     }
 
+    /**
+     * 
+     * @param accountId the account id for the account that is to be updated
+     * @param type the type of account
+     * @return the updated account, based on it's id and type, found within the accountRepository map
+     */
     public Account updateAccount(String accountId, String type) {
         return accountRepository.updateAccount(accountId, type);
     }
 
+    /**
+     * 
+     * @param accountId the account id for the account you want to deposit to
+     * @param amount the amount of money (in dollars) to deposit
+     * @return the updated account + balance
+     */
     public Account deposit(String accountId, double amount){
-        // Step 1: Fetch the account POJO from datastore
-        // Step 2: Create a new account transaction of type deposit
-        // Step 3: Update the account POJO amount balance
-        // Step 4: Save the account balance back into the datastore
-        // Step 5: Update the account transaction status to success or failure
-        // Step 6: Save the account transaction to the datastore
+        /* Step 1: Fetch the account POJO from datastore
+           Step 2: Create a new account transaction of type deposit
+           Step 3: Update the account POJO amount balance
+           Step 4: Save the account balance back into the datastore
+           Step 5: Update the account transaction status to success or failure
+           Step 6: Save the account transaction to the datastore */
         Account account = accountRepository.getAccount(accountId);
         double finalBalance = account.getBalance() + amount;
         AccountTransaction accountTransaction = new AccountTransaction(account.getId(),"DEPOSIT",amount);
@@ -75,6 +110,12 @@ public class AccountService {
         return accountRepository.updateAccount(accountId, finalBalance);
     }
 
+    /**
+     * 
+     * @param accountId the account id for the account you want to withdraw from
+     * @param amount the amount of money (in dollars) to withdraw (must be less or equal to the current balance of the account)
+     * @return the updated account + balance
+     */
     public Account withdraw(String accountId, double amount){
         Account account = accountRepository.getAccount(accountId);
         if(amount <= account.getBalance()) {
@@ -88,10 +129,19 @@ public class AccountService {
         }
     }
 
+    /**
+     * 
+     * @param accountId the account id for the account you want to display the transactions for
+     * @return the transactions for the specific account based on id
+     */
     public List<AccountTransaction> getAllAccountTransactions(String accountId){
         return AccountTransactionRepository.getAllAccountTransactions(accountId);
     }
 
+    /**
+     * 
+     * @return the repository list for all accounts
+     */
     public List<Account> getAllAccounts(){
         return accountRepository.getAllAccounts();
     }

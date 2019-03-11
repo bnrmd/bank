@@ -16,9 +16,15 @@ public class AccountTransaction {
     private LocalDateTime txDate; // Transaction date/time
 
     private AccountTransaction(){
-        // We should never create an empty transaction
+        /* REMINDER: We should never create an empty transaction */
     }
 
+    /**
+     * 
+     * @param accountId	 UUID in String format of an account
+     * @param type	type of account (SAVINGS, CHEQUING)
+     * @param amount	amount to initialize for account (in dollars)
+     */
     public AccountTransaction(String accountId, String type, double amount){
         this.id = UUID.randomUUID().toString();
         this.accountId = accountId;
@@ -53,37 +59,61 @@ public class AccountTransaction {
                 txDate.equals(that.txDate);
     }
 
-    // Used to speed up Java collections management
-    // e.g. List<Account>
+    /**
+     * @return	hash for an account
+     */
     @Override
     public int hashCode() {
+    	/* used to speed up Java collections management
+         * e.g. List<Account> */
         return Objects.hash(id, accountId, type, amount, status, txDate);
     }
 
+    /**
+     * @return	status for transaction
+     */
     public String getStatus() {
         return status;
     }
 
+    /**
+     * @param status	set status for a transaction
+     */
     public void setStatus(String status) {
         this.status = status;
     }
 
+    /**
+     * @return	the id of a transaction
+     */
     public String getId() {
         return id;
     }
 
+    /**
+     * @return	an account id
+     */
     public String getAccountId() {
         return accountId;
     }
 
+    /**
+     * @return	type of transaction (withdrawal, deposit)
+     */
     public String getType() {
         return type;
     }
 
+    /**
+     * @return	amount of money (dollars) in a transaction
+     */
     public double getAmount() {
         return amount;
     }
 
+    /**
+     * @return	date / time of transaction
+     */
     public LocalDateTime getTxDate() {
         return txDate;
     }

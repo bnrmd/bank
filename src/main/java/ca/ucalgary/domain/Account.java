@@ -11,12 +11,18 @@ public class Account {
     private double balance; // Represents the current funds on this account
     private String type; // What kind of type of account it is (Saving, Chequing)
 
+    /**
+     * default constructor
+     */
     public Account() {
         this.balance = 0.0;
         this.id = UUID.randomUUID().toString();
         this.type = "CHEQUING";
     }
 
+    /**
+     * @param type	the type of account (SAVINGS, CHEQUING)
+     */
     public Account(String type) {
         this.balance = 0.0;
         this.id = UUID.randomUUID().toString();
@@ -32,8 +38,10 @@ public class Account {
                 '}';
     }
 
+    
     @Override
     public boolean equals(Object o) {
+    	/* compares balance, id, and type */
         if (this == o) return true;
         if (!(o instanceof Account)) return false;
         Account account = (Account) o;
@@ -41,30 +49,48 @@ public class Account {
                 id.equals(account.id) &&
                 type.equals(account.type);
     }
-
-    // Used to speed up Java collections management
-    // e.g. List<Account>
+    
+    /**
+     * @return	hash for an account
+     */
     @Override
     public int hashCode() {
+    	/* used to speed up Java collections management
+         * e.g. List<Account> */
         return Objects.hash(id, balance, type);
     }
 
+    /**
+     * @return	id of an account
+     */
     public String getId() {
         return id;
     }
 
+    /**
+     * @return	balance of an account
+     */
     public double getBalance() {
         return balance;
     }
 
+    /**
+     * @param balance	balance to set (in dollars)
+     */
     public void setBalance(double balance) {
         this.balance = balance;
     }
 
+    /**
+     * @return	account type (SAVINGS, CHEQUING)
+     */
     public String getType() {
         return type;
     }
 
+    /**
+     * @param type	account type (SAVINGS, CHEQUING)
+     */
     public void setType(String type) {
         this.type = type;
     }

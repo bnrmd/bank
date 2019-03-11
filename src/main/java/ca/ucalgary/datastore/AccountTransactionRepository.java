@@ -11,14 +11,28 @@ public class AccountTransactionRepository {
 
     private static Map<String, AccountTransaction> accountTransactions = new HashMap<>();
 
+    /**
+     * 
+     * @param accountTransaction an AccountTransaction object that gets added to the accountTransactions map
+     */
     public static void addAccountTransaction(AccountTransaction accountTransaction){
         accountTransactions.put(accountTransaction.getId(), accountTransaction);
     }
 
+    /**
+     * 
+     * @param accountTransactionId the id of a transaction
+     * @return the account transaction
+     */
     public static AccountTransaction getAccountTransaction(String accountTransactionId){
         return accountTransactions.get(accountTransactionId);
     }
 
+    /**
+     * 
+     * @param accountId an account id
+     * @return all transactions for that specific account (based on id)
+     */
     public static List<AccountTransaction> getAllAccountTransactions(String accountId) {
         return accountTransactions.values()
                             .stream()
@@ -26,6 +40,10 @@ public class AccountTransactionRepository {
                             .collect(Collectors.toList());
     }
 
+    /**
+     * 
+     * @return all transactions for all accounts within the database
+     */
     public static List<AccountTransaction> getAllTransactionsOfAllAccounts(){
         return accountTransactions.values().stream().collect(Collectors.toList());
     }
