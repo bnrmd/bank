@@ -1,5 +1,7 @@
 package ca.ucalgary.gui;
-
+/**
+ * MockGoals
+ */
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

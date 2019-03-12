@@ -18,15 +18,26 @@ public class ExpenseWindow extends Application{
 	Budget budget;
 	Label display;
 	static Stage classStage = new Stage();
+	/**
+	 * ExpenseWindow constructor
+	 * @param budget
+	 * @param display
+	 */
 	public ExpenseWindow(Budget budget, Label display){
 		this.budget = budget;
 		this.display = display;
 	}
-	
+	/**
+	 * Main
+	 * @param args
+	 */
 	public static void main(String[] args){
 		launch(args);
 	}
-	
+	/**
+	 * start
+	 * @param primaryStage
+	 */
 	public void start(Stage primaryStage){
 		classStage = primaryStage;
 		
