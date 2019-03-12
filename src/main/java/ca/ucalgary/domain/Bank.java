@@ -5,7 +5,6 @@ import java.util.Scanner;
 import ca.ucalgary.domain.Budget;
 import ca.ucalgary.domain.Invest;
 import ca.ucalgary.domain.RegistrationForm;
-//import ca.ucalgary.tui.CLI;
 import ca.ucalgary.domain.Goal;
 
 /**
@@ -14,7 +13,9 @@ import ca.ucalgary.domain.Goal;
  */
 public class Bank {
 
-	// Sign-In Selected Method
+	/**
+	 * Sign-In Selected Method
+	 */
 	public static void SignInSelected() {
 		
 		// message
@@ -34,7 +35,9 @@ public class Bank {
 		
 	}
 		
-	// Sign-Up Selected Method
+	/**
+	 * Sign-Up Selected Method
+	 */
 	public static void SignUpSelected() {
 		
 		// declare variables 
@@ -55,7 +58,9 @@ public class Bank {
 		//Menu();
 	}
 	
-	// 1.Account Selected Method
+	/**
+	 * Account Selected Method
+	 */
 	public static void AccountSelected() {
 
 		// message
@@ -69,7 +74,9 @@ public class Bank {
 		
 	}
 
-	// 2.Budget Selected Method
+	/**
+	 * Budget Selected Method
+	 */
 	public static void BudgetSelected() {
 		
 		// declare variables 
@@ -138,7 +145,9 @@ public class Bank {
 
 	}
 	
-	// 3.Goals Selected Method
+	/**
+	 * Goals Selected Method
+	 */
 	public static void GoalsSelected() {
 		
 		// declare variables 
@@ -234,7 +243,9 @@ public class Bank {
 
 	}
 
-	// 4.Invest Selected Method
+	/**
+	 * Invest Selected Method
+	 */
 	public static void InvestSelected() {
 		
 		// declare variables 
@@ -302,10 +313,10 @@ public class Bank {
 
 	}
 
+	/**
+	 * save data to JSon file
+	 */
 	public void SaveDataStoreToFile(){
-
 	}
 
-
-	
 }

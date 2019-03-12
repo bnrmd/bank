@@ -19,8 +19,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * InvestGUI
- * Invest Graphical User Interface
+ * InvestGUI class
+ * GUI for the Invest class
  */
 public class InvestGUI extends Application implements EventHandler<ActionEvent> {
 	

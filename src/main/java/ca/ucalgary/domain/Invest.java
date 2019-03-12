@@ -1,33 +1,23 @@
 package ca.ucalgary.domain;
 
-/**
- * Salim Kassouri
- * Feb 25, 2019
- * Invest
- */
-
 // Imports 
 import java.io.*;
 import java.util.*;
 
-// Main Class
+/**
+ * Invest class
+ * allows users to invest in the stocks
+ */
 public class Invest {
 	
 	// Instance Variables
 	private ArrayList<String> StocksSymbolList, myStocks;
 	private File StocksFile;
 	private Scanner StocksScanner;
-	
-	// Getters
+
 	/**
-	 * return myStocks
-	 * @return myStocks
+	 *  Constructor
 	 */
-	public ArrayList<String> getMyStoks() {
-		return this.myStocks;
-	}
-	
-	// Constructor
  	public Invest() {
 		
 		// initialize instance variables
@@ -60,7 +50,9 @@ public class Invest {
 		
 	}
 	
-	// Search Stock Method
+	/**
+	 *  Search Stock Method
+	 */
 	public void SearchStock() {
 		
 		// declare variables
@@ -132,7 +124,9 @@ public class Invest {
 		
 	}
 	
-	// View All Stocks Method
+	/**
+	 *  View All Stocks Method
+	 */
 	public void ViewAllStocks() {
 		
 		// declare variables
@@ -165,7 +159,9 @@ public class Invest {
 
 	}
 	
-	// View Portfolio Method
+	/**
+	 *  View Portfolio Method
+	 */
 	public void ViewPortfolio() {
 		System.out.println("\n-----------------myPortfolio----------------");
 		int even = 0;
@@ -175,7 +171,9 @@ public class Invest {
 		}
 	}
 	
-	// Invest Selected Method
+	/**
+	 *  Invest Selected Method
+	 */
 	public void InvestSelected() {
 		
 		// declare variables
@@ -208,7 +206,16 @@ public class Invest {
 	}
 
 	/**
-	 * add to myStocks portfolio
+	 * return myStocks
+	 * @return myStocks
+	 */
+	public ArrayList<String> getMyStoks() {
+		return this.myStocks;
+	}
+		
+	/**
+	 * add to stocks to portfolio
+	 * @param symbol, amount
 	 */
 	public void addStock(String symbol, int amount) {
 		this.myStocks.add(symbol);
