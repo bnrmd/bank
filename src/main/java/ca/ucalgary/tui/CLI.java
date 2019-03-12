@@ -2,27 +2,24 @@ package ca.ucalgary.tui;
 
 /**
  * G02 T07
- * CLI
+ * myBank 
  */
 
 // Imports
 import java.util.Scanner;
-/*
-import ca.ucalgary.domain.Budget;
-import ca.ucalgary.domain.Invest;
-import ca.ucalgary.domain.RegistrationForm;
-import ca.ucalgary.domain.Goal;
-*/
 import ca.ucalgary.domain.Bank;
 import ca.ucalgary.services.RepositoryService;
 
 /**
- * CLI
- * Command Line Interface
+ * CLI CLass
+ * handles CLI for myBank app
  */
 public class CLI {
 	
-	// Main Method
+	/**
+	 * Main method
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		
 		// declare variables 
@@ -78,7 +75,9 @@ public class CLI {
 				
 	}
 	
-	// Menu Method
+	/**
+	 * Menu method
+	 */
 	public static void Menu() {
 		
 		// declare variables 
