@@ -8,6 +8,11 @@ import javafx.scene.control.Label;
 public class AddExpenseButtonHandler implements EventHandler<ActionEvent>{
 	Budget budget;
 	Label display;
+	/**
+	 * 
+	 * @param budget
+	 * @param display
+	 */
 	public AddExpenseButtonHandler(Budget budget, Label display){
 		this.budget = budget;
 		this.display = display;

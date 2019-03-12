@@ -7,14 +7,27 @@ public class Budget {
 	private ArrayList<Expense> expenses = new ArrayList<Expense>();
 	
 	//constructors
+	/**
+	 * Budget Constructor with income
+	 * @param income
+	 */
 	public Budget(double income){
 		this.income = income;
 	}
+	/**
+	 * Budget Constructor with budget
+	 * @param toCopy
+	 */
 	public Budget(Budget toCopy){
 		this.income = toCopy.getIncome();
 		this.expenses = toCopy.getAllExpenses();
 	}
 	//setters
+	/**
+	 * Add an expense to the budget
+	 * @param name
+	 * @param percent
+	 */
 	public void addExpense(String name, int percent){
 		double leftOver = this.getLeftoverIncome();
 		if (leftOver <= (this.income * (percent/100.0))) {
@@ -35,11 +48,20 @@ public class Budget {
 		}
 		
 	}
+	/**
+	 * Set an Income for your budget
+	 * @param toSet
+	 */
 	public void setIncome(double toSet) {
 		this.income = toSet;
 	}
 	
 	//takes amount of dollars for expense
+	/**
+	 * Add an expense to the budget with an amount
+	 * @param name
+	 * @param amount
+	 */
 	public void addExpense(String name, double amount){
 		double leftOver = this.getLeftoverIncome();
 		if (leftOver <= amount) {
@@ -61,10 +83,20 @@ public class Budget {
 			
 	}
 	//getters
+	/**
+	 * Get the income
+	 * @param none
+	 * @return income of budget
+	 */
 	public double getIncome(){
 		double income = this.income;
 		return income;
 	}
+	/**
+	 * Get a specific expense
+	 * @param str
+	 * @return the expense
+	 */
 	public Expense getExpense(String str){
 		Expense copy  = null;
 		for (Expense x : expenses){
@@ -75,12 +107,20 @@ public class Budget {
 			return null;
 		else return copy;
 	}
+	/**
+	 * Get the left over income of the budget
+	 * @return Leftover income
+	 */
 	public double getLeftoverIncome() {
 		double leftOver = this.income;
 		for (Expense x : expenses)
 			leftOver -= x.getDollars();
 		return leftOver;
 	}
+	/**
+	 * Get the total expenses
+	 * @return total expenses
+	 */
 	public double getTotalExpenses() {
 		double total = 0.0;
 		for (Expense x: expenses) {
@@ -88,13 +128,21 @@ public class Budget {
 		}
 		return total;
 	}
-	
+	/**
+	 * getAllExpenses
+	 * Returns all the expenses in a budget
+	 * @return all expenses as ArrayList<Expense>
+	 */
 	public ArrayList<Expense> getAllExpenses(){
 		ArrayList<Expense> toReturn = new ArrayList<Expense>();
 		toReturn = expenses;
 		return toReturn;
 	}
 	//methods
+	/**
+	 * toString
+	 * @return budget as string
+	 */
 	public String toString(){
 		String str = "";
 		for (Expense x : expenses){

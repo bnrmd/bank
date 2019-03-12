@@ -17,11 +17,16 @@ import javafx.geometry.Pos;
 
 public class BudgetGUI extends Application{
 	private Budget forGUI = new Budget(1000);
-	Scene scene;
+	/**
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args){
 		launch(args);
 	}
-	
+	/**
+	 * @param primaryStage
+	 */
 	@Override
 	public void start(Stage primaryStage) throws Exception{
 		BorderPane root = new BorderPane();
@@ -105,7 +110,7 @@ public class BudgetGUI extends Application{
       				}
       			}
       		});
-		scene = new Scene(root,384,683);
+		Scene scene = new Scene(root,384,683);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		
