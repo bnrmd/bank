@@ -2,6 +2,8 @@ package ca.ucalgary.gui;
 import ca.ucalgary.domain.Budget;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.layout.BorderPane;
@@ -63,6 +65,19 @@ public class BudgetGUI extends Application{
 		addButton.setAlignment(Pos.BOTTOM_RIGHT);
 		root.setRight(addButton);
 		
+		// Menu Bar - btnInvest
+        btnInvest.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				InvestGUI myInvestGUI = new InvestGUI();
+				try {
+					myInvestGUI.start(primaryStage);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});		
 		
 		scene = new Scene(root,384,683);
 		primaryStage.setScene(scene);
