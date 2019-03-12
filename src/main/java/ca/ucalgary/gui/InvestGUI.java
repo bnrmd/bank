@@ -122,7 +122,7 @@ public class InvestGUI extends Application implements EventHandler<ActionEvent> 
         btnAccount.setMinSize(96, 68);
         btnBudget.setMinSize(96, 68);
         btnInvest.setMinSize(96, 68);
-        
+        //Budget Button
         btnBudget.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -135,6 +135,32 @@ public class InvestGUI extends Application implements EventHandler<ActionEvent> 
 				}
 			}
 		});
+      //Goals Button
+  		btnGoals.setOnAction(new EventHandler<ActionEvent>() {
+  			@Override
+  			public void handle(ActionEvent event) {
+  				MockGoalsGUI myGoalsGUI = new MockGoalsGUI();
+  				try {
+  					myGoalsGUI.start(primaryStage);
+  				} catch (Exception e) {
+  					// TODO Auto-generated catch block
+  					e.printStackTrace();
+  				}
+  			}
+  		});
+  		//Menu bar btnAccounts
+        btnAccount.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				MockAccounts myAccountsGUI = new MockAccounts();
+				try {
+					myAccountsGUI.start(primaryStage);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});		
         
         bottom.getChildren().addAll(btnAccount, btnBudget, btnGoals, btnInvest);
 

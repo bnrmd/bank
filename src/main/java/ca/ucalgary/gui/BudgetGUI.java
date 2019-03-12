@@ -78,7 +78,33 @@ public class BudgetGUI extends Application{
 				}
 			}
 		});		
-		
+		//Menu bar btnAccounts
+        btnAccounts.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				MockAccounts myAccountsGUI = new MockAccounts();
+				try {
+					myAccountsGUI.start(primaryStage);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});		
+        
+      //Goals Button
+      		btnGoals.setOnAction(new EventHandler<ActionEvent>() {
+      			@Override
+      			public void handle(ActionEvent event) {
+      				MockGoalsGUI myGoalsGUI = new MockGoalsGUI();
+      				try {
+      					myGoalsGUI.start(primaryStage);
+      				} catch (Exception e) {
+      					// TODO Auto-generated catch block
+      					e.printStackTrace();
+      				}
+      			}
+      		});
 		scene = new Scene(root,384,683);
 		primaryStage.setScene(scene);
 		primaryStage.show();
