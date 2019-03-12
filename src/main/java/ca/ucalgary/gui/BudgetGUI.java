@@ -67,18 +67,18 @@ public class BudgetGUI extends Application{
 		
 		// Menu Bar - btnInvest
         btnInvest.setOnAction(new EventHandler<ActionEvent>() 
-		{
-			@Override
-			public void handle(ActionEvent event) {
-				InvestGUI myInvestGUI = new InvestGUI();
-				try {
-					myInvestGUI.start(primaryStage);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+			{
+				@Override
+				public void handle(ActionEvent event) {
+					InvestGUI myInvestGUI = new InvestGUI();
+					try {
+						myInvestGUI.start(primaryStage);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 			}
-		}
         );		
 		
 		scene = new Scene(root,384,683);

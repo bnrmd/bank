@@ -124,18 +124,18 @@ public class InvestGUI extends Application implements EventHandler<ActionEvent> 
         btnInvest.setMinSize(96, 68);
         
         btnBudget.setOnAction(new EventHandler<ActionEvent>() 
-		{
-			@Override
-			public void handle(ActionEvent event) {
-				BudgetGUI myBudgetGUI = new BudgetGUI();
-				try {
-					myBudgetGUI.start(primaryStage);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+			{
+				@Override
+				public void handle(ActionEvent event) {
+					BudgetGUI myBudgetGUI = new BudgetGUI();
+					try {
+						myBudgetGUI.start(primaryStage);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 			}
-		}
         );
         
         bottom.getChildren().addAll(btnAccount, btnBudget, btnGoals, btnInvest);
