@@ -72,7 +72,7 @@ public class RepositoryService {
         URL url = AccountRepository.class.getResource("/resources/data-stores/account-repository.json");
         Path location = Paths.get(url.toURI());*/
 
-        URL url = AccountRepository.class.getClassLoader().getResource(path);
+        URL url = AccountRepository.class.getClassLoader().getResource("data-stores/account-repository.json");
         Path location = Paths.get(url.toURI());
         return location.toFile();
     }
