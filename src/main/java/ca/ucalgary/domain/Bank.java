@@ -61,7 +61,7 @@ public class Bank {
 	/**
 	 * Account Selected Method
 	 */
-	public static void AccountSelected() {
+	public static void AccountSelected(Customer customer) {
 
 		// message
 		System.out.println("\n--------------------------------------------");
@@ -70,8 +70,7 @@ public class Bank {
 		
 		// run CLI class
 		AccountCLI myCLI = new AccountCLI();
-		myCLI.main(null);
-		
+		myCLI.processAccountsFor(customer);
 	}
 
 	/**

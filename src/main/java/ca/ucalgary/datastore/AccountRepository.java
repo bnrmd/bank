@@ -90,7 +90,7 @@ public class AccountRepository {
      * 
      * @param accountId the id of an account
      * @param type the type to be updated
-     * @param baalnce the balance to be updated
+     * @param balance the balance to be updated
      * @return the updated account
      */
     public static Account updateAccount(String accountId, double balance, String type) {
@@ -124,6 +124,10 @@ public class AccountRepository {
     /* used to print all accounts */
     public static void printAllAccounts(){
         store.entrySet().stream().forEach(entry -> System.out.println(entry.getValue()));
+    }
+
+    public static List<Account> getAllAccountsByIds(List<String> accountIds){
+        return store.entrySet().stream().filter(entry -> accountIds.contains(entry.getKey())).map(entry -> entry.getValue()).collect(Collectors.toList());
     }
 
 

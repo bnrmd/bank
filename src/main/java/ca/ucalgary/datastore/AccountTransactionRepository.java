@@ -28,6 +28,10 @@ public class AccountTransactionRepository {
         return accountTransactions.get(accountTransactionId);
     }
 
+    public static List<AccountTransaction> getAllAccountTransactions() {
+        return accountTransactions.values().stream().collect(Collectors.toList());
+    }
+
     /**
      * 
      * @param accountId an account id
@@ -46,5 +50,10 @@ public class AccountTransactionRepository {
      */
     public static List<AccountTransaction> getAllTransactionsOfAllAccounts(){
         return accountTransactions.values().stream().collect(Collectors.toList());
+    }
+
+    public static void setAllAccountTransactions(List<AccountTransaction> transactions){
+        accountTransactions = transactions.stream().collect(Collectors.toMap(AccountTransaction::getId,accountTransaction -> accountTransaction));
+
     }
 }
