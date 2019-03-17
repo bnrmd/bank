@@ -1,7 +1,15 @@
 package ca.ucalgary.services;
 
 import ca.ucalgary.datastore.AccountRepository;
+import ca.ucalgary.datastore.AccountTransactionRepository;
+import ca.ucalgary.datastore.CustomerAccessRepository;
+import ca.ucalgary.datastore.CustomerRepository;
 import ca.ucalgary.domain.Account;
+import ca.ucalgary.domain.AccountTransaction;
+import ca.ucalgary.domain.Customer;
+import ca.ucalgary.domain.CustomerAccess;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -19,6 +27,8 @@ public class RepositoryService {
     public void saveAllRepositories(){
         try {
             ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT).disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+            //mapper.setVisibilityChecker(mapper.getSerializationConfig().getDefaultVisibilityChecker().withFieldVisibility(JsonAutoDetect.Visibility.ANY).withGetterVisibility(JsonAutoDetect.Visibility.NONE).withSetterVisibility(JsonAutoDetect.Visibility.NONE).withCreatorVisibility(JsonAutoDetect.Visibility.NONE));
+            mapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
             List<Account> accounts = AccountRepository.getAllAccounts();
             String JSON = mapper.writeValueAsString(accounts);
             System.out.println(JSON);
@@ -29,6 +39,52 @@ public class RepositoryService {
                 //mapper.writeValue(getFile("data-stores/account-repository.json"), JSON );
                 File accountStore = getFile("data-stores/account-repository.json");
                 Files.write(accountStore.toPath(), mapper.writeValueAsBytes(accounts), new OpenOption[]{StandardOpenOption.TRUNCATE_EXISTING});
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            List<AccountTransaction> accountTransactions = AccountTransactionRepository.getAllAccountTransactions();
+            JSON = mapper.writeValueAsString(accountTransactions);
+            System.out.println(JSON);
+
+            // Write String to file
+            try {
+                // Writing to a file
+                //mapper.writeValue(getFile("data-stores/account-repository.json"), JSON );
+                File accountTransactionsStore = getFile("data-stores/accounttransactions-repository.json");
+                System.out.println("ACC TR " + accountTransactions);
+                Files.write(accountTransactionsStore.toPath(), mapper.writeValueAsBytes(accountTransactions), new OpenOption[]{StandardOpenOption.TRUNCATE_EXISTING});
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            List<Customer> customers = CustomerRepository.getAllCustomers();
+            JSON = mapper.writeValueAsString(customers);
+            System.out.println(JSON);
+
+            // Write String to file
+            try {
+                // Writing to a file
+                //mapper.writeValue(getFile("data-stores/account-repository.json"), JSON );
+                File customerStore = getFile("data-stores/customer-repository.json");
+                Files.write(customerStore.toPath(), mapper.writeValueAsBytes(customers), new OpenOption[]{StandardOpenOption.TRUNCATE_EXISTING});
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            List<CustomerAccess> customerAccess = CustomerAccessRepository.getAllCustomerAccess();
+            JSON = mapper.writeValueAsString(customerAccess);
+            System.out.println(JSON);
+
+            // Write String to file
+            try {
+                // Writing to a file
+                //mapper.writeValue(getFile("data-stores/account-repository.json"), JSON );
+                File customerAccessStore = getFile("data-stores/customeraccess-repository.json");
+                Files.write(customerAccessStore.toPath(), mapper.writeValueAsBytes(customerAccess), new OpenOption[]{StandardOpenOption.TRUNCATE_EXISTING});
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -44,15 +100,52 @@ public class RepositoryService {
     public void restoreAllRepositories(){
         /* Read from account-repository.json and use mapper to transform it into a list of accounts
            Take the list of accounts and create a map of String, Account */
+        ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT).disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+        mapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
         try {
-            ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT).disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
             String JSON = "";
             // Read the file into the JSON string
 
-            List<Account> accounts = mapper.readValue(getFile(""), new TypeReference<List<Account>>(){});
+            List<Account> accounts = mapper.readValue(getFile("data-stores/account-repository.json"), new TypeReference<List<Account>>(){});
 
             accounts.forEach(account -> System.out.println(account));
             AccountRepository.setAllAccounts(accounts);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+        try {
+            String JSON = "";
+            // Read the file into the JSON string
+
+            List<AccountTransaction> accountTransactions = mapper.readValue(getFile("data-stores/accounttransactions-repository.json"), new TypeReference<List<AccountTransaction>>(){});
+
+            accountTransactions.forEach(accountTransaction -> System.out.println(accountTransaction));
+            AccountTransactionRepository.setAllAccountTransactions(accountTransactions);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+        try {
+            String JSON = "";
+            // Read the file into the JSON string
+
+            List<Customer> customers = mapper.readValue(getFile("data-stores/customer-repository.json"), new TypeReference<List<Customer>>(){});
+
+            customers.forEach(customer -> System.out.println(customer));
+            CustomerRepository.setAllCustomers(customers);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+        try {
+            String JSON = "";
+            // Read the file into the JSON string
+
+            List<CustomerAccess> customerAccesses = mapper.readValue(getFile("data-stores/customeraccess-repository.json"), new TypeReference<List<CustomerAccess>>(){});
+
+            customerAccesses.forEach(customerAccess -> System.out.println(customerAccess));
+            CustomerAccessRepository.setAllCustomerAccess(customerAccesses);
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -72,9 +165,18 @@ public class RepositoryService {
         URL url = AccountRepository.class.getResource("/resources/data-stores/account-repository.json");
         Path location = Paths.get(url.toURI());*/
 
-        URL url = AccountRepository.class.getClassLoader().getResource("data-stores/account-repository.json");
+        System.out.println("path = "+path);
+
+        URL url = AccountRepository.class.getClassLoader().getResource(path);
+        System.out.println("url = " + url);
         Path location = Paths.get(url.toURI());
+//        System.out.println(location + "/" + path);
+//        String pathText = location + "/data-stores/" + path;
+//        Path pathFromText = Paths.get(pathText);
+
         return location.toFile();
+        //return pathFromText.toFile();
+
     }
 
 }

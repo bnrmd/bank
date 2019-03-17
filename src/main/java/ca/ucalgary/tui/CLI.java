@@ -8,6 +8,8 @@ package ca.ucalgary.tui;
 // Imports
 import java.util.Scanner;
 import ca.ucalgary.domain.Bank;
+import ca.ucalgary.domain.Customer;
+import ca.ucalgary.services.BankService;
 import ca.ucalgary.services.RepositoryService;
 
 /**
@@ -15,12 +17,18 @@ import ca.ucalgary.services.RepositoryService;
  * handles CLI for myBank app
  */
 public class CLI {
+
+	private static BankService bankService = new BankService();
+	private static Customer contextCustomer = null;
 	
 	/**
 	 * Main method
 	 * @param args
 	 */
 	public static void main(String[] args) {
+
+		RepositoryService recoveredService = new RepositoryService();
+		recoveredService.restoreAllRepositories();
 		
 		// declare variables 
 		Scanner input;
@@ -29,6 +37,7 @@ public class CLI {
 		// initialize variables
 		input = new Scanner(System.in);  
 		userSelection = "";
+
 		
 		while (true) {
 			
@@ -53,32 +62,58 @@ public class CLI {
 			
 			case "1":
 				// call SignInSelected method
-				Bank.SignInSelected();
+				contextCustomer = Bank.SignInSelected();
 				Menu();
 				break;
 
 			case "2":
 				// call SignUpSelected method
-				Bank.SignUpSelected();
+				//Bank.SignUpSelected();
+				//Menu();
+				contextCustomer = signUp();
 				Menu();
+
 				break;
 			
 			case "q":
+				recoveredService.saveAllRepositories();
 				System.out.println("\nHave a Nice Day!");
 				System.exit(1);
 
 			default:  // will never run 
 				break;
 			}
+
+
 			
 		}
+
 				
+	}
+
+	private static Customer signUp(){
+		Scanner input = new Scanner(System.in);
+		System.out.println("Enter your first name:");
+		String firstName = input.nextLine();
+
+		System.out.println("Enter your last name:");
+		String lastName = input.nextLine();
+
+		System.out.println("Enter your email:");
+		String email = input.nextLine();
+
+		System.out.println("Enter a password:");
+		String password = input.nextLine();
+
+		return bankService.signUpCustomer(firstName,lastName,email,password);
 	}
 	
 	/**
 	 * Menu method
 	 */
 	public static void Menu() {
+
+
 		
 		// declare variables 
 		Scanner input ;
@@ -115,7 +150,7 @@ public class CLI {
 				switch (userSelection) {
 					case "1":
 						// call AccountSelected method
-						Bank.AccountSelected();
+						Bank.AccountSelected(contextCustomer);
 						break;
 
 					case "2":
@@ -138,10 +173,7 @@ public class CLI {
 						repositoryService.saveAllRepositories();
 						break;
 
-					case "6":
-						RepositoryService recoveredService = new RepositoryService();
-						recoveredService.restoreAllRepositories();
-						break;
+
 
 					case "q":
 						System.out.println();
@@ -152,8 +184,8 @@ public class CLI {
 						break;
 				}
 			}
-		} finally{
-			// Save data-stores here
+		} finally {
+
 		}
 	}
 	

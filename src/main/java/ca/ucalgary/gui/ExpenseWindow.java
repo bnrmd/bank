@@ -19,7 +19,7 @@ public class ExpenseWindow extends Application{
 	Label display;
 	static Stage classStage = new Stage();
 	/**
-	 * ExpenseWindow constructor
+	 * AccountWindow constructor
 	 * @param budget
 	 * @param display
 	 */

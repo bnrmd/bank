@@ -14,14 +14,14 @@ import java.util.List;
  */
 public class AccountService {
 
-    private static AccountRepository accountRepository = new AccountRepository();
+    //private static AccountRepository accountRepository = new AccountRepository();
 
     /**
      * @return an account that has been created and added to the accountRepository
      */
     public Account createAccount() {
         Account account = new Account();
-        accountRepository.addAccount(account);
+        AccountRepository.addAccount(account);
         AccountTransaction accountTransaction = new AccountTransaction(account.getId(),"CREATE",account.getBalance());
         AccountTransactionRepository.addAccountTransaction(accountTransaction);
 
@@ -35,7 +35,7 @@ public class AccountService {
      */
     public Account createAccount(String type) {
         Account account = new Account(type);
-        accountRepository.addAccount(account);
+        AccountRepository.addAccount(account);
         AccountTransaction accountTransaction = new AccountTransaction(account.getId(),"CREATE",account.getBalance());
         AccountTransactionRepository.addAccountTransaction(accountTransaction);
 
@@ -51,7 +51,7 @@ public class AccountService {
     public Account createAccount(String type, double balance) {
         Account account = new Account(type);
         account.setBalance(balance);
-        accountRepository.addAccount(account);
+        AccountRepository.addAccount(account);
         AccountTransaction accountTransaction = new AccountTransaction(account.getId(),"CREATE",account.getBalance());
         AccountTransactionRepository.addAccountTransaction(accountTransaction);
 
@@ -64,7 +64,7 @@ public class AccountService {
      * @return the account based on it's id, found within the accountRepository map
      */
     public Account getAccount(String accountId) {
-        return accountRepository.getAccount(accountId);
+        return AccountRepository.getAccount(accountId);
     }
 
     /**
@@ -76,7 +76,7 @@ public class AccountService {
         AccountTransaction accountTransaction = new AccountTransaction(accountId,"DELETE", a.getBalance());
         AccountTransactionRepository.addAccountTransaction(accountTransaction);
 
-        accountRepository.deleteAccount(accountId);
+        AccountRepository.deleteAccount(accountId);
     }
 
     /**
@@ -86,7 +86,7 @@ public class AccountService {
      * @return the updated account, based on it's id and type, found within the accountRepository map
      */
     public Account updateAccount(String accountId, String type) {
-        return accountRepository.updateAccount(accountId, type);
+        return AccountRepository.updateAccount(accountId, type);
     }
 
     /**
@@ -102,12 +102,12 @@ public class AccountService {
            Step 4: Save the account balance back into the datastore
            Step 5: Update the account transaction status to success or failure
            Step 6: Save the account transaction to the datastore */
-        Account account = accountRepository.getAccount(accountId);
+        Account account = AccountRepository.getAccount(accountId);
         double finalBalance = account.getBalance() + amount;
         AccountTransaction accountTransaction = new AccountTransaction(account.getId(),"DEPOSIT",amount);
         AccountTransactionRepository.addAccountTransaction(accountTransaction);
 
-        return accountRepository.updateAccount(accountId, finalBalance);
+        return AccountRepository.updateAccount(accountId, finalBalance);
     }
 
     /**
@@ -117,13 +117,13 @@ public class AccountService {
      * @return the updated account + balance
      */
     public Account withdraw(String accountId, double amount){
-        Account account = accountRepository.getAccount(accountId);
+        Account account = AccountRepository.getAccount(accountId);
         if(amount <= account.getBalance()) {
             double finalBalance = account.getBalance() - amount;
             AccountTransaction accountTransaction = new AccountTransaction(account.getId(),"WITHDRAW",amount);
             AccountTransactionRepository.addAccountTransaction(accountTransaction);
 
-            return accountRepository.updateAccount(accountId, finalBalance);
+            return AccountRepository.updateAccount(accountId, finalBalance);
         } else {
             throw new RuntimeException("Not enough funds.");
         }
@@ -143,6 +143,10 @@ public class AccountService {
      * @return the repository list for all accounts
      */
     public List<Account> getAllAccounts(){
-        return accountRepository.getAllAccounts();
+        return AccountRepository.getAllAccounts();
+    }
+
+    public List<Account> getAllAccountsByIds(List<String> accountIds){
+        return AccountRepository.getAllAccountsByIds(accountIds);
     }
 }
