@@ -26,6 +26,9 @@ public class CLI {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+
+		RepositoryService recoveredService = new RepositoryService();
+		recoveredService.restoreAllRepositories();
 		
 		// declare variables 
 		Scanner input;
@@ -59,7 +62,7 @@ public class CLI {
 			
 			case "1":
 				// call SignInSelected method
-				Bank.SignInSelected();
+				contextCustomer = Bank.SignInSelected();
 				Menu();
 				break;
 
@@ -73,14 +76,18 @@ public class CLI {
 				break;
 			
 			case "q":
+				recoveredService.saveAllRepositories();
 				System.out.println("\nHave a Nice Day!");
 				System.exit(1);
 
 			default:  // will never run 
 				break;
 			}
+
+
 			
 		}
+
 				
 	}
 
@@ -105,6 +112,8 @@ public class CLI {
 	 * Menu method
 	 */
 	public static void Menu() {
+
+
 		
 		// declare variables 
 		Scanner input ;
@@ -164,10 +173,7 @@ public class CLI {
 						repositoryService.saveAllRepositories();
 						break;
 
-					case "6":
-						RepositoryService recoveredService = new RepositoryService();
-						recoveredService.restoreAllRepositories();
-						break;
+
 
 					case "q":
 						System.out.println();
@@ -178,8 +184,8 @@ public class CLI {
 						break;
 				}
 			}
-		} finally{
-			// Save data-stores here
+		} finally {
+
 		}
 	}
 	

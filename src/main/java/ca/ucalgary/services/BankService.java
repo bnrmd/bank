@@ -22,7 +22,7 @@ public class BankService {
             customerAccess = customerAccessService.authenticate(email, password);
             customer = customerService.getCustomerById(customerAccess.getCustomerId());
         } catch(Exception e){
-
+            return customer;
         }
         return customer;
     }

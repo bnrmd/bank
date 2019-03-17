@@ -8,6 +8,8 @@ import ca.ucalgary.domain.Account;
 import ca.ucalgary.domain.AccountTransaction;
 import ca.ucalgary.domain.Customer;
 import ca.ucalgary.domain.CustomerAccess;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -25,6 +27,8 @@ public class RepositoryService {
     public void saveAllRepositories(){
         try {
             ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT).disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+            //mapper.setVisibilityChecker(mapper.getSerializationConfig().getDefaultVisibilityChecker().withFieldVisibility(JsonAutoDetect.Visibility.ANY).withGetterVisibility(JsonAutoDetect.Visibility.NONE).withSetterVisibility(JsonAutoDetect.Visibility.NONE).withCreatorVisibility(JsonAutoDetect.Visibility.NONE));
+            mapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
             List<Account> accounts = AccountRepository.getAllAccounts();
             String JSON = mapper.writeValueAsString(accounts);
             System.out.println(JSON);
@@ -49,6 +53,7 @@ public class RepositoryService {
                 // Writing to a file
                 //mapper.writeValue(getFile("data-stores/account-repository.json"), JSON );
                 File accountTransactionsStore = getFile("data-stores/accounttransactions-repository.json");
+                System.out.println("ACC TR " + accountTransactions);
                 Files.write(accountTransactionsStore.toPath(), mapper.writeValueAsBytes(accountTransactions), new OpenOption[]{StandardOpenOption.TRUNCATE_EXISTING});
 
             } catch (IOException e) {
@@ -96,11 +101,12 @@ public class RepositoryService {
         /* Read from account-repository.json and use mapper to transform it into a list of accounts
            Take the list of accounts and create a map of String, Account */
         ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT).disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+        mapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
         try {
             String JSON = "";
             // Read the file into the JSON string
 
-            List<Account> accounts = mapper.readValue(getFile(""), new TypeReference<List<Account>>(){});
+            List<Account> accounts = mapper.readValue(getFile("data-stores/account-repository.json"), new TypeReference<List<Account>>(){});
 
             accounts.forEach(account -> System.out.println(account));
             AccountRepository.setAllAccounts(accounts);
@@ -112,7 +118,7 @@ public class RepositoryService {
             String JSON = "";
             // Read the file into the JSON string
 
-            List<AccountTransaction> accountTransactions = mapper.readValue(getFile(""), new TypeReference<List<AccountTransaction>>(){});
+            List<AccountTransaction> accountTransactions = mapper.readValue(getFile("data-stores/accounttransactions-repository.json"), new TypeReference<List<AccountTransaction>>(){});
 
             accountTransactions.forEach(accountTransaction -> System.out.println(accountTransaction));
             AccountTransactionRepository.setAllAccountTransactions(accountTransactions);
@@ -124,7 +130,7 @@ public class RepositoryService {
             String JSON = "";
             // Read the file into the JSON string
 
-            List<Customer> customers = mapper.readValue(getFile(""), new TypeReference<List<Customer>>(){});
+            List<Customer> customers = mapper.readValue(getFile("data-stores/customer-repository.json"), new TypeReference<List<Customer>>(){});
 
             customers.forEach(customer -> System.out.println(customer));
             CustomerRepository.setAllCustomers(customers);
@@ -136,7 +142,7 @@ public class RepositoryService {
             String JSON = "";
             // Read the file into the JSON string
 
-            List<CustomerAccess> customerAccesses = mapper.readValue(getFile(""), new TypeReference<List<CustomerAccess>>(){});
+            List<CustomerAccess> customerAccesses = mapper.readValue(getFile("data-stores/customeraccess-repository.json"), new TypeReference<List<CustomerAccess>>(){});
 
             customerAccesses.forEach(customerAccess -> System.out.println(customerAccess));
             CustomerAccessRepository.setAllCustomerAccess(customerAccesses);
@@ -159,9 +165,18 @@ public class RepositoryService {
         URL url = AccountRepository.class.getResource("/resources/data-stores/account-repository.json");
         Path location = Paths.get(url.toURI());*/
 
+        System.out.println("path = "+path);
+
         URL url = AccountRepository.class.getClassLoader().getResource(path);
+        System.out.println("url = " + url);
         Path location = Paths.get(url.toURI());
+//        System.out.println(location + "/" + path);
+//        String pathText = location + "/data-stores/" + path;
+//        Path pathFromText = Paths.get(pathText);
+
         return location.toFile();
+        //return pathFromText.toFile();
+
     }
 
 }

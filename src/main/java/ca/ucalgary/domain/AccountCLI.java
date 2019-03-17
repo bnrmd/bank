@@ -46,8 +46,14 @@ public class AccountCLI {
 
             switch (operation) {
                 case "1":
-                    account = this.create(customer);
-                    System.out.println("Account created: " + account.getId());
+                    System.out.println("Enter type of account: (CHEQUING/SAVINGS)");
+                    String accountType = scanner.nextLine().toUpperCase();
+                    if (validateAccountType(accountType)) {
+                        account = this.create(customer, accountType);
+                        System.out.println("Account created: " + account.getId());
+                    } else {
+                        System.out.println("Not a valid account type");
+                    }
                     break;
                 case "2":
                     System.out.println("How much do you want to deposit?");
@@ -85,8 +91,13 @@ public class AccountCLI {
         }
     }
 
-    public Account create(Customer customer){
-        Account account = accountService.createAccount();
+    public boolean validateAccountType(String accountType){
+        return accountType.equals("CHEQUING") || accountType.equals("SAVINGS");
+    }
+
+    public Account create(Customer customer, String accountType){
+
+        Account account = accountService.createAccount(accountType);
         customer.addAccountId(account.getId());
         return account;
     }

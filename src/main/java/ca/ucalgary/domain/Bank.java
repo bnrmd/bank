@@ -6,17 +6,18 @@ import ca.ucalgary.domain.Budget;
 import ca.ucalgary.domain.Invest;
 import ca.ucalgary.domain.RegistrationForm;
 import ca.ucalgary.domain.Goal;
+import ca.ucalgary.services.BankService;
 
 /**
  * Bank 
  * Contains control/menu methods 
  */
 public class Bank {
-
+	private static BankService bankService = new BankService();
 	/**
 	 * Sign-In Selected Method
 	 */
-	public static void SignInSelected() {
+	public static Customer SignInSelected() {
 		
 		// message
 		System.out.println("\n--------------------------------------------");
@@ -25,14 +26,20 @@ public class Bank {
 		
 		// username and password
 		Scanner input =  new Scanner(System.in);
-		System.out.print("Enter Username: ");
-		String username = input.nextLine();
+		System.out.print("Enter Email: ");
+		String email = input.nextLine();
 		System.out.print("Enter Password: ");
 		String password = input.nextLine();
-		
-		// call Menu method
-		//Menu();
-		
+
+		Customer customer = bankService.signIn(email,password);
+
+		if (customer == null){
+			System.out.println("Invalid Credentials");
+			SignInSelected();
+		}
+
+		return customer;
+
 	}
 		
 	/**

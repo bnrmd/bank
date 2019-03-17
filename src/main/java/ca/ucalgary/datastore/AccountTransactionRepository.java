@@ -53,6 +53,7 @@ public class AccountTransactionRepository {
     }
 
     public static void setAllAccountTransactions(List<AccountTransaction> transactions){
+        System.out.println("transactions " + transactions);
         accountTransactions = transactions.stream().collect(Collectors.toMap(AccountTransaction::getId,accountTransaction -> accountTransaction));
 
     }
