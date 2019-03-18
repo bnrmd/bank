@@ -1,7 +1,6 @@
 package ca.ucalgary.gui.accounts;
 
 import ca.ucalgary.domain.Account;
-import ca.ucalgary.gui.accounts.AccountWindow;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;

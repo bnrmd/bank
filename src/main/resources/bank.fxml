@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="743.0" prefWidth="241.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.gui.BankApplicationController">
+   <children>
+      <AnchorPane layoutX="9.0" layoutY="228.0" prefHeight="260.0" prefWidth="382.0">
+         <children>
+            <Button fx:id="goTo" layoutX="159.0" layoutY="121.0" mnemonicParsing="false" onAction="#goToLogin" text="Go to Login Page" />
+            <Button fx:id="changeSceneButton" onAction="#changeScene" layoutX="160.0" layoutY="187.0" mnemonicParsing="false" text="Add Scene" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="sceneChange" layoutX="35.0" layoutY="28.0" prefHeight="210.0" prefWidth="284.0" />
+   </children>
+</AnchorPane>

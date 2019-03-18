@@ -6,6 +6,7 @@ import ca.ucalgary.services.RepositoryService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
@@ -15,6 +16,7 @@ import java.util.ResourceBundle;
 public class LoginController implements Initializable {
     private BankService bankService = new BankService();
     private Customer customer = null;
+    private String message;
     private RepositoryService recoveredService = new RepositoryService();
 
 
@@ -22,9 +24,12 @@ public class LoginController implements Initializable {
     public TextField lastName;
     public TextField emailSignUp;
     public PasswordField passwordSignUp;
+    public Label testLabel;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        firstName.setText(message);
 
     }
     @FXML
@@ -36,5 +41,11 @@ public class LoginController implements Initializable {
         System.out.println(passwordSignUp.getText());
         customer = bankService.signUpCustomer(firstName.getText(), lastName.getText(), emailSignUp.getText(), passwordSignUp.getText());
         recoveredService.saveAllRepositories();
+    }
+
+    public void setMessage(String message){
+        this.message = message;
+        testLabel.setText(message);
+        System.out.println(message);
     }
 }
