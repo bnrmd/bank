@@ -84,7 +84,7 @@ public class Bank {
 	 * Budget Selected Method
 	 */
 	public static void BudgetSelected() {
-		
+		/*
 		// declare variables 
 		Budget myBudget;
 		Scanner input ;
@@ -98,11 +98,15 @@ public class Bank {
 		run = true;
 
 		while (run) {
-			
+		*/	
 			// message
-			System.out.println("\n--------------------------------------------");
-			System.out.println("                   Budget");
-			System.out.println("--------------------------------------------");
+		System.out.println("\n--------------------------------------------");
+		System.out.println("                   Budget");
+		//run CLI
+		BudgetCLI budgetCLI = new BudgetCLI();
+		budgetCLI.main(null);
+	}
+			/*System.out.println("--------------------------------------------");
 			System.out.println("[1] Set Income  [2] Add Expense  [3] View Budget  [q] Quit \n");
 
 			// selection 
@@ -150,7 +154,7 @@ public class Bank {
 		}
 
 	}
-	
+	*/
 	/**
 	 * Goals Selected Method
 	 */
