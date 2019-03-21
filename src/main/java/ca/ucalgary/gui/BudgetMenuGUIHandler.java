@@ -21,6 +21,6 @@ public class BudgetMenuGUIHandler implements EventHandler<ActionEvent>{
 	@Override
 	public void handle(ActionEvent event){
 		BudgetMenuGUI ew = new BudgetMenuGUI(budget,label);
-		ew.start(ExpenseWindow.classStage);
+		ew.start(BudgetMenuGUI.classStage);
 	}
 }
