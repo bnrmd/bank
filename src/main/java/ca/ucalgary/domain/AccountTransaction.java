@@ -1,5 +1,8 @@
 package ca.ucalgary.domain;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
@@ -13,6 +16,8 @@ public class AccountTransaction {
     private String type; // Type of a transaction, e.g. 'Deposit', 'Withdraw', or 'Create'
     private double amount; // Amount of money to be part of this transaction, if any
     private String status; // To represent if the transaction was successful, or failed
+    @JsonDeserialize(using = JsonDateDeserializer.class)
+    @JsonSerialize(using = JsonDateSerializer.class)
     private LocalDateTime txDate; // Transaction date/time
 
     private AccountTransaction(){
