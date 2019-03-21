@@ -1,12 +1,17 @@
 package ca.ucalgary.domain;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.List;
 public class Budget {
 	
 	private double income;
-	private ArrayList<Expense> expenses = new ArrayList<Expense>();
+	private List<Expense> expenses = new ArrayList<Expense>();
 	
 	//constructors
+	/**
+	 * Dummy constructor for json file to load
+	 */
+	public Budget() {};
 	/**
 	 * Budget Constructor with income
 	 * @param income
@@ -20,34 +25,13 @@ public class Budget {
 	 */
 	public Budget(Budget toCopy){
 		this.income = toCopy.getIncome();
-		this.expenses = toCopy.getAllExpenses();
+		this.expenses = toCopy.getExpenses();
+	}
+	public Budget(double income, List<Expense> expenses) {
+		this.income = income;
+		this.expenses = (ArrayList<Expense>) expenses;
 	}
 	//setters
-	/**
-	 * Add an expense to the budget
-	 * @param name
-	 * @param percent
-	 */
-	public void addExpense(String name, int percent){
-		double leftOver = this.getLeftoverIncome();
-		if (leftOver <= (this.income * (percent/100.0))) {
-			Scanner x = new Scanner(System.in);
-			System.out.println("No income left for new expense. Continue? [y] or [n]");
-			String cont = x.next();
-			if (!cont.equals("y") && !cont.equals("n")) {
-				System.out.println("Please enter valid command");
-				cont = x.next();
-			}
-			else if (cont.equals("y")) {
-				Expense toAdd = new Expense(name,percent,this.income);
-				expenses.add(toAdd);
-			}
-		}else {
-			Expense toAdd = new Expense(name,percent,this.income);
-			expenses.add(toAdd);
-		}
-		
-	}
 	/**
 	 * Set an Income for your budget
 	 * @param toSet
@@ -55,7 +39,9 @@ public class Budget {
 	public void setIncome(double toSet) {
 		this.income = toSet;
 	}
-	
+	public void setExpenses(ArrayList<Expense> expense) {
+		this.expenses=expense;
+	}
 	//takes amount of dollars for expense
 	/**
 	 * Add an expense to the budget with an amount
@@ -63,24 +49,8 @@ public class Budget {
 	 * @param amount
 	 */
 	public void addExpense(String name, double amount){
-		double leftOver = this.getLeftoverIncome();
-		if (leftOver <= amount) {
-			Scanner x = new Scanner(System.in);
-			System.out.println("No income left for new expense. Continue? [y] or [n]");
-			String cont = x.next();
-			if (!cont.equals("y") && !cont.equals("n")) {
-				System.out.println("Please enter valid command");
-				cont = x.next();
-			}
-			else if (cont.equals("y")) {
-				Expense toAdd = new Expense(name,amount);
-				expenses.add(toAdd);
-			}
-		} else {
-			Expense toAdd = new Expense(name,amount);
-			expenses.add(toAdd);
-		}
-			
+		Expense toAdd = new Expense(name,amount);
+		expenses.add(toAdd);	
 	}
 	//getters
 	/**
@@ -89,7 +59,6 @@ public class Budget {
 	 * @return income of budget
 	 */
 	public double getIncome(){
-		double income = this.income;
 		return income;
 	}
 	/**
@@ -98,33 +67,31 @@ public class Budget {
 	 * @return the expense
 	 */
 	public Expense getExpense(String str){
-		Expense copy  = null;
 		for (Expense x : expenses){
 			if (x.getName().equalsIgnoreCase(str))
-				copy = new Expense(x);
+				return x;
 		}
-		if (copy == null)
-			return null;
-		else return copy;
+		throw new RuntimeException("Entered expense does not exist");
+		
 	}
 	/**
 	 * Get the left over income of the budget
 	 * @return Leftover income
 	 */
-	public double getLeftoverIncome() {
+	public double LeftoverIncome() {
 		double leftOver = this.income;
 		for (Expense x : expenses)
-			leftOver -= x.getDollars();
+			leftOver -= x.getAmountPerMonth();
 		return leftOver;
 	}
 	/**
 	 * Get the total expenses
 	 * @return total expenses
 	 */
-	public double getTotalExpenses() {
+	public double totalCostInDollars() {
 		double total = 0.0;
 		for (Expense x: expenses) {
-			total += x.getDollars();
+			total += x.getAmountPerMonth();
 		}
 		return total;
 	}
@@ -133,12 +100,30 @@ public class Budget {
 	 * Returns all the expenses in a budget
 	 * @return all expenses as ArrayList<Expense>
 	 */
-	public ArrayList<Expense> getAllExpenses(){
-		ArrayList<Expense> toReturn = new ArrayList<Expense>();
-		toReturn = expenses;
-		return toReturn;
+	public List<Expense> getExpenses(){
+		return expenses;
 	}
 	//methods
+	/**
+	 * 
+	 * @param cost of expense to add
+	 * @return if there is enough money as boolean
+	 */
+	public boolean hasEnoughMoneyToAdd(double cost) {
+		if (this.LeftoverIncome() >= cost)
+			return true;
+		else return false;
+	}
+	
+	/**
+	 * 
+	 */
+	public boolean nameUsed(String name) {
+		for (Expense x: this.getExpenses()) {
+			if (x.getName().equalsIgnoreCase(name))
+				return true;
+		}return false;
+	}
 	/**
 	 * toString
 	 * @return budget as string
@@ -146,10 +131,21 @@ public class Budget {
 	public String toString(){
 		String str = "";
 		for (Expense x : expenses){
-			str += x.getName() + ": $" + x.getDollars() + "\n";
+			str += x.getName() + ": $" + x.getAmountPerMonth() + "\n";
 		}
-		str += "Total Expenses: " + this.getTotalExpenses() + "\n";
-		str += "Total Left: " + this.getLeftoverIncome();
+		str += "Total Expenses: " + this.totalCostInDollars() + "\n";
+		str += "Total Left: " + this.LeftoverIncome();
 		return str;
+	}
+	
+	public int removeExpense(String name) {
+		int count = 0;
+		for (Expense x:expenses) {
+			if (x.getName().equalsIgnoreCase(name)) {
+				expenses.remove(count);
+				return 1;
+			}
+		}
+		return -1;
 	}
 }

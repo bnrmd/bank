@@ -1,5 +1,6 @@
 package ca.ucalgary.gui;
 import ca.ucalgary.domain.Budget;
+import ca.ucalgary.datastore.BudgetRepository;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -14,9 +15,16 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.geometry.Pos;
 
+/*
+ * Things to add:
+ * set income
+ * remove expense
+ * error checking for (adding expense negative, income pos/neg)
+*/
 
 public class BudgetGUI extends Application{
-	private Budget forGUI = new Budget(1000);
+	private BudgetRepository saveLoad = new BudgetRepository();
+	private Budget forGUI = saveLoad.loadBudget();
 	/**
 	 * 
 	 * @param args
@@ -28,7 +36,7 @@ public class BudgetGUI extends Application{
 	 * @param primaryStage
 	 */
 	@Override
-	public void start(Stage primaryStage) throws Exception{
+	public void start(Stage primaryStage){
 		BorderPane root = new BorderPane();
 		
 		//bottom bar using hbox
@@ -62,11 +70,11 @@ public class BudgetGUI extends Application{
 		root.setLeft(displayInWindow);
 		
 		//show the add button
-		Button addBtn = new Button("Add Expense");
-		AddExpenseButtonHandler addHandle = new AddExpenseButtonHandler(forGUI,displayInWindow);
-		addBtn.setOnAction(addHandle);
+		Button menuBtn = new Button("Menu");
+		BudgetMenuGUIHandler addHandle = new BudgetMenuGUIHandler(forGUI,displayInWindow);
+		menuBtn.setOnAction(addHandle);
 		VBox addButton = new VBox();
-		addButton.getChildren().add(addBtn);
+		addButton.getChildren().add(menuBtn);
 		addButton.setAlignment(Pos.BOTTOM_RIGHT);
 		root.setRight(addButton);
 		
@@ -74,6 +82,7 @@ public class BudgetGUI extends Application{
         btnInvest.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
+				saveLoad.saveBudget(forGUI);
 				InvestGUI myInvestGUI = new InvestGUI();
 				try {
 					myInvestGUI.start(primaryStage);
@@ -87,6 +96,7 @@ public class BudgetGUI extends Application{
         btnAccounts.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
+				saveLoad.saveBudget(forGUI);
 				MockAccounts myAccountsGUI = new MockAccounts();
 				try {
 					myAccountsGUI.start(primaryStage);
@@ -101,6 +111,7 @@ public class BudgetGUI extends Application{
       		btnGoals.setOnAction(new EventHandler<ActionEvent>() {
       			@Override
       			public void handle(ActionEvent event) {
+      				saveLoad.saveBudget(forGUI);
       				MockGoalsGUI myGoalsGUI = new MockGoalsGUI();
       				try {
       					myGoalsGUI.start(primaryStage);
@@ -112,7 +123,6 @@ public class BudgetGUI extends Application{
       		});
 		Scene scene = new Scene(root,384,683);
 		primaryStage.setScene(scene);
-		primaryStage.show();
-		
+		primaryStage.show();	
 	}
 }
