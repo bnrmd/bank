@@ -13,6 +13,7 @@ import java.util.ArrayList;
  */
 public class InvestTest {
 	
+	/*
 	@Test
 	public void test_addStock_addRY100() {
 		
@@ -30,5 +31,6 @@ public class InvestTest {
 		assertEquals("100 shares of RY", myInvest.getMyStoks(), actualValue);
 		
 	}
+	*/
 
 }

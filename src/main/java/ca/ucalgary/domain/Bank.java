@@ -37,6 +37,8 @@ public class Bank {
 			System.out.println("Invalid Credentials");
 			SignInSelected();
 		}
+		
+		//input.close(;
 
 		return customer;
 
@@ -47,19 +49,13 @@ public class Bank {
 	 */
 	public static void SignUpSelected() {
 		
-		// declare variables 
-		RegistrationForm myRegistrationForm;
-		
-		// initialize variables
-		myRegistrationForm = new RegistrationForm();
-
 		// message
 		System.out.println("\n--------------------------------------------");
 		System.out.println("                   Sign-Up");
 		System.out.println("--------------------------------------------");
 		
-		// call main method in RegistrationForm class
-		myRegistrationForm.main(null);  
+		// call RegistrationForm class
+		RegistrationForm.main(null);  
 		
 		// call Menu method
 		//Menu();
@@ -148,6 +144,8 @@ public class Bank {
 			}
 			
 		}
+		
+		//input.close(;
 
 	}
 	
@@ -246,6 +244,8 @@ public class Bank {
 			}
 			
 		}
+		
+		//input.close(;
 
 	}
 
@@ -316,6 +316,8 @@ public class Bank {
 			}
 			
 		}
+		
+		//input.close(;
 
 	}
 
