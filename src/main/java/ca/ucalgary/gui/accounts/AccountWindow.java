@@ -39,6 +39,7 @@ public class AccountWindow extends Application{
 	 * start
 	 * @param primaryStage
 	 */
+	@Override
 	public void start(Stage primaryStage){
 		classStage = primaryStage;
 		

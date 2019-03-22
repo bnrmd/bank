@@ -56,7 +56,6 @@ public class BudgetRepository {
 			Budget budget = new Budget(list.get(0));
 			return budget;
 		}catch(Exception e) {
-			e.printStackTrace();
 			return new Budget(0);
 		}
 		
