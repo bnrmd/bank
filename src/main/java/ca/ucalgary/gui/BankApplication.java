@@ -17,8 +17,10 @@ public class BankApplication extends Application {
     public void start(Stage primaryStage) throws Exception{
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/bank.fxml"));
         Parent content = (Parent)fxmlLoader.load();
-        Scene loginScene = new Scene(content);
-        primaryStage.setScene(loginScene);
+        Scene bankScene = new Scene(content);
+        primaryStage.setScene(bankScene);
+
         primaryStage.show();
+
     }
 }

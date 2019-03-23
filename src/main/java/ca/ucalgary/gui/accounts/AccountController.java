@@ -1,5 +1,6 @@
 package ca.ucalgary.gui.accounts;
 
+import ca.ucalgary.domain.Customer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,6 +11,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class AccountController implements Initializable {
+
 
     @FXML
     private TextField initialDeposit;
@@ -28,5 +30,7 @@ public class AccountController implements Initializable {
 
 
     }
+
+
 
 }

@@ -24,12 +24,14 @@ public class BankApplicationController implements Initializable {
     @FXML
     private Button changeSceneButton;
     @FXML
-    private AnchorPane sceneChange;
+    private AnchorPane body;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
     }
+
+
 
     @FXML
     private void goToLogin(ActionEvent event) throws Exception{
@@ -44,10 +46,20 @@ public class BankApplicationController implements Initializable {
     }
 
     @FXML
-    private void changeScene(ActionEvent event) throws Exception{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/scene.fxml"));
-        Parent loginParent = (Parent)loader.load();
-        sceneChange.getChildren().setAll(loginParent);
+    private void accountScene(ActionEvent event) throws Exception{
+        FXMLLoader loader = new FXMLLoader((getClass().getResource("/account.fxml")));
+        Parent accountParent = (Parent)loader.load();
+        body.getChildren().setAll(accountParent);
+    }
+
+
+
+   // @FXML
+    public FXMLLoader changeBody(String fxmlScene) throws Exception{
+        FXMLLoader loader = new FXMLLoader((BankApplicationController.class.getResource(fxmlScene)));
+        Parent accountParent = (Parent)loader.load();
+        body.getChildren().setAll(accountParent);
+        return loader;
     }
 
 }
