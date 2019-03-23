@@ -25,7 +25,9 @@ public class BudgetController implements Initializable{
 	private BudgetRepository br = new BudgetRepository();
 	private Budget budget = br.loadBudget();
 	
-	
+	/**
+	 * Setting all the variables that will be used
+	 */
 	//Main scene
 	@FXML
 	AnchorPane budgetPane;
@@ -86,6 +88,11 @@ public class BudgetController implements Initializable{
 	Button returnFromIncomeButton;
 	
 	//controllers
+	/**
+	 * Opens the menu from the budget scene
+	 * @param event
+	 * @throws Exception
+	 */
 	@FXML
 	private void openMenu(ActionEvent event) throws Exception {
 		System.out.print("button");
@@ -100,6 +107,11 @@ public class BudgetController implements Initializable{
 	}
 	
 	//Menu Buttons
+	/**
+	 * Moves into the expense option
+	 * @param event
+	 * @throws Exception
+	 */
 	@FXML
 	private void addExpense(ActionEvent event) throws Exception{
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/AddBudget.fxml"));
@@ -107,6 +119,11 @@ public class BudgetController implements Initializable{
 		menuPane.getChildren().clear();
 		menuPane.getChildren().addAll(addParent);
 	}
+	/**
+	 * Moves into the remove option
+	 * @param event
+	 * @throws Exception
+	 */
 	@FXML
 	private void removeExpense(ActionEvent event) throws Exception{
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/RemoveExpense.fxml"));
@@ -114,6 +131,11 @@ public class BudgetController implements Initializable{
 		menuPane.getChildren().clear();
 		menuPane.getChildren().addAll(toRemove);
 	}
+	/**
+	 * moves into the edit income 
+	 * @param event
+	 * @throws Exception
+	 */
 	@FXML
 	private void editIncome(ActionEvent event) throws Exception{
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/EditIncome.fxml"));
@@ -121,6 +143,11 @@ public class BudgetController implements Initializable{
 		menuPane.getChildren().clear();
 		menuPane.getChildren().addAll(toIncome);
 	}
+	/**
+	 * closes the menu back to the budget
+	 * @param event
+	 * @throws Exception
+	 */
 	@FXML
 	private void closeMenu(ActionEvent event) throws Exception{
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Budget.fxml"));
@@ -129,6 +156,11 @@ public class BudgetController implements Initializable{
 		menuPane.getChildren().addAll(closeParent);
 	}
 	//Add expense buttons
+	/**
+	 * Adds an expense to the budget
+	 * @param event
+	 * @throws Exception
+	 */
 	@FXML
 	private void addExpenseToBudget(ActionEvent event) throws Exception{
 		try{double expenseAmount = Double.parseDouble(costField.getText());
@@ -143,15 +175,25 @@ public class BudgetController implements Initializable{
 			expenseErrorLabel.setText("Cost must be in dollars");
 		}
 	}
+	/**
+	 * returns to the menu from the expense option
+	 * @param event
+	 * @throws Exception
+	 */
 	@FXML
 	private void returnToMenuFromExpense(ActionEvent event) throws Exception{
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Budget.fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/BudgetMenu.fxml"));
 		Parent closeParent = (Parent)fxmlLoader.load();
 		expensePane.getChildren().clear();
 		expensePane.getChildren().addAll(closeParent);
 	}
 	
 	//remove expense buttons
+	/**
+	 * Removes the expense from the budget
+	 * @param event
+	 * @throws Exception
+	 */
 	@FXML
 	private void removeExpenseFromBudget(ActionEvent event) throws Exception{
 		budget.removeExpense(expenseRemoveChoice.getValue());
@@ -160,6 +202,11 @@ public class BudgetController implements Initializable{
 			expenseRemoveChoice.getItems().add(x.getName());
 		br.saveBudget(budget);
 	}
+	/**
+	 * returns to the menu from the remove option
+	 * @param event
+	 * @throws Exception
+	 */
 	@FXML
 	private void returnToMenuFromRemove(ActionEvent event) throws Exception{
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/BudgetMenu.fxml"));
@@ -168,6 +215,11 @@ public class BudgetController implements Initializable{
 		removePane.getChildren().addAll(toMenu);
 	}
 	//edit income buttons
+	/**
+	 * allows the user to set a new income
+	 * @param event
+	 * @throws Exception
+	 */
 	@FXML
 	private void enterNewIncome(ActionEvent event) throws Exception{
 		try{double incomeToAdd = Double.parseDouble(incomeField.getText());
@@ -179,10 +231,15 @@ public class BudgetController implements Initializable{
 				incomeErrorLabel.setText("Income cannot be negative");
 			}else incomeErrorLabel.setText("Expenses too high to change income, remove some expenses");
 			
-		} catch(Exception e) {
-			incomeErrorLabel.setText("Income must be in dollars");
+		} catch(Exception e) {//only runs if the income is not entered numerically
+			incomeErrorLabel.setText("Income must be entered numerically");
 		}
 	}
+	/**
+	 * returns to the menu from the income option
+	 * @param event
+	 * @throws Exception
+	 */
 	@FXML
 	private void returnToMenuFromIncome(ActionEvent event) throws Exception{
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/BudgetMenu.fxml"));

@@ -23,7 +23,7 @@
             </Label>
             <TextField fx:id="costField" layoutX="25.0" layoutY="146.0" promptText="ex: 600.00" />
             <Button fx:id="addExpenseButton" layoutX="90.0" layoutY="208.0" mnemonicParsing="false" onAction="#addExpenseToBudget" text="Add" />
-            <Button fx:id="cancelAddExpenseButton" layoutX="174.0" layoutY="208.0" mnemonicParsing="false" onAction="#returnToMenuFromExpense" text="Cancel" />
+            <Button fx:id="cancelAddExpenseButton" layoutX="174.0" layoutY="208.0" mnemonicParsing="false" onAction="#returnToMenuFromExpense" text="Back" />
             <Label fx:id="expenseErrorLabel" layoutX="11.0" layoutY="286.0" prefHeight="18.0" prefWidth="333.0" textFill="RED" />
             <Label fx:id="expenseSuccessLabel" layoutX="39.0" layoutY="269.0" prefHeight="18.0" prefWidth="198.0" textFill="#00ff15" />
          </children>
