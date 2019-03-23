@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.gui.budget.BudgetController">
+<AnchorPane prefHeight="403.0" prefWidth="346.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.gui.budget.BudgetController">
    <children>
-      <AnchorPane layoutX="-5.0" layoutY="-7.0" prefHeight="403.0" prefWidth="346.0">
+      <AnchorPane fx:id="budgetPane" layoutX="1.0" prefHeight="403.0" prefWidth="346.0">
          <children>
             <Label fx:id="budgetLabel" layoutX="14.0" layoutY="23.0" prefHeight="47.0" prefWidth="136.0" text="Budget">
                <font>
@@ -16,13 +16,6 @@
             </Label>
             <Button fx:id="editBudgetButton" layoutX="246.0" layoutY="314.0" mnemonicParsing="false" onAction="#openMenu" text="Edit Budget" />
             <Label fx:id="expenseLabel" layoutX="14.0" layoutY="70.0" prefHeight="200.0" prefWidth="200.0" />
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="menu" prefHeight="346.0" prefWidth="341.0">
-         <children>
-            <Button fx:id="editIncomeButton" layoutX="117.0" layoutY="57.0" mnemonicParsing="false" onAction="#editIncome" prefHeight="26.0" prefWidth="106.0" text="Edit Income" />
-            <Button fx:id="addExpenseButton" layoutX="117.0" layoutY="101.0" mnemonicParsing="false" onAction="#addExpense" prefHeight="26.0" prefWidth="106.0" text="Add Expense" />
-            <Button fx:id="removeExpenseButton" layoutX="118.0" layoutY="147.0" mnemonicParsing="false" onAction="#removeExpense" text="Remove Expense" />
          </children>
       </AnchorPane>
    </children>

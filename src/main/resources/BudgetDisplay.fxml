@@ -5,9 +5,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="403.0" prefWidth="346.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.gui.budget.BudgetController">
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller = "ca.ucalgary.gui.budget.BudgetController">
    <children>
-      <AnchorPane fx:id="budgetPane" layoutX="1.0" prefHeight="403.0" prefWidth="346.0">
+      <AnchorPane layoutX="5.0" layoutY="3.0" prefHeight="403.0" prefWidth="346.0">
          <children>
             <Label fx:id="budgetLabel" layoutX="14.0" layoutY="23.0" prefHeight="47.0" prefWidth="136.0" text="Budget">
                <font>
