@@ -5,23 +5,23 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="main" prefHeight="889.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.gui.BankApplicationController">
+<AnchorPane fx:id="main" prefHeight="889.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.gui.BankApplicationController">
    <children>
       <AnchorPane fx:id="body" layoutX="6.0" layoutY="104.0" prefHeight="669.0" prefWidth="500.0" AnchorPane.bottomAnchor="116.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="104.0">
          <fx:include source="login.fxml" />
       </AnchorPane>
-      <AnchorPane fx:id="header" prefHeight="102.0" prefWidth="500.0">
+      <AnchorPane fx:id="header" prefHeight="102.0" prefWidth="500.0" style="-fx-background-color: e23d3d;">
          <children>
-            <Label layoutX="14.0" layoutY="14.0" text="myBank">
+            <Label layoutX="31.0" layoutY="25.0" prefHeight="52.0" prefWidth="153.0" text="myBank" textFill="WHITE">
                <font>
-                  <Font size="34.0" />
+                  <Font name="Arial Bold" size="34.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="footer" layoutY="773.0" prefHeight="116.0" prefWidth="500.0" visible="false">
+      <AnchorPane fx:id="footer" layoutY="773.0" prefHeight="116.0" prefWidth="500.0">
          <children>
-            <Button fx:id="accountButton" layoutX="38.0" layoutY="45.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="98.0" text="Accounts" />
+            <Button fx:id="accountButton" layoutX="38.0" layoutY="45.0" mnemonicParsing="false" onAction="#testButton" prefHeight="26.0" prefWidth="98.0" text="Accounts" />
             <Button layoutX="201.0" layoutY="45.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="98.0" text="Budget" />
             <Button layoutX="369.0" layoutY="45.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="98.0" text="Invest" />
          </children>
