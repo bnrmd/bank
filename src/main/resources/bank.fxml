@@ -19,11 +19,11 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="footer" layoutY="773.0" prefHeight="116.0" prefWidth="500.0">
+      <AnchorPane fx:id="footer" layoutY="773.0" prefHeight="116.0" prefWidth="500.0" style="-fx-background-color: ededed;">
          <children>
-            <Button fx:id="accountButton" layoutX="38.0" layoutY="45.0" mnemonicParsing="false" onAction="#testButton" prefHeight="26.0" prefWidth="98.0" text="Accounts" />
-            <Button layoutX="201.0" layoutY="45.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="98.0" text="Budget" />
-            <Button layoutX="369.0" layoutY="45.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="98.0" text="Invest" />
+            <Button fx:id="accountButton" layoutX="38.0" layoutY="34.0" mnemonicParsing="false" onAction="#accountButton" prefHeight="46.0" prefWidth="98.0" text="Accounts" />
+            <Button layoutX="201.0" layoutY="34.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="98.0" text="Budget" />
+            <Button layoutX="369.0" layoutY="34.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="98.0" text="Invest" />
          </children>
       </AnchorPane>
    </children>

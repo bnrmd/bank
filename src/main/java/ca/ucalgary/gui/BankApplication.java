@@ -1,7 +1,6 @@
 package ca.ucalgary.gui;
 
-import ca.ucalgary.gui.login.LoginController;
-import ca.ucalgary.services.BankService;
+import ca.ucalgary.domain.Customer;
 import ca.ucalgary.services.RepositoryService;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +10,7 @@ import javafx.stage.Stage;
 
 public class BankApplication extends Application {
     private RepositoryService repositoryService = new RepositoryService();
+    private static Customer customer;
 
     public static void main(String[] args) {
         launch(args);
@@ -26,5 +26,19 @@ public class BankApplication extends Application {
         BankApplicationController bankController = fxmlLoader.<BankApplicationController>getController();
         bankController.setPrimaryStage(primaryStage);
         primaryStage.show();
+    }
+
+    @Override
+    public void stop() throws Exception {
+        repositoryService.saveAllRepositories();
+        super.stop();
+    }
+
+    public static void setCustomer(Customer c){
+        customer = c;
+    }
+
+    public static Customer getCustomer() {
+        return customer;
     }
 }
