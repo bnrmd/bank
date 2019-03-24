@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="main" prefHeight="889.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.gui.BankApplicationController">
+   <children>
+      <AnchorPane fx:id="body" layoutX="6.0" layoutY="104.0" prefHeight="669.0" prefWidth="500.0" AnchorPane.bottomAnchor="116.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="104.0">
+         <fx:include source="login.fxml" />
+      </AnchorPane>
+      <AnchorPane fx:id="header" prefHeight="102.0" prefWidth="500.0" style="-fx-background-color: e23d3d;">
+         <children>
+            <Label layoutX="31.0" layoutY="25.0" prefHeight="52.0" prefWidth="153.0" text="myBank" textFill="WHITE" visible="false">
+               <font>
+                  <Font name="Arial Bold" size="34.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="96.0" fitWidth="247.0" layoutX="22.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="footer" layoutY="773.0" prefHeight="116.0" prefWidth="500.0" style="-fx-background-color: #ededed;">
+         <children>
+            <JFXButton fx:id="accountButton" layoutX="54.0" layoutY="68.0" onAction="#accountButton" prefHeight="46.0" prefWidth="87.0" text="Accounts">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton layoutX="207.0" layoutY="69.0" prefHeight="46.0" prefWidth="87.0" text="Budget">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="366.0" layoutY="69.0" prefHeight="46.0" prefWidth="87.0" text="Invest">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </JFXButton>
+            
+            <Separator layoutX="5.0" opacity="0.75" prefHeight="3.0" prefWidth="486.0" AnchorPane.bottomAnchor="113.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="68.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/user-shape.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="221.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/dollar-symbol.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="380.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/tasks-list.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

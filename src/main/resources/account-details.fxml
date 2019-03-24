@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -17,35 +18,57 @@
                   <Font name="Arial" size="21.0" />
                </font>
             </Label>
-            <Label layoutX="14.0" layoutY="61.0" text="Type">
+            <Label layoutX="14.0" layoutY="47.0" text="Type">
                <font>
                   <Font name="Arial" size="21.0" />
                </font>
             </Label>
-            <Label layoutX="14.0" layoutY="110.0" text="Balance">
+            <Label layoutX="14.0" layoutY="80.0" text="Balance">
                <font>
                   <Font name="Arial" size="21.0" />
                </font>
             </Label>
-            <Button fx:id="withdrawButton" layoutX="185.0" layoutY="165.0" mnemonicParsing="false" onAction="#withdrawAction" text="Withdraw" />
-            <Button fx:id="depositButton" layoutX="185.0" layoutY="204.0" mnemonicParsing="false" onAction="#depositAction" prefHeight="25.0" prefWidth="67.0" text="Deposit" />
             <Label fx:id="accountNoText" layoutX="196.0" layoutY="14.0" text="Account No">
                <font>
                   <Font name="Arial" size="21.0" />
                </font>
             </Label>
-            <Label fx:id="typeText" layoutX="195.0" layoutY="61.0" text="Type">
+            <Label fx:id="typeText" layoutX="195.0" layoutY="47.0" text="Type">
                <font>
                   <Font name="Arial" size="21.0" />
                </font>
             </Label>
-            <Label fx:id="balanceText" layoutX="195.0" layoutY="110.0" text="Balance">
+            <Label fx:id="balanceText" layoutX="195.0" layoutY="80.0" text="Balance">
                <font>
                   <Font name="Arial" size="21.0" />
                </font>
             </Label>
-            <TextField fx:id="withdrawAmount" layoutX="22.0" layoutY="165.0" />
-            <TextField fx:id="depositAmount" layoutX="22.0" layoutY="204.0" />
+            <JFXButton fx:id="withdrawButton" layoutX="20.0" layoutY="198.0" onAction="#withdrawAction" prefHeight="32.0" prefWidth="204.0" style="-fx-background-color: #77cd7b;" text="Withdraw" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXTextField fx:id="withdrawAmount" alignment="CENTER" focusColor="#77cd7b" layoutX="20.0" layoutY="138.0" prefHeight="47.0" prefWidth="204.0" style="-fx-background-color: dddddd;">
+               <font>
+                  <Font name="Arial" size="24.0" />
+               </font>
+            </JFXTextField>
+            <JFXButton fx:id="depositButton" layoutX="252.0" layoutY="198.0" onAction="#depositAction" prefHeight="32.0" prefWidth="204.0" style="-fx-background-color: #77cd7b;" text="Deposit" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXTextField fx:id="depositAmount" alignment="CENTER" focusColor="#77cd7b" layoutX="252.0" layoutY="138.0" prefHeight="47.0" prefWidth="204.0" style="-fx-background-color: dddddd;">
+               <font>
+                  <Font name="Arial" size="24.0" />
+               </font>
+            </JFXTextField>
          </children>
       </AnchorPane>
       <AnchorPane layoutX="7.0" layoutY="270.0" prefHeight="390.0" prefWidth="486.0">

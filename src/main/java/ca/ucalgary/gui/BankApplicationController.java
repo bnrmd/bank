@@ -47,7 +47,7 @@ public class BankApplicationController implements Initializable {
 
     @FXML
     public void accountButton(ActionEvent event) throws Exception{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/accounts.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/accounts-theme.fxml"));
         Parent customerParent = (Parent)loader.load();
         CustomerController controller = loader.<CustomerController>getController();
         controller.populateForm(BankApplication.getCustomer());
