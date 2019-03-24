@@ -1,6 +1,7 @@
 package ca.ucalgary.gui;
 
-// Imports 
+//Imports 
+import ca.ucalgary.datastore.InvestRepository;
 import ca.ucalgary.gui.accounts.MockAccounts;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -9,15 +10,13 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  * InvestGUI class
@@ -25,46 +24,8 @@ import java.util.Scanner;
  */
 public class InvestGUI extends Application implements EventHandler<ActionEvent> {
 	
-	// Variables
+	// Declare (Instance) Variables
 	Button btnSearch, btnView, btnPortfolio, btnMyInvest;
-	private ArrayList<String> StocksSymbolList, myStocks;
-	private File StocksFile;
-	private Scanner StocksScanner;	
-	
-	/**
-	 * Constructor
-	 */
-	public InvestGUI() {
-		
-		// initialize instance variables
-		this.StocksSymbolList = new ArrayList<String>();
-		this.myStocks = new ArrayList<String>();
-		
-		// declare variables
-		String[] line;
-		String symbol;
-		
-		// initialize variables
-		line = new String[9];
-		symbol = "";
-		
-		// check Stocks.txt exists 
-		try {
-			this.StocksFile = new File("Stocks.txt");
-			this.StocksScanner = new Scanner(this.StocksFile);
-		} catch (Exception e) {
-			//System.out.println("Stocks.txt doesn't exist");
-		}
-		
-		// add all stocks symbols to StocksList
-		while(this.StocksScanner.hasNext()) {
-			line = this.StocksScanner.nextLine().split(";");
-			symbol = line[0];
-			this.StocksSymbolList.add(symbol);
-			line = new String[9];  // erase array
-		}
-		
-	}	
 	
 	/**
 	 * Main method
@@ -222,73 +183,49 @@ public class InvestGUI extends Application implements EventHandler<ActionEvent> 
 		verti.setAlignment(Pos.TOP_CENTER);
 		verti.setSpacing(15);
 		
-		// Go
+		// Go button is pressed
 		btnSearch.setOnAction(new EventHandler<ActionEvent>() 
 			{
 				@Override
 				public void handle(ActionEvent event) {
-					// declare variables					
+					
+					// declare variables	
+					InvestRepository myInvestRepository;
 					String[] line;
-					String input, rs, symbol, name, price, sector, ex, in, em, fo, co;
+					String userInput, textViewText;  
 					
 					// initialize variables
+					myInvestRepository = new InvestRepository();
 					line = new String[9];
-					symbol = "";
-					name = "";
-					price = "";
-					sector = "";
-					ex = "";
-					in = "";
-					em = "";
-					fo = "";
-					co = "";	
-					rs = "";
+					userInput = "";
+					textViewText = "";
 					
-					// check input
-					input = getSearch.getText();
+					// get symbol
+					userInput = getSearch.getText();
 
-					if (StocksSymbolList.contains(input)) {
-						
-						// check file
-						try {
-							StocksFile = new File("Stocks.txt");
-							StocksScanner = new Scanner(StocksFile);
-						} catch (Exception e) {
-							result.setText("Stocks.txt doesn't exist");
-						}
+					// check symbol
+					if (myInvestRepository.checkStocksExists(String.valueOf(userInput))) {
 						
 						// display info
-						while(StocksScanner.hasNext()) {
-							line = StocksScanner.nextLine().split(";");
-							symbol = line[0];
-							if (symbol.equals(input)) {
-								name = line[1];
-								price = line[2];
-								sector = line[3];
-								ex = line[4];
-								in = line[5];
-								em = line[6];
-								fo = line[7];
-								co = line[8];
-							
-								rs += "\nName: " + name;
-								rs += "\nSymbol: " + symbol;
-								rs += "\nPrice: " + price;
-								rs += "\nExchange: " + ex;
-								rs += "\nSector: " + sector;
-								rs += "\nIndustry: " + in;
-								rs += "\nEmployees: " + em;
+						for (String stock : myInvestRepository.getStocksList()) {
+							line = stock.split(",");
+							//System.out.println(line);  // remove
+							if (line[0].equals(userInput)) {
+								//System.out.println(line);  // remove
+								textViewText += "\nName: " + line[1];
+								textViewText += "\nSymbol: " + line[0];
+								textViewText += "\nExchange: LSE";
+								textViewText += "\nPrice: £" + line[2];
+								textViewText += "\nChange: " + line[3];
+								textViewText += "\nPercentage Change: " + line[4] + "%";
 								
-								result.setText(rs);
+								result.setText(textViewText);
 							}
-						
-							line = new String[9];  // erase array
 						}
 						
 					} else {
-						result.setText("No Match.");
+						result.setText("Stock is Not Available.");
 					}
-						
 				}
 			}	
 		);
@@ -306,39 +243,31 @@ public class InvestGUI extends Application implements EventHandler<ActionEvent> 
 		
 		// declare variables
 		VBox verti; 
+		ScrollPane resultPane;
 		Label result; 
+		InvestRepository myInvestRepository;
 		String[] line;
-		String symbol, name, rs;
+		String txtString;
 		
 		// initialize variables
 		verti = new VBox();
+		resultPane = new ScrollPane();
 		result = new Label();
-		line = new String[9];
-		symbol = "";
-		name = "";	
-		rs = "";
-		
-		// check file
-		try {
-			this.StocksFile = new File("Stocks.txt");
-			this.StocksScanner = new Scanner(this.StocksFile);
-		} catch (Exception e) {
-			result.setText("Stocks.txt doesn't exist");
-		}
+		myInvestRepository = new InvestRepository();
+		line = new String[5];
+		txtString = "";
 		
 		// display all stocks
-		while(this.StocksScanner.hasNext()) {
-			line = this.StocksScanner.nextLine().split(";");
-			symbol = line[0];
-			name = line[1];
-			rs += "\n " + symbol + " - " + name;
-			line = new String[9];  // erase array
+		for (String stock : myInvestRepository.getStocksList()) {
+			line = stock.split(",");
+			txtString += line[0] + " - " + line[1] + "\n";
 		}
 		
-		result.setText(rs);
+		result.setText(txtString);
+		resultPane.setContent(result);
 		
-		verti.getChildren().add(new Label("View All Stocks"));
-		verti.getChildren().add(result);
+		verti.getChildren().add(new Label("Available Stocks"));
+		verti.getChildren().add(resultPane);
 		verti.setAlignment(Pos.TOP_CENTER);
 		verti.setSpacing(15);		
 		
@@ -353,23 +282,30 @@ public class InvestGUI extends Application implements EventHandler<ActionEvent> 
 	 */
 	public void PortfolioMethod() {
 		
-		String rs;
-		rs = "";
+		// declare variables
+		InvestRepository myInvestRepository;
+		String[] line;
+		String txtString;
 		
-		int even = 0;
-		for (int i=0; i<myStocks.size()/2; i++) {
-			rs += myStocks.get(even+1) + " shares of " + myStocks.get(even) + ". \n";
-			even += 2;
+		// initialize variables
+		myInvestRepository = new InvestRepository();
+		line = new String[2];
+		txtString = "";
+		
+		// display all stocks in portfolio
+		for (String stock : myInvestRepository.getPortfolioList()) {
+			line = stock.split(";");
+			txtString += line[0] + ": " + line[1] + " Shares \n";
 		}
 		
-		if (rs.equals("")) {
-			rs = "none.";
+		if (myInvestRepository.getPortfolioList().size() == 0) {
+			txtString = "none.";
 		}
 		
 		VBox verti = new VBox();
 
 		verti.getChildren().add(new Label("My Portfolio"));
-		verti.getChildren().add(new Label(rs));
+		verti.getChildren().add(new Label(txtString));
 		verti.setAlignment(Pos.TOP_CENTER);
 		verti.setSpacing(15);		
 		
@@ -383,6 +319,12 @@ public class InvestGUI extends Application implements EventHandler<ActionEvent> 
 	 * Invest method
 	 */
 	public void InvestMethod() {
+		
+		// declare variable
+		InvestRepository myInvestRepository;
+		
+		// initialize variable
+		myInvestRepository = new InvestRepository();
 		
 		// Verti
 		VBox verti = new VBox();
@@ -408,29 +350,29 @@ public class InvestGUI extends Application implements EventHandler<ActionEvent> 
 			{
 				@Override
 				public void handle(ActionEvent event) {
-					// declare variables
-					String input, symbol, noti;
+					
+					// delcare variables (nested class)
+					String userInput; 
 					int num;
 					
-					// initialize variables
-					input = "";
-					symbol = "";
-					noti = "";
+					// initialize variables (nested class) 
+					userInput = "";
 					num = 0;
 					
 					// get symbol
-					input = getStock.getText();
+					userInput = getStock.getText();
 					
 					// check symbol
-					if (StocksSymbolList.contains(input)) {
-						symbol = String.valueOf(input);
-						myStocks.add(input);
-						num = Integer.parseInt(getAmount.getText());
-						myStocks.add(String.valueOf(num));
-						noti += "You have purchased " + num + " shares of " + symbol + ".";
-						txtNotification.setText(noti);
+					if (myInvestRepository.checkStocksExists(String.valueOf(userInput))) {
+						try {
+							num = Integer.parseInt(getAmount.getText());
+							myInvestRepository.addStock(String.valueOf(userInput), num);
+							txtNotification.setText("You have purchased " + num + " shares of " + String.valueOf(userInput) + ".");
+						} catch (Exception e) {
+							txtNotification.setText("Must Enter a Valid Number of Shares.");
+						}
 					} else {
-						txtNotification.setText("Stock Symbol is Not Available.");
+						txtNotification.setText("Stock is Not Available.");
 					}
 						
 				}
