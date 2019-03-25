@@ -2,7 +2,6 @@ package ca.ucalgary.gui;
 import ca.ucalgary.domain.Budget;
 import ca.ucalgary.datastore.BudgetRepository;
 
-import ca.ucalgary.gui.accounts.MockAccounts;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -93,13 +92,13 @@ public class BudgetGUI extends Application{
 			}
 		});		
 		//Menu bar btnAccounts
-        btnAccounts.setOnAction(new EventHandler<ActionEvent>() {
+        btnAccounts.setOnAction(new EventHandler<ActionEvent>()  {
 			@Override
 			public void handle(ActionEvent event) {
 				saveLoad.saveBudget(forGUI);
-				MockAccounts myAccountsGUI = new MockAccounts();
+				//MockAccounts myAccountsGUI = new MockAccounts();
 				try {
-					myAccountsGUI.start(primaryStage);
+					//myAccountsGUI.start(primaryStage);
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -112,9 +111,9 @@ public class BudgetGUI extends Application{
       			@Override
       			public void handle(ActionEvent event) {
       				saveLoad.saveBudget(forGUI);
-      				MockGoalsGUI myGoalsGUI = new MockGoalsGUI();
+      				//MockGoalsGUI myGoalsGUI = new MockGoalsGUI();
       				try {
-      					myGoalsGUI.start(primaryStage);
+      					//myGoalsGUI.start(primaryStage);
       				} catch (Exception e) {
       					// TODO Auto-generated catch block
       					e.printStackTrace();
