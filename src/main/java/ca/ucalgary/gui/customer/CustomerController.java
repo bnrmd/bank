@@ -68,7 +68,7 @@ public class CustomerController implements Initializable {
 
     public void populateForm(Customer customer){
         this.customer = customer;
-        setName(customer.getFirstName() + " " + customer.getLastName() + "!");
+        setName(customer.getFirstName() + " " + customer.getLastName());
         updateAccountsTable();
     }
 
@@ -97,7 +97,7 @@ public class CustomerController implements Initializable {
     public void getSelectedRow() throws Exception{
         TablePosition cell = (TablePosition)accountsTable.getSelectionModel().getSelectedCells().get(0);
         System.out.println(((Account)accountsTable.getItems().get(cell.getRow())).getId());
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/account-details.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/account-details2.fxml"));
         Parent accountDetailsParent = (Parent) loader.load();
         AccountDetailsController controller = loader.<AccountDetailsController>getController();
         controller.setAccount(accountService.getAccount(((Account)accountsTable.getItems().get(cell.getRow())).getId()));
