@@ -19,7 +19,7 @@ public class BankApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         repositoryService.restoreAllRepositories();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/bank-theme2.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/bank.fxml"));
         Parent content = (Parent)fxmlLoader.load();
         Scene bankScene = new Scene(content);
         primaryStage.setScene(bankScene);

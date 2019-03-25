@@ -44,7 +44,7 @@ public class LoginController implements Initializable {
             customer = bankService.signUpCustomer(firstName.getText(), lastName.getText(), emailSignUp.getText().toLowerCase(), passwordSignUp.getText());
             recoveredService.saveAllRepositories();
             System.out.println(customer);
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/accounts-theme2.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/accounts.fxml"));
             Parent customerParent = (Parent) loader.load();
             CustomerController controller = loader.<CustomerController>getController();
             BankApplication.setCustomer(customer);
@@ -66,7 +66,7 @@ public class LoginController implements Initializable {
         if(verifySignInFields()) {
             customer = bankService.signIn(emailSignIn.getText().toLowerCase(), passwordSignIn.getText());
             if (customer != null) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/accounts-theme2.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/accounts.fxml"));
                 Parent customerParent = (Parent) loader.load();
                 CustomerController controller = loader.<CustomerController>getController();
                 BankApplication.setCustomer(customer);
