@@ -3,6 +3,7 @@ package ca.ucalgary.gui;
 import ca.ucalgary.domain.Customer;
 import ca.ucalgary.gui.customer.CustomerController;
 import ca.ucalgary.gui.budget.BudgetController;
+import ca.ucalgary.gui.profile.ProfileController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,8 +18,7 @@ import java.util.ResourceBundle;
 public class BankApplicationController implements Initializable {
     private Customer customer;
     private Stage primaryStage;
-    @FXML
-    private AnchorPane body;
+    @FXML private AnchorPane body;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) { }
@@ -44,10 +44,20 @@ public class BankApplicationController implements Initializable {
     @FXML
     public void budgetButton(ActionEvent event) throws Exception{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Budget.fxml"));
-        Parent customerParent = (Parent)loader.load();
+        Parent budgetParent = (Parent)loader.load();
         //BudgetController controller = loader.<CustomerController>getController();
 
-        body.getChildren().setAll(customerParent);
+        body.getChildren().setAll(budgetParent);
+    }
+
+    @FXML
+    public void profileButton(ActionEvent event) throws Exception{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/profile.fxml"));
+        Parent profileParent = (Parent)loader.load();
+        ProfileController controller = loader.<ProfileController>getController();
+        //controller.setCustomer(BankApplication.getCustomer());
+        controller.setProfile(BankApplication.getCustomer());
+        body.getChildren().setAll(profileParent);
     }
 
    // @FXML
