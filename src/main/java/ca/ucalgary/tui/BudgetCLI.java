@@ -1,5 +1,7 @@
-package ca.ucalgary.domain;
+package ca.ucalgary.tui;
 import ca.ucalgary.datastore.BudgetRepository;
+import ca.ucalgary.domain.Budget;
+
 import java.util.Scanner;
 
 public class BudgetCLI {

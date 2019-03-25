@@ -1,21 +1,28 @@
 package ca.ucalgary.datastore;
 
 // Imports
-import java.io.*;
-import java.util.*;
-
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
-// InvestRepository CLass
+/** 
+ * InvestRepository CLass
+ * contains functionally for the invest feature 
+ */
 public class InvestRepository {
 	
 	// Declare Instance Variables 
 	private ArrayList<String> stocksList, symbolsList;
 	private File portfolioFile;
 	
-	// Constructor
+	/** 
+	 * Constructor
+	 */
 	public InvestRepository() {
 		
 		// initialize instance variables
@@ -85,17 +92,26 @@ public class InvestRepository {
 		
 	}
 	
-	// getStocksList
+	/**
+	 * returns the stocks list
+	 * @return stocksList
+	 */
 	public ArrayList<String> getStocksList() {      
         return stocksList;      
 	}
 
-	// getSymbolsList
+	/**
+	 * returns the symbols list
+	 * @return symbolsList
+	 */
 	public ArrayList<String> getSymbolsList() {
         return symbolsList;      	
 	}
 	
-	// getPortfolioList
+	/**
+	 * returns the portfolio list
+	 * @return portfolioList
+	 */
 	public ArrayList<String> getPortfolioList() {
 		
 		// declare variables
@@ -125,8 +141,9 @@ public class InvestRepository {
 	}
 
 	/**
-	 * add stock to portfolio
-	 * @param symbol, amount
+	 * add stock to the portfolio
+	 * @param symbol, the stock symbol
+	 * @param amount, the amount of shares to purchase 
 	 */
 	public void addStock(String symbol, int amount) {
 		
@@ -157,7 +174,11 @@ public class InvestRepository {
 		
 	}
 
-	// check stocks exists 
+	/**
+	 * checks if the stock is available
+	 * @param symbol, the stock symbol
+	 * @return boolean, true if the stocks exists, false otherwise 
+	 */
 	public boolean checkStocksExists(String symbol) {
 		return getSymbolsList().contains(symbol);
 	}

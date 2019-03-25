@@ -2,12 +2,11 @@ package ca.ucalgary.tui;
 
 /**
  * G02 T07
- * myBank 
+ * myBank (Tutorial Demo 1 - Text-Based Version)  
  */
 
 // Imports
 import java.util.Scanner;
-import ca.ucalgary.domain.Bank;
 import ca.ucalgary.domain.Customer;
 import ca.ucalgary.services.BankService;
 import ca.ucalgary.services.RepositoryService;
