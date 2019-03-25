@@ -57,6 +57,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </JFXButton>
             <JFXButton layoutX="250.0" prefHeight="116.0" prefWidth="125.0" ripplerFill="#7793e9a3" text=" " textAlignment="CENTER" textFill="WHITE">
                <font>
@@ -69,8 +72,11 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </JFXButton>
-            <JFXButton layoutX="375.0" prefHeight="116.0" prefWidth="125.0" ripplerFill="#7793e9a3" textAlignment="CENTER" textFill="WHITE">
+            <JFXButton layoutX="375.0" prefHeight="116.0" prefWidth="125.0" ripplerFill="#7793e9a3" text=" " textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Corbel" size="1.0" />
                </font>
@@ -81,6 +87,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </JFXButton>
          </children>
       </AnchorPane>
