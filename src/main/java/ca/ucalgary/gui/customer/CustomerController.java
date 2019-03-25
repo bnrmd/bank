@@ -2,13 +2,10 @@ package ca.ucalgary.gui.customer;
 
 import ca.ucalgary.domain.Account;
 import ca.ucalgary.domain.Customer;
-import ca.ucalgary.gui.BankApplication;
-import ca.ucalgary.gui.BankApplicationController;
 import ca.ucalgary.gui.accounts.AccountDetailsController;
 import ca.ucalgary.services.AccountService;
 import ca.ucalgary.services.CustomerService;
 import ca.ucalgary.services.RepositoryService;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -97,7 +94,7 @@ public class CustomerController implements Initializable {
     public void getSelectedRow() throws Exception{
         TablePosition cell = (TablePosition)accountsTable.getSelectionModel().getSelectedCells().get(0);
         System.out.println(((Account)accountsTable.getItems().get(cell.getRow())).getId());
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/account-details2.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/account-details.fxml"));
         Parent accountDetailsParent = (Parent) loader.load();
         AccountDetailsController controller = loader.<AccountDetailsController>getController();
         controller.setAccount(accountService.getAccount(((Account)accountsTable.getItems().get(cell.getRow())).getId()));
