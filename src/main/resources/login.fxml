@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
@@ -25,6 +26,9 @@
          <font>
             <Font name="Corbel" size="20.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutY="311.0" prefHeight="48.0" prefWidth="500.0" text="Register" textFill="#000000a4">
          <font>
@@ -48,6 +52,9 @@
          <font>
             <Font name="Corbel" size="20.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
       <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="139.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
          <image>
