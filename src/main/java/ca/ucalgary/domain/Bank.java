@@ -9,7 +9,7 @@ import ca.ucalgary.domain.Goal;
 import ca.ucalgary.services.BankService;
 
 /**
- * Bank 
+ * BankApplication
  * Contains control/menu methods 
  */
 public class Bank {

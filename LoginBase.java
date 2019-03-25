@@ -21,7 +21,7 @@ public class LoginBase extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		
 		// WINDOW TITLE
-		primaryStage.setTitle("My Bank");
+		primaryStage.setTitle("My BankApplication");
 		Pane Window = new Pane();
 	
         Pane pane = new Pane();

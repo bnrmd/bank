@@ -13,4 +13,8 @@ public class AccountTransactionService {
     public List<AccountTransaction> getAllTransactionsOfAllAccounts(){
         return AccountTransactionRepository.getAllTransactionsOfAllAccounts();
     }
+
+    public List<AccountTransaction> getAllTransactions(String accountId){
+    	return AccountTransactionRepository.getAllAccountTransactions(accountId);
+	}
 }

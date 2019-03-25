@@ -1,9 +1,11 @@
 package ca.ucalgary.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -121,5 +123,16 @@ public class AccountTransaction {
      */
     public LocalDateTime getTxDate() {
         return txDate;
+    }
+
+    @JsonIgnore
+    public String getTransactionNo(){
+        return this.id.substring(0,8).toUpperCase();
+    }
+
+    @JsonIgnore
+    public String getTxDateFormat(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        return txDate.format(formatter);
     }
 }

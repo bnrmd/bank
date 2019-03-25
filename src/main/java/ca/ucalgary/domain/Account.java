@@ -1,5 +1,7 @@
 package ca.ucalgary.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Objects;
 import java.util.UUID;
 
@@ -93,5 +95,10 @@ public class Account {
      */
     public void setType(String type) {
         this.type = type;
+    }
+
+    @JsonIgnore
+    public String getAccountNo(){
+        return this.id.substring(0,8).toUpperCase();
     }
 }

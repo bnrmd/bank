@@ -68,7 +68,7 @@ public class CLI {
 
 			case "2":
 				// call SignUpSelected method
-				//Bank.SignUpSelected();
+				//BankApplication.SignUpSelected();
 				//Menu();
 				contextCustomer = signUp();
 				Menu();
