@@ -2,6 +2,7 @@ package ca.ucalgary.gui;
 
 import ca.ucalgary.domain.Customer;
 import ca.ucalgary.gui.customer.CustomerController;
+import ca.ucalgary.gui.budget.BudgetController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,9 +21,7 @@ public class BankApplicationController implements Initializable {
     private AnchorPane body;
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
+    public void initialize(URL location, ResourceBundle resources) { }
 
     public void setPrimaryStage(Stage stage){
         this.primaryStage = stage;
@@ -32,19 +31,6 @@ public class BankApplicationController implements Initializable {
         this.customer = customer;
     }
 
-//
-//    @FXML
-//    private void goToLogin(ActionEvent event) throws Exception{
-//        FXMLLoader loader = new FXMLLoader(getClass().getResource("/login.fxml"));
-//        Parent loginParent = (Parent)loader.load();
-//        LoginController controller = loader.<LoginController>getController();
-//        controller.setMessage("Hello");
-//        Scene loginScene = new Scene(loginParent);
-//        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-//        window.setScene(loginScene);
-//        window.show();
-//    }
-
     @FXML
     public void accountButton(ActionEvent event) throws Exception{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/accounts.fxml"));
@@ -52,6 +38,15 @@ public class BankApplicationController implements Initializable {
         CustomerController controller = loader.<CustomerController>getController();
         controller.populateForm(BankApplication.getCustomer());
         controller.setString("Accounts");
+        body.getChildren().setAll(customerParent);
+    }
+
+    @FXML
+    public void budgetButton(ActionEvent event) throws Exception{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Budget.fxml"));
+        Parent customerParent = (Parent)loader.load();
+        //BudgetController controller = loader.<CustomerController>getController();
+
         body.getChildren().setAll(customerParent);
     }
 
