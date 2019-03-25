@@ -9,19 +9,12 @@ import ca.ucalgary.domain.Expense;
 public class Expense{
 	
 	private String name;
-	private int percentOfIncome;
 	private double amountOfIncomeCAD;
-	/**
-	 * Constructor
-	 * @param name
-	 * @param percent
-	 * @param income
-	 */
+	
 	//constructors
-	public Expense(String name, int percent, double income){
-		this.name = name;
-		this.percentOfIncome = percent;
-		this.amountOfIncomeCAD = income*(percent/100.0);
+	public Expense() {
+		name = "";
+		amountOfIncomeCAD = 0;
 	}
 	/**
 	 * Constructor
@@ -38,18 +31,10 @@ public class Expense{
 	 */
 	public Expense(Expense toCopy){
 		this.name = toCopy.getName();
-		this.percentOfIncome = toCopy.getPercent();
-		this.amountOfIncomeCAD = toCopy.getDollars();
+		this.amountOfIncomeCAD = toCopy.getAmountPerMonth();
 	}
 	//setters
-	/**
-	 * setPercent
-	 * sets how much the expense is worth based on percent
-	 * @param percent
-	 */
-	public void setPercent(int percent){
-		this.percentOfIncome = percent;
-	}
+	
 	/**
 	 * Set how much an expense costs per month based on a dollar amount
 	 * @param amount
@@ -68,21 +53,13 @@ public class Expense{
 		String name = this.name;
 		return name;
 	}
-	/**
-	 * getPercent
-	 * what percent of income the expense is
-	 * @return integer percent
-	 */
-	public int getPercent(){
-		int percent = this.percentOfIncome;
-		return percent;
-	}
+	
 	/**
 	 * getDollars
 	 * how much an expense is worth in dollars
 	 * @return dollars as double
 	 */
-	public double getDollars(){
+	public double getAmountPerMonth(){
 		double dollars = this.amountOfIncomeCAD;
 		return dollars;
 	}

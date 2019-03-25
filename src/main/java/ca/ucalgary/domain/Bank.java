@@ -37,6 +37,8 @@ public class Bank {
 			System.out.println("Invalid Credentials");
 			SignInSelected();
 		}
+		
+		//input.close(;
 
 		return customer;
 
@@ -47,19 +49,13 @@ public class Bank {
 	 */
 	public static void SignUpSelected() {
 		
-		// declare variables 
-		RegistrationForm myRegistrationForm;
-		
-		// initialize variables
-		myRegistrationForm = new RegistrationForm();
-
 		// message
 		System.out.println("\n--------------------------------------------");
 		System.out.println("                   Sign-Up");
 		System.out.println("--------------------------------------------");
 		
-		// call main method in RegistrationForm class
-		myRegistrationForm.main(null);  
+		// call RegistrationForm class
+		RegistrationForm.main(null);  
 		
 		// call Menu method
 		//Menu();
@@ -84,7 +80,7 @@ public class Bank {
 	 * Budget Selected Method
 	 */
 	public static void BudgetSelected() {
-		
+		/*
 		// declare variables 
 		Budget myBudget;
 		Scanner input ;
@@ -98,11 +94,15 @@ public class Bank {
 		run = true;
 
 		while (run) {
-			
+		*/	
 			// message
-			System.out.println("\n--------------------------------------------");
-			System.out.println("                   Budget");
-			System.out.println("--------------------------------------------");
+		System.out.println("\n--------------------------------------------");
+		System.out.println("                   Budget");
+		//run CLI
+		BudgetCLI budgetCLI = new BudgetCLI();
+		budgetCLI.main(null);
+	}
+			/*System.out.println("--------------------------------------------");
 			System.out.println("[1] Set Income  [2] Add Expense  [3] View Budget  [q] Quit \n");
 
 			// selection 
@@ -148,9 +148,11 @@ public class Bank {
 			}
 			
 		}
+		
+		//input.close(;
 
 	}
-	
+	*/
 	/**
 	 * Goals Selected Method
 	 */
@@ -246,6 +248,8 @@ public class Bank {
 			}
 			
 		}
+		
+		//input.close(;
 
 	}
 
@@ -316,6 +320,8 @@ public class Bank {
 			}
 			
 		}
+		
+		//input.close(;
 
 	}
 
