@@ -17,7 +17,7 @@ Demo 2 is located here: `bank/src/main/java/ca/ucalgary/gui`
 Demo 1 is located here: `bank/src/main/java/ca/ucalgary/tui`
 
 ## JUnit Testing
-The InvestRepository.java class is thoroughly tested. To test, run InvestRepositoryTest.java in `bank/src/test/java/ca/ucalgary/datastore`
+The InvestRepository class is thoroughly tested. To test, run InvestRepositoryTest.java in `bank/src/test/java/ca/ucalgary/datastore`
 
 ## Overview
 
