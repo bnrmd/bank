@@ -1,21 +1,28 @@
 package ca.ucalgary.datastore;
 
 // Imports
-import java.io.*;
-import java.util.*;
-
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
-// InvestRepository CLass
+/** 
+ * InvestRepository CLass
+ * contains functionally for the invest feature 
+ */
 public class InvestRepository {
 	
 	// Declare Instance Variables 
 	private ArrayList<String> stocksList, symbolsList;
 	private File portfolioFile;
 	
-	// Constructor
+	/** 
+	 * Constructor
+	 */
 	public InvestRepository() {
 		
 		// initialize instance variables
@@ -24,13 +31,12 @@ public class InvestRepository {
 		portfolioFile = null;
 		
 		// declare variables 
-		String url;
-	    String ticker, name;
+		String url, symbol, name;
 	    double price, change, percentChange;    
 		
 		// initialize variables 
 	    url = "https://shares.telegraph.co.uk/indices/summary/index/MCX";
-        ticker = "";
+	    symbol = "";
         name = "";
         price = 0.0;
         change = 0.0;
@@ -54,18 +60,18 @@ public class InvestRepository {
                 // after the first row 
                 else {
                 	
-                	// get live info from wesite
-                    ticker = row.select("td:nth-of-type(1)").text();
+                	// get live info from website
+                	symbol = row.select("td:nth-of-type(1)").text();
                     name = row.select("td:nth-of-type(2)").text();
                     price = Double.parseDouble(row.select("td.right:nth-of-type(3)").text().replace(",", ""));
                     change = Double.parseDouble(row.select("td:nth-of-type(4)").text());
                     percentChange = Double.parseDouble(row.select("td:nth-of-type(5)").text());
                  
                     // add to stocksList
-                    stocksList.add(ticker + "," + name + "," + price + "," + change + "," + percentChange);
+                    stocksList.add(symbol + "," + name + "," + price + "," + change + "," + percentChange);
                     
                     // add to symbolsList
-                    symbolsList.add(ticker);
+                    symbolsList.add(symbol);
                 }
             }
             
@@ -85,17 +91,26 @@ public class InvestRepository {
 		
 	}
 	
-	// getStocksList
+	/**
+	 * returns the stocks list
+	 * @return stocksList
+	 */
 	public ArrayList<String> getStocksList() {      
         return stocksList;      
 	}
 
-	// getSymbolsList
+	/**
+	 * returns the symbols list
+	 * @return symbolsList
+	 */
 	public ArrayList<String> getSymbolsList() {
         return symbolsList;      	
 	}
 	
-	// getPortfolioList
+	/**
+	 * returns the portfolio list
+	 * @return portfolioList
+	 */
 	public ArrayList<String> getPortfolioList() {
 		
 		// declare variables
@@ -125,39 +140,48 @@ public class InvestRepository {
 	}
 
 	/**
-	 * add stock to portfolio
-	 * @param symbol, amount
+	 * add stock to the portfolio
+	 * @param symbol, the stock symbol
+	 * @param amount, the amount of shares to purchase 
 	 */
 	public void addStock(String symbol, int amount) {
 		
-		// declare variables
-		FileWriter PortfolioWriter;
+		if (checkStocksExists(symbol) && amount >= 1) {
 		
-		// initialize variables	
-		PortfolioWriter = null;
-		
-		// get portfolio file
-		try {
-			PortfolioWriter = new FileWriter(portfolioFile, true);
-		} catch (Exception e) {
-			System.out.println("Portfolio.txt doesn't exist");
-		}		
-		
-		// add stock to portfolio
-		try {
-			if(portfolioFile.length() != 0) {
-				PortfolioWriter.write("\n");
+			// declare variables
+			FileWriter PortfolioWriter;
+			
+			// initialize variables	
+			PortfolioWriter = null;
+			
+			// get portfolio file
+			try {
+				PortfolioWriter = new FileWriter(portfolioFile, true);
+			} catch (Exception e) {
+				System.out.println("Portfolio.txt doesn't exist");
+			}		
+			
+			// add stock to portfolio
+			try {
+				if(portfolioFile.length() != 0) {
+					PortfolioWriter.write("\n");
+				}
+				PortfolioWriter.write(symbol + ";" + String.valueOf(amount));
+				PortfolioWriter.close();
+			} catch (IOException e) {
+				System.out.println("Error! Could not add stock to portfolio.");
 			}
-			PortfolioWriter.write(symbol + ";" + String.valueOf(amount));
-			PortfolioWriter.close();
-		} catch (IOException e) {
-			System.out.println("Error! Could not add stock to portfolio.");
+		
 		}
 	
 		
 	}
 
-	// check stocks exists 
+	/**
+	 * checks if the stock is available
+	 * @param symbol, the stock symbol
+	 * @return boolean, true if the stocks exists, false otherwise 
+	 */
 	public boolean checkStocksExists(String symbol) {
 		return getSymbolsList().contains(symbol);
 	}

@@ -1,16 +1,20 @@
-# myBank
+# myBank 
 
-Java banking application to help users better organize their finances.
+myBank is a Java banking application designed to help users better organize their finances. It will have three key features, each encompassing a major aspect of the user's finances. The features will be; Accounts, Budget and Invest. 
 
-## Demo 2 Location (*To be updated*)
-Demo 2 is located here: `bank/src/main/java/ca/ucalgary/`
+## How to Run (Demo 3)
 
-## How to Run
 + Clone the project
 ```bash
 git clone https://github.com/dlnet/bank.git
 ``` 
-+ Run `AddDemoOne` in `bank/src/main/java/ca/ucalgary/tui`
++ Run `BankApplication` in `bank/src/main/java/ca/ucalgary/gui`
+
+## Demo 2 Location
+Demo 2 is located here: `bank/src/main/java/ca/ucalgary/gui`
+
+## Demo 1 Location
+Demo 1 is located here: `bank/src/main/java/ca/ucalgary/tui`
 
 ## Overview
 

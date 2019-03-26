@@ -192,7 +192,7 @@ public class InvestGUI extends Application implements EventHandler<ActionEvent> 
 								textViewText += "\nName: " + line[1];
 								textViewText += "\nSymbol: " + line[0];
 								textViewText += "\nExchange: LSE";
-								textViewText += "\nPrice: �" + line[2];
+								textViewText += "\nPrice: " + line[2];
 								textViewText += "\nChange: " + line[3];
 								textViewText += "\nPercentage Change: " + line[4] + "%";
 								
