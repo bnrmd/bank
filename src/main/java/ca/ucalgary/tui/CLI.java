@@ -19,7 +19,7 @@ import ca.ucalgary.services.RepositoryService;
 public class CLI {
 
 	private static BankService bankService = new BankService();
-	private static Customer contextCustomer = null;
+	public static Customer contextCustomer = null;
 	
 	/**
 	 * Main method

@@ -1,18 +1,25 @@
 package ca.ucalgary.domain;
 import ca.ucalgary.datastore.BudgetRepository;
+import ca.ucalgary.tui.CLI;
+
 import java.util.Scanner;
 
 public class BudgetCLI {
 	public static void main(String[] args) {
 		// declare variables 
-				Budget myBudget = new Budget(0);
+				Budget myBudget;
 				Scanner input ;
 				String userSelection, userBudget, expenseName, expenseAmount,cont;
 				boolean run;
 				BudgetRepository saveLoad = new BudgetRepository();
 
 				// initialize variables
-				myBudget = saveLoad.loadBudget();
+				try {
+					System.out.println(CLI.contextCustomer.getId());
+					myBudget = saveLoad.getBudget(CLI.contextCustomer.getId());
+				} catch (Exception e) {
+					myBudget = new Budget(0);
+				}
 				input = new Scanner(System.in);  
 				userSelection = "";
 				run = true;
@@ -76,7 +83,7 @@ public class BudgetCLI {
 						break;
 						
 					case "q":
-						saveLoad.saveBudget(myBudget);
+						saveLoad.saveBudget();
 						run = false;
 						break;
 						
@@ -87,5 +94,6 @@ public class BudgetCLI {
 				}
 
 	}
+	
 
 }

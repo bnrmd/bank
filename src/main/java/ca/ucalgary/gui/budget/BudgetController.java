@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import ca.ucalgary.datastore.BudgetRepository;
 import ca.ucalgary.domain.Budget;
 import ca.ucalgary.domain.Expense;
+import ca.ucalgary.gui.BankApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,7 +24,7 @@ import javafx.stage.Stage;
 
 public class BudgetController implements Initializable{
 	private BudgetRepository br = new BudgetRepository();
-	private Budget budget = br.loadBudget();
+	private Budget budget = br.getBudget(BankApplication.getCustomer().getId());
 	
 	/**
 	 * Setting all the variables that will be used
@@ -167,7 +168,7 @@ public class BudgetController implements Initializable{
 			if (expenseAmount > 0 && budget.hasEnoughMoneyToAdd(expenseAmount)) {
 				budget.addExpense(nameField.getText(),Double.parseDouble(costField.getText()));
 				expenseSuccessLabel.setText("Expense Added Successfully");
-				br.saveBudget(budget);
+				br.saveBudget();
 			}else if (expenseAmount > 0) 
 				expenseErrorLabel.setText("Not enough income to add expense");
 			else expenseErrorLabel.setText("Expense cost cannot be negative");
@@ -200,7 +201,7 @@ public class BudgetController implements Initializable{
 		expenseRemoveChoice.getItems().clear();
 		for(Expense x:budget.getExpenses())
 			expenseRemoveChoice.getItems().add(x.getName());
-		br.saveBudget(budget);
+		br.saveBudget();
 	}
 	/**
 	 * returns to the menu from the remove option
@@ -226,7 +227,7 @@ public class BudgetController implements Initializable{
 			if (incomeToAdd > budget.totalCostInDollars()) {
 				budget.setIncome(incomeToAdd);
 				incomeSuccessLabel.setText("Income Successfully Added");
-				br.saveBudget(budget);
+				br.saveBudget();
 			} else if (incomeToAdd < 0){
 				incomeErrorLabel.setText("Income cannot be negative");
 			}else incomeErrorLabel.setText("Expenses too high to change income, remove some expenses");

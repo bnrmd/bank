@@ -23,7 +23,7 @@ import javafx.geometry.Pos;
 
 public class BudgetGUI extends Application{
 	private BudgetRepository saveLoad = new BudgetRepository();
-	private Budget forGUI = saveLoad.loadBudget();
+	private Budget forGUI = saveLoad.getBudget("0");
 	/**
 	 * 
 	 * @param args
@@ -81,7 +81,7 @@ public class BudgetGUI extends Application{
         btnInvest.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				saveLoad.saveBudget(forGUI);
+				saveLoad.saveBudget();
 				InvestGUI myInvestGUI = new InvestGUI();
 				try {
 					myInvestGUI.start(primaryStage);
@@ -95,7 +95,7 @@ public class BudgetGUI extends Application{
         btnAccounts.setOnAction(new EventHandler<ActionEvent>()  {
 			@Override
 			public void handle(ActionEvent event) {
-				saveLoad.saveBudget(forGUI);
+				saveLoad.saveBudget();
 				//MockAccounts myAccountsGUI = new MockAccounts();
 				try {
 					//myAccountsGUI.start(primaryStage);
@@ -110,7 +110,7 @@ public class BudgetGUI extends Application{
       		btnGoals.setOnAction(new EventHandler<ActionEvent>() {
       			@Override
       			public void handle(ActionEvent event) {
-      				saveLoad.saveBudget(forGUI);
+      				saveLoad.saveBudget();
       				//MockGoalsGUI myGoalsGUI = new MockGoalsGUI();
       				try {
       					//myGoalsGUI.start(primaryStage);
