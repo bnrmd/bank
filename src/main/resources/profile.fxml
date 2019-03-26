@@ -6,43 +6,43 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="main" prefHeight="669.0" prefWidth="500.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.gui.profile.ProfileController">
+<AnchorPane fx:id="main" prefHeight="669.0" prefWidth="500.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.gui.profile.ProfileController">
    <children>
-      <AnchorPane layoutX="23.0" layoutY="71.0" prefHeight="224.0" prefWidth="454.0">
+      <AnchorPane layoutX="23.0" layoutY="69.0" prefHeight="578.0" prefWidth="455.0">
          <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="27.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+            <Label layoutX="118.0" layoutY="138.0" text="First Name:">
+               <font>
+                  <Font name="Corbel" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="fname" layoutX="266.0" layoutY="138.0" prefHeight="18.0" prefWidth="181.0" text="first_name">
+               <font>
+                  <Font name="Corbel" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lname" layoutX="267.0" layoutY="185.0" prefHeight="18.0" prefWidth="181.0" text="last_name">
+               <font>
+                  <Font name="Corbel" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="clientId" layoutX="268.0" layoutY="232.0" prefHeight="18.0" prefWidth="181.0" text="email_id" textAlignment="RIGHT">
+               <font>
+                  <Font name="Corbel" size="15.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="75.0" fitWidth="97.0" layoutX="191.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@img/profile.png" />
+                  <Image url="@../Downloads/bank-master%20(4)/bank-master/src/main/resources/img/profile.png" />
                </image>
             </ImageView>
-            <Label layoutX="216.0" layoutY="39.0" text="First Name">
+            <Label layoutX="118.0" layoutY="185.0" text="Last Name:">
                <font>
-                  <Font name="Arial" size="15.0" />
+                  <Font name="Corbel" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="216.0" layoutY="65.0" text="Last Name">
+            <Label layoutX="118.0" layoutY="232.0" text="Client I.D.:">
                <font>
-                  <Font name="Arial" size="15.0" />
-               </font>
-            </Label>
-            <Label layoutX="225.0" layoutY="91.0" prefHeight="17.0" prefWidth="73.0" text="Client I.D." textAlignment="RIGHT">
-               <font>
-                  <Font name="Arial" size="15.0" />
-               </font>
-            </Label>
-            <Label fx:id="fname" layoutX="313.0" layoutY="39.0" text="first_name">
-               <font>
-                  <Font name="Arial" size="15.0" />
-               </font>
-            </Label>
-            <Label fx:id="lname" layoutX="314.0" layoutY="65.0" text="last_name">
-               <font>
-                  <Font name="Arial" size="15.0" />
-               </font>
-            </Label>
-            <Label fx:id="clientId" layoutX="314.0" layoutY="91.0" prefHeight="17.0" prefWidth="73.0" text="email_id" textAlignment="RIGHT">
-               <font>
-                  <Font name="Arial" size="15.0" />
+                  <Font name="Corbel" size="15.0" />
                </font>
             </Label>
          </children>
