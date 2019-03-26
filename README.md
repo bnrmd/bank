@@ -13,6 +13,9 @@ git clone https://github.com/dlnet/bank.git
 ## Demo 2 Location
 Demo 2 is located here: `bank/src/main/java/ca/ucalgary/gui`
 
+## Demo 1 Location
+Demo 1 is located here: `bank/src/main/java/ca/ucalgary/tui`
+
 ## Overview
 
 + Helps users have a more organized financial future
