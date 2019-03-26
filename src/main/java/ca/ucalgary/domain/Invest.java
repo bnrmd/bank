@@ -41,7 +41,7 @@ public class Invest {
 					System.out.println("\nName: " + line[1]);
 					System.out.println("Symbol: " + line[0]);
 					System.out.println("Exchange: LSE");
-					System.out.println("Price: £" + line[2]);
+					System.out.println("Price: " + line[2]);
 					System.out.println("Change: " + line[3]);
 					System.out.println("Percentage Change: " + line[4] + "%");
 	        	}
