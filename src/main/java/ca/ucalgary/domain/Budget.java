@@ -4,6 +4,7 @@ import java.util.Scanner;
 import java.util.List;
 public class Budget {
 	
+	private String customerID;
 	private double income;
 	private List<Expense> expenses = new ArrayList<Expense>();
 	
@@ -18,6 +19,7 @@ public class Budget {
 	 */
 	public Budget(double income){
 		this.income = income;
+		this.customerID = "000";
 	}
 	/**
 	 * Budget Constructor with budget
@@ -26,10 +28,16 @@ public class Budget {
 	public Budget(Budget toCopy){
 		this.income = toCopy.getIncome();
 		this.expenses = toCopy.getExpenses();
+		this.customerID = toCopy.getCustomerID();
 	}
 	public Budget(double income, List<Expense> expenses) {
 		this.income = income;
 		this.expenses = (ArrayList<Expense>) expenses;
+		this.customerID = "000";
+	}
+	public Budget (String id) {
+		this.customerID = id;
+		this.income = 0;
 	}
 	//setters
 	/**
@@ -42,6 +50,10 @@ public class Budget {
 	public void setExpenses(ArrayList<Expense> expense) {
 		this.expenses=expense;
 	}
+	public void setCustomerID(String id) {
+		this.customerID = id;
+	}
+	
 	//takes amount of dollars for expense
 	/**
 	 * Add an expense to the budget with an amount
@@ -74,11 +86,14 @@ public class Budget {
 		throw new RuntimeException("Entered expense does not exist");
 		
 	}
+	public String getCustomerID() {
+		return customerID;
+	}
 	/**
 	 * Get the left over income of the budget
 	 * @return Leftover income
 	 */
-	public double LeftoverIncome() {
+	public double leftoverIncome() {
 		double leftOver = this.income;
 		for (Expense x : expenses)
 			leftOver -= x.getAmountPerMonth();
@@ -110,7 +125,7 @@ public class Budget {
 	 * @return if there is enough money as boolean
 	 */
 	public boolean hasEnoughMoneyToAdd(double cost) {
-		if (this.LeftoverIncome() >= cost)
+		if (this.leftoverIncome() >= cost)
 			return true;
 		else return false;
 	}
@@ -129,12 +144,12 @@ public class Budget {
 	 * @return budget as string
 	 */
 	public String toString(){
-		String str = "";
+		String str = "Total: " + getIncome();
 		for (Expense x : expenses){
 			str += x.getName() + ": $" + x.getAmountPerMonth() + "\n";
 		}
 		str += "Total Expenses: " + this.totalCostInDollars() + "\n";
-		str += "Total Left: " + this.LeftoverIncome();
+		str += "Total Left: " + this.leftoverIncome();
 		return str;
 	}
 	
