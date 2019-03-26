@@ -63,7 +63,7 @@ public class BudgetRepository {
 			List<Budget> list = objectMapper.readValue(json, new TypeReference<List<Budget>>(){});
 			restoreBudgets(list);
 		}catch(Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		
 	}
