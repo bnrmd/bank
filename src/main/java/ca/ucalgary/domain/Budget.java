@@ -144,7 +144,7 @@ public class Budget {
 	 * @return budget as string
 	 */
 	public String toString(){
-		String str = "Total: " + getIncome();
+		String str = "Total: " + getIncome() + "\n";
 		for (Expense x : expenses){
 			str += x.getName() + ": $" + x.getAmountPerMonth() + "\n";
 		}
