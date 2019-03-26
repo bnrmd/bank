@@ -1,7 +1,7 @@
 package ca.ucalgary.gui;
+
 import ca.ucalgary.domain.Budget;
 import ca.ucalgary.datastore.BudgetRepository;
-
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
