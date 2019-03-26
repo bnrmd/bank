@@ -45,11 +45,10 @@ public class InvestGUI extends Application implements EventHandler<ActionEvent> 
         // top layout
         Pane top = new Pane();
         
+        top.setStyle("-fx-background-color: #4169E1;");
+        
         Label txtFeatureName = new Label("Invest");
-        txtFeatureName.setAlignment(Pos.CENTER);
         txtFeatureName.setStyle("-fx-font: 45 Corbel;");
-        
-        
         
         top.getChildren().add(txtFeatureName);
 
@@ -62,6 +61,13 @@ public class InvestGUI extends Application implements EventHandler<ActionEvent> 
         btnView = new Button("View All Stocks");
         btnPortfolio = new Button("View Portfolio");
         btnMyInvest = new Button("Invest");
+        
+        
+        btnSearch.setStyle("-fx-background-color: #4169E1;");
+        btnView.setStyle("-fx-background-color: #4169E1;");
+        btnPortfolio.setStyle("-fx-background-color: #4169E1;");
+        btnMyInvest.setStyle("-fx-background-color: #4169E1;");
+        
         
         btnSearch.setMinSize(230, 68);
         btnView.setMinSize(230, 68);
@@ -80,11 +86,22 @@ public class InvestGUI extends Application implements EventHandler<ActionEvent> 
         // bottom menu layout
         HBox bottom = new HBox();
         
-        //Button btnAccount = new Button("Account");
-        //Button btnBudget = new Button("Budget");
-        //Button btnGoals = new Button("Goals");
-        //Button btnInvest = new Button("Invest");
-
+        Button btnAccount = new Button("Account");
+        Button btnBudget = new Button("Budget");
+        Button btnGoals = new Button("Goals");
+        Button btnInvest = new Button("Invest");
+        
+        btnAccount.setStyle("-fx-background-color: #4169E1;");
+        btnBudget.setStyle("-fx-background-color: #4169E1;");
+        btnGoals.setStyle("-fx-background-color: #4169E1;");
+        btnInvest.setStyle("-fx-background-color: #4169E1;");
+        
+        btnGoals.setMinSize(500/4, 100);
+        btnAccount.setMinSize(500/4, 100);
+        btnBudget.setMinSize(500/4, 100);
+        btnInvest.setMinSize(500/4, 100);
+        
+        bottom.getChildren().addAll(btnAccount, btnBudget, btnGoals, btnInvest);
 
         // set main layout
         BorderPane main = new BorderPane();
@@ -95,7 +112,7 @@ public class InvestGUI extends Application implements EventHandler<ActionEvent> 
 
         // set stage
         primaryStage.setTitle("myBank");
-        primaryStage.setScene(new Scene(main, 500, 669)); 
+        primaryStage.setScene(new Scene(main, 500, 889)); 
         primaryStage.show();
         
     }
