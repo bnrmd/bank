@@ -32,7 +32,7 @@
             </Label>
             <ImageView fitHeight="75.0" fitWidth="97.0" layoutX="191.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Downloads/bank-master%20(4)/bank-master/src/main/resources/img/profile.png" />
+                  <Image url="@img/profile.png" />
                </image>
             </ImageView>
             <Label layoutX="118.0" layoutY="185.0" text="Last Name:">
