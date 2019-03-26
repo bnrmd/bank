@@ -61,7 +61,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
-            <JFXButton layoutX="250.0" prefHeight="116.0" prefWidth="125.0" ripplerFill="#7793e9a3" text=" " textAlignment="CENTER" textFill="WHITE">
+            <JFXButton fx:id="investButton" layoutX="250.0" onAction="#investButton" prefHeight="116.0" prefWidth="125.0" ripplerFill="#7793e9a3" text=" " textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Corbel" size="1.0" />
                </font>

@@ -49,6 +49,13 @@ public class BankApplicationController implements Initializable {
 
         body.getChildren().setAll(budgetParent);
     }
+    
+    // Invest Button
+    @FXML
+    public void investButton(ActionEvent event) throws Exception{
+    	InvestGUI myInvest = new InvestGUI();
+    	myInvest.start(primaryStage);
+    }
 
     @FXML
     public void profileButton(ActionEvent event) throws Exception{
