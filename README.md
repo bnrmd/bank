@@ -16,6 +16,9 @@ Demo 2 is located here: `bank/src/main/java/ca/ucalgary/gui`
 ## Demo 1 Location
 Demo 1 is located here: `bank/src/main/java/ca/ucalgary/tui`
 
+## JUnit Testing
+The InvestRepository.java class thoroughly tested. Run InvestRepositoryTest.java in `bank/src/test/java/ca/ucalgary/datastore`
+
 ## Overview
 
 + Helps users have a more organized financial future
