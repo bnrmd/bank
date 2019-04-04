@@ -12,6 +12,7 @@ import org.jsoup.nodes.Element;
 /**
  * InvestRepositoryTest
  * JUnit testing for the InvestRepository class 
+ * @author Salim
  */
 public class InvestRepositoryTest {
 	

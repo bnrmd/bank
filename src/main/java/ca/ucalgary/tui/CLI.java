@@ -1,10 +1,5 @@
 package ca.ucalgary.tui;
 
-/**
- * G02 T07
- * myBank 
- */
-
 // Imports
 import java.util.Scanner;
 import ca.ucalgary.domain.Bank;
@@ -18,6 +13,7 @@ import ca.ucalgary.services.RepositoryService;
  */
 public class CLI {
 
+	// Declare Variables
 	private static BankService bankService = new BankService();
 	public static Customer contextCustomer = null;
 	
@@ -91,6 +87,10 @@ public class CLI {
 				
 	}
 
+	/**
+	 * sign up method
+	 * @return Customer
+	 */
 	private static Customer signUp(){
 		Scanner input = new Scanner(System.in);
 		System.out.println("Enter your first name:");

@@ -21,10 +21,11 @@ import javafx.stage.Stage;
 /**
  * InvestGUI class
  * GUI for the Invest class
+ * @author Salim
  */
 public class InvestGUI extends Application implements EventHandler<ActionEvent> {
 	
-	// Declare (Instance) Variables
+	// Declare GUI Variables
 	Button btnSearch, btnView, btnPortfolio, btnMyInvest;
 	
 	/**
