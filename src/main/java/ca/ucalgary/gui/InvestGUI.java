@@ -26,7 +26,7 @@ import javafx.stage.Stage;
 public class InvestGUI extends Application implements EventHandler<ActionEvent> {
 	
 	// Declare GUI Variables
-	Button btnSearch, btnView, btnPortfolio, btnMyInvest;
+	Button btnSearch, btnView, btnPortfolio, btnMyInvest, btnGoals, btnAccount, btnBudget, btnInvest;
 	
 	/**
 	 * Main method
@@ -43,70 +43,80 @@ public class InvestGUI extends Application implements EventHandler<ActionEvent> 
 	@Override
 	public void start(Stage primaryStage) {
 		
-        // top layout
+        // create top layout
         Pane top = new Pane();
         
+        // set color to blue
         top.setStyle("-fx-background-color: #4169E1;");
         
+        // add invest label
         Label txtFeatureName = new Label("Invest");
         txtFeatureName.setStyle("-fx-font: 45 Corbel;");
         
+        // add components to top pane
         top.getChildren().add(txtFeatureName);
 
-        // center layout
+        // create center layout
         VBox center = new VBox();
-        
         center.setBackground(Background.EMPTY);
         
+        // create button
         btnSearch = new Button("Search Stock");
         btnView = new Button("View All Stocks");
         btnPortfolio = new Button("View Portfolio");
         btnMyInvest = new Button("Invest");
         
-        
+        // set button colour
         btnSearch.setStyle("-fx-background-color: #4169E1;");
         btnView.setStyle("-fx-background-color: #4169E1;");
         btnPortfolio.setStyle("-fx-background-color: #4169E1;");
         btnMyInvest.setStyle("-fx-background-color: #4169E1;");
         
-        
+        // set button size
         btnSearch.setMinSize(230, 68);
         btnView.setMinSize(230, 68);
         btnPortfolio.setMinSize(230, 68);
         btnMyInvest.setMinSize(230, 68);
         
+        // set button action
         btnSearch.setOnAction(this);
         btnView.setOnAction(this);
         btnPortfolio.setOnAction(this);
         btnMyInvest.setOnAction(this);       
         
+        // add components to center VBox
         center.getChildren().addAll(btnSearch, btnView, btnPortfolio, btnMyInvest);
         center.setSpacing(20);
         center.setAlignment(Pos.CENTER);        
         
-        // bottom menu layout
+        // create bottom menu layout
         HBox bottom = new HBox();
         
-        Button btnAccount = new Button("Account");
-        Button btnBudget = new Button("Budget");
-        Button btnGoals = new Button("Goals");
-        Button btnInvest = new Button("Invest");
+        // create buttons
+        btnAccount = new Button("Account");
+        btnBudget = new Button("Budget");
+        btnGoals = new Button("Invest");
+        btnInvest = new Button("Profile");
         
+        // set button style
         btnAccount.setStyle("-fx-background-color: #4169E1;");
         btnBudget.setStyle("-fx-background-color: #4169E1;");
         btnGoals.setStyle("-fx-background-color: #4169E1;");
         btnInvest.setStyle("-fx-background-color: #4169E1;");
         
+        // set button size
         btnGoals.setMinSize(500/4, 100);
         btnAccount.setMinSize(500/4, 100);
         btnBudget.setMinSize(500/4, 100);
         btnInvest.setMinSize(500/4, 100);
         
+        // add components to bottom HBox
         bottom.getChildren().addAll(btnAccount, btnBudget, btnGoals, btnInvest);
 
         // set main layout
         BorderPane main = new BorderPane();
         
+        // set main BorderPane
         main.setTop(top);
         main.setCenter(center);
         main.setBottom(bottom);
@@ -123,7 +133,8 @@ public class InvestGUI extends Application implements EventHandler<ActionEvent> 
 	 * @param event
 	 */
 	@Override
-	public void handle(ActionEvent event) {
+	public void handle(ActionEvent event) {	
+		// handle button action event 
 		if (event.getSource()==btnSearch) {
 			SearchMethod();
 		} else if (event.getSource()==btnView) { 
@@ -132,7 +143,7 @@ public class InvestGUI extends Application implements EventHandler<ActionEvent> 
 			PortfolioMethod();
 		} else if (event.getSource()==btnMyInvest) { 
 			InvestMethod();
-		}
+		} 
 	}	
 	
 	/**

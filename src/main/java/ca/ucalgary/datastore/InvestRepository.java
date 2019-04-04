@@ -137,6 +137,7 @@ public class InvestRepository {
 			portfolioList.add(line);
 		}
 		
+		// return portfolio list 
 		return portfolioList;
 	}
 
@@ -147,6 +148,7 @@ public class InvestRepository {
 	 */
 	public void addStock(String symbol, int amount) {
 		
+		// check if stocks exists and valid amount entered 
 		if (checkStocksExists(symbol) && amount >= 1) {
 		
 			// declare variables
@@ -157,19 +159,27 @@ public class InvestRepository {
 			
 			// get portfolio file
 			try {
+				// open pofolio text file
 				PortfolioWriter = new FileWriter(portfolioFile, true);
 			} catch (Exception e) {
+				// error message
 				System.out.println("Portfolio.txt doesn't exist");
 			}		
 			
 			// add stock to portfolio
 			try {
+				
+				// if portfolio is not empty, go to next line
 				if(portfolioFile.length() != 0) {
 					PortfolioWriter.write("\n");
 				}
+				
+				// add stock purchase to portfolio
 				PortfolioWriter.write(symbol + ";" + String.valueOf(amount));
 				PortfolioWriter.close();
+				
 			} catch (IOException e) {
+				// display error message
 				System.out.println("Error! Could not add stock to portfolio.");
 			}
 		
