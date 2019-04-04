@@ -52,8 +52,6 @@ public class Invest {
 			System.out.println("Stock Symbol is Not Available.");
 		}
 		
-		//input.close(;
-		
 	}
 	
 	/**

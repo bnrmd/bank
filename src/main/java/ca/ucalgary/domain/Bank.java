@@ -14,7 +14,7 @@ import ca.ucalgary.services.BankService;
  */
 public class Bank {
 	
-	// Declare Variable
+	// Declare BankService Variable
 	private static BankService bankService = new BankService();
 	
 	/**
@@ -27,22 +27,22 @@ public class Bank {
 		System.out.println("                   Sign-In");
 		System.out.println("--------------------------------------------");
 		
-		// username and password
+		// get username and password
 		Scanner input =  new Scanner(System.in);
 		System.out.print("Enter Email: ");
 		String email = input.nextLine();
 		System.out.print("Enter Password: ");
 		String password = input.nextLine();
 
+		// create customer
 		Customer customer = bankService.signIn(email,password);
 
 		if (customer == null){
 			System.out.println("Invalid Credentials");
 			SignInSelected();
 		}
-		
-		//input.close(;
 
+		// return customer
 		return customer;
 
 	}
@@ -60,8 +60,6 @@ public class Bank {
 		// call RegistrationForm class
 		RegistrationForm.main(null);  
 		
-		// call Menu method
-		//Menu();
 	}
 	
 	/**
@@ -72,7 +70,6 @@ public class Bank {
 		// message
 		System.out.println("\n--------------------------------------------");
 		System.out.println("                   Account");
-		//System.out.println("--------------------------------------------");
 		
 		// run CLI class
 		AccountCLI myCLI = new AccountCLI();
@@ -83,10 +80,12 @@ public class Bank {
 	 * Budget Selected Method
 	 */
 	public static void BudgetSelected() {
+		
 		// message
 		System.out.println("\n--------------------------------------------");
 		System.out.println("                   Budget");
-		//run CLI
+		
+		// run CLI
 		BudgetCLI budgetCLI = new BudgetCLI();
 		budgetCLI.main(null);
 	}
@@ -111,6 +110,7 @@ public class Bank {
 		time = 0;
 		run = true;
 
+		// run application
 		while (run) {
 			
 			// message
@@ -186,8 +186,6 @@ public class Bank {
 			}
 			
 		}
-		
-		//input.close(;
 
 	}
 
@@ -253,13 +251,12 @@ public class Bank {
 				run = false;
 				break;
 				
-			default:  // will never run
+			default: 
+				// will never run
 				break;
 			}
 			
 		}
-		
-		//input.close(;
 
 	}
 

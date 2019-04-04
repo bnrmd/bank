@@ -206,9 +206,11 @@ public class InvestRepositoryTest {
             } 
             
         } catch (Exception ex) {
+        	// display error message
             System.out.println("Error! Obtaining stocks from website failed.");  //ex.printStackTrace();
         }
         
+        // return stock 
         return stock;
                         
 	}

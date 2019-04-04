@@ -73,6 +73,8 @@ public class Goal {
 	 * @return String
 	 */
 	public String toString() {
+		
+		// create toString message
 		DecimalFormat df2 = new DecimalFormat(".##");
 		String string = "-------------------myGoal-------------------\n";
 		string += "Goal: " + name + "\n";
@@ -82,6 +84,8 @@ public class Goal {
 		string += "Monthly Savings: $" + df2.format((amount/timePeriodDays) * 30) + "\n";
 		string += "Weekly Savings: $" + df2.format((amount/timePeriodDays) * 7) + "\n";
 		string += "Daily Savings: $" + df2.format(amount/timePeriodDays);
+		
+		// return toString message
 		return string;
 	}
 	
