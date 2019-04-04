@@ -3,7 +3,11 @@ package ca.ucalgary.domain;
 //Imports
 import java.text.DecimalFormat;
 
-//Main Class
+/**
+ * Goals Class
+ * allows user to set future goals
+ * @author Salim
+ */
 public class Goal {
 
 	// Declare Instance Variables
@@ -11,7 +15,9 @@ public class Goal {
 	private double amount;
 	int timePeriodInput, timePeriodDays;
 	
-	// Constructor
+	/**
+	 * Default Constructor
+	 */
 	public Goal() {
 		
 		// initialize instance variables
@@ -22,32 +28,50 @@ public class Goal {
 		timePeriodDays = 0;
 	}
 	
-	// Set Goal Name
+	/**
+	 * Set Goal Name
+	 * @param name
+	 */
 	public void setGoalName(String name) {
 		this.name = name;
 	}
 	
-	// Set Time Period
+	/**
+	 * Set Time Period
+	 * @param name
+	 */
 	public void setTimePeriod(String name) {
 		this.timePeriod = name;
 	}
 	
-	// Set Goal Amount
+	/**
+	 * Set Goal Amount
+	 * @param amount
+	 */
 	public void setGoalAmount(double amount) {
 		this.amount = amount;
 	}
 	
-	// Set Time Period Input
+	/**
+	 * Set Time Period Input
+	 * @param timePeriodInput
+	 */
 	public void setTimePeriodInput(int timePeriodInput) {
 		this.timePeriodInput = timePeriodInput;
 	}
 	
-	// Set Time Period Days
+	/**
+	 * Set Time Period Days
+	 * @param days
+	 */
 	public void setTimePeriodDays(int days) {
 		this.timePeriodDays = days;
 	}
 	
-	// Display Goal
+	/**
+	 * Display Goal
+	 * @return String
+	 */
 	public String toString() {
 		DecimalFormat df2 = new DecimalFormat(".##");
 		String string = "-------------------myGoal-------------------\n";
@@ -60,4 +84,5 @@ public class Goal {
 		string += "Daily Savings: $" + df2.format(amount/timePeriodDays);
 		return string;
 	}
+	
 }

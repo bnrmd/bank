@@ -13,6 +13,7 @@ import org.jsoup.nodes.Element;
 /** 
  * InvestRepository CLass
  * contains functionally for the invest feature 
+ * @author Salim
  */
 public class InvestRepository {
 	
@@ -21,7 +22,7 @@ public class InvestRepository {
 	private File portfolioFile;
 	
 	/** 
-	 * Constructor
+	 * Default Constructor
 	 */
 	public InvestRepository() {
 		

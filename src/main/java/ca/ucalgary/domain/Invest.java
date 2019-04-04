@@ -7,6 +7,7 @@ import ca.ucalgary.datastore.InvestRepository;
 /**
  * Invest class
  * allows users to invest in stocks
+ * @author Salim
  */
 public class Invest {
 	
