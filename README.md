@@ -1,6 +1,6 @@
 # myBank 
 
-myBank is a Java banking application designed to help users better organize their finances. It has three key features that encompass the user's financial life: Accounts, Budget, and Invest.
+myBank is a Java banking application designed to help users organize their finances more efficiently. It has three main features: Accounts, Budget, and Invest.
 
 ## How to Run
 + Clone the project
