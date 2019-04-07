@@ -10,9 +10,9 @@ git clone https://github.com/dlnet/bank.git
 + Run `BankApplication` in `bank/src/main/java/ca/ucalgary/gui`
 
 ## Demo Locations
-Demo 1: `bank/src/main/java/ca/ucalgary/tui`
-Demo 2: `bank/src/main/java/ca/ucalgary/gui`
-Demo 3: `bank/src/main/java/ca/ucalgary/gui`
++ Demo 1: `bank/src/main/java/ca/ucalgary/tui`
++ Demo 2: `bank/src/main/java/ca/ucalgary/gui`
++ Demo 3: `bank/src/main/java/ca/ucalgary/gui`
 
 ## JUnit Testing
 + The `InvestRepository` class is thoroughly tested.
