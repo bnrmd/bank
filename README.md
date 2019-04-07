@@ -1,6 +1,6 @@
 # myBank 
 
-myBank is a Java banking application designed to help users better organize their finances. It will have three key features, each encompassing a major aspect of the user's finances. The features will be; Accounts, Budget and Invest. 
+myBank is a Java banking application designed to help users better organize their finances. It has three key features that encompass the user's financial life: Accounts, Budget, and Invest.
 
 ## How to Run
 + Clone the project
@@ -9,18 +9,14 @@ git clone https://github.com/dlnet/bank.git
 ``` 
 + Run `BankApplication` in `bank/src/main/java/ca/ucalgary/gui`
 
-## Demo 3 Location
-Demo 3 is located here: `bank/src/main/java/ca/ucalgary/gui`
-
-## Demo 2 Location
-Demo 2 is located here: `bank/src/main/java/ca/ucalgary/gui`
-
-## Demo 1 Location
-Demo 1 is located here: `bank/src/main/java/ca/ucalgary/tui`
+## Demo Locations
+Demo 1: `bank/src/main/java/ca/ucalgary/tui`
+Demo 2: `bank/src/main/java/ca/ucalgary/gui`
+Demo 3: `bank/src/main/java/ca/ucalgary/gui`
 
 ## JUnit Testing
-+ The InvestRepository class is thoroughly tested. 
-+ To test, run InvestRepositoryTest in `bank/src/test/java/ca/ucalgary/datastore`
++ The `InvestRepository` class is thoroughly tested.
++ To test, run `InvestRepositoryTest` in `bank/src/test/java/ca/ucalgary/datastore`
 
 ## Overview
 
@@ -32,11 +28,11 @@ Demo 1 is located here: `bank/src/main/java/ca/ucalgary/tui`
 
 ### Domain
 The domain package is to represent all the POJO [(Plain Old Java Object)](https://en.wikipedia.org/wiki/Plain_old_Java_object) entity of a bank business.
-For example, Account.java is a representation of raw data for an account. This means that the Account.java will have properties such as ID, Account Balance, etc.
+For example, `Account.java` is a representation of raw data for an account. This means that the `Account.java` will have properties such as ID, Account Balance, etc.
 These POJO should contain no or very little behaviours (setter and getters).
 
 ### Services
-The service package is to represent actions, operations, behaviours on your POJO. Usually the service package will use the datastore package to save, update, read, delete the POJOs.
+The services package is to represent actions, operations, behaviours on your POJO. Usually the service package will use the datastore package to save, update, read, delete the POJOs.
 
 ### Datastore
 This package is to simulate the persistence of the domain objects. Usually you will have one repository type per domain object.
@@ -66,7 +62,7 @@ git push
 ## Features
 
 ### Accounts
-Allows users to view their current accounts, such as chequing and savings accounts. User will be able to add or delete their accounts from the settings page.
+Allows users to view their current accounts, such as chequing and savings accounts. User will be able to add or delete their accounts from this page.
 
 ### Budget
 Allows users to track how they spend their money. Will be able to choose categories such as rent, utilities, food, etc. Allocates a portion of their income to each category.
