@@ -38,6 +38,10 @@ public class LoginController implements Initializable {
         firstName.setText(message);
     }
 
+    /**
+     * processes user once they press "sign up" within the GUI
+     * @throws Exception
+     */
     @FXML
     private void signUp() throws Exception{
         if(verifySignUpFields()) {
@@ -57,10 +61,19 @@ public class LoginController implements Initializable {
         }
     }
 
+    /**
+     * verifies that sign up fields are valid
+     * @return true / false depending on if fields are valid
+     */
     private boolean verifySignUpFields(){
         return !(firstName.getText().trim().isEmpty() || lastName.getText().trim().isEmpty() || emailSignUp.getText().trim().isEmpty() || passwordSignUp.getText().trim().isEmpty());
     }
 
+    /**
+     * allows user to sign in inside of GUI application
+     * @param event
+     * @throws Exception
+     */
     @FXML
     private void signIn(ActionEvent event) throws Exception{
         if(verifySignInFields()) {
@@ -79,10 +92,18 @@ public class LoginController implements Initializable {
         }
     }
 
+    /**
+     * verifies that sign in credentials exist in local data-store
+     * @return true / false depending on if credentials exist
+     */
     private boolean verifySignInFields(){
         return !(emailSignIn.getText().trim().isEmpty() || passwordSignIn.getText().trim().isEmpty());
     }
 
+    /**
+     * sets a message for user when they first log on
+     * @param message
+     */
     public void setMessage(String message){
         this.message = message;
         testLabel.setText(message);

@@ -146,6 +146,11 @@ public class AccountService {
         return AccountRepository.getAllAccounts();
     }
 
+    /**
+     *
+     * @param accountIds list of account ids
+     * @return list of accounts, based on the account ids passed
+     */
     public List<Account> getAllAccountsByIds(List<String> accountIds){
         return AccountRepository.getAllAccountsByIds(accountIds);
     }

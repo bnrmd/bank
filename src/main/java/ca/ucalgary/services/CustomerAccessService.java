@@ -15,10 +15,19 @@ public class CustomerAccessService {
         return customerAccess;
     }
 
+    /**
+     * @param customerId customer id
+     * @return customer access by customer id
+     */
     public CustomerAccess getCustomerAccessById(String customerId){
         return CustomerAccessRepository.getCustomerAccess(customerId);
     }
 
+    /**
+     * @param email user's email
+     * @param password user's password
+     * @return customer access for user's email / password
+     */
     public CustomerAccess authenticate(String email, String password){
         return CustomerAccessRepository.getAccessFor(email, password);
     }

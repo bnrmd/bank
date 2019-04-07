@@ -10,8 +10,18 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Used for formatting date/time with JSON files
+ */
 public class JsonDateDeserializer extends JsonDeserializer<LocalDateTime> {
 
+    /**
+     *
+     * @param jp
+     * @param ctxt
+     * @return LocalDateTime parsed
+     * @throws IOException
+     */
     @Override
     public LocalDateTime deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException {
         ObjectCodec oc = jp.getCodec();

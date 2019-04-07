@@ -8,10 +8,20 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Used for formatting date/time with JSON files
+ */
 public class JsonDateSerializer extends JsonSerializer <LocalDateTime>{
 
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
+    /**
+     *
+     * @param date
+     * @param generator
+     * @param arg2
+     * @throws IOException
+     */
     @Override
     public void serialize(LocalDateTime date, JsonGenerator generator, SerializerProvider arg2) throws IOException {
         final String dateString = date.format(this.formatter);
