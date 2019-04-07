@@ -11,8 +11,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-
-
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -56,10 +54,14 @@ public class AccountDetailsController implements Initializable {
 
     @FXML
     public void withdrawAction(ActionEvent event){
-        double amount = Double.parseDouble(withdrawAmount.getText());
-        accountService.withdraw(account.getId(),amount);
-        setLabels();
-        setAccountTransactions();
+        try {
+            double amount = Double.parseDouble(withdrawAmount.getText());
+            accountService.withdraw(account.getId(), amount);
+            setLabels();
+            setAccountTransactions();
+        } catch (Exception e){
+            System.out.println("Not enough funds");
+        }
     }
 
     @FXML

@@ -1,6 +1,5 @@
 package ca.ucalgary.gui.accounts;
 
-import ca.ucalgary.domain.Customer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,11 +11,8 @@ import java.util.ResourceBundle;
 
 public class AccountController implements Initializable {
 
-
-    @FXML
-    private TextField initialDeposit;
-    @FXML
-    private ChoiceBox<String> accountType;
+    @FXML private TextField initialDeposit;
+    @FXML private ChoiceBox<String> accountType;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -27,10 +23,6 @@ public class AccountController implements Initializable {
     private void createAccount(ActionEvent event) throws Exception{
         String type = accountType.getValue();
         double balance = Double.parseDouble(initialDeposit.getText());
-
-
     }
-
-
 
 }

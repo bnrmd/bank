@@ -40,7 +40,11 @@ public class Account {
                 '}';
     }
 
-    
+    /**
+     * verifies that two accounts are equal
+     * @param o an Account object that is passed
+     * @return true / false depending on if accounts are equal
+     */
     @Override
     public boolean equals(Object o) {
     	/* compares balance, id, and type */
@@ -53,7 +57,7 @@ public class Account {
     }
     
     /**
-     * @return	hash for an account
+     * @return hash for an account
      */
     @Override
     public int hashCode() {
@@ -63,21 +67,21 @@ public class Account {
     }
 
     /**
-     * @return	id of an account
+     * @return id of an account
      */
     public String getId() {
         return id;
     }
 
     /**
-     * @return	balance of an account
+     * @return balance of an account
      */
     public double getBalance() {
         return balance;
     }
 
     /**
-     * @param balance	balance to set (in dollars)
+     * @param balance balance to set (in dollars)
      */
     public void setBalance(double balance) {
         this.balance = balance;
@@ -97,6 +101,9 @@ public class Account {
         this.type = type;
     }
 
+    /**
+     * @return substring of an account id
+     */
     @JsonIgnore
     public String getAccountNo(){
         return this.id.substring(0,8).toUpperCase();

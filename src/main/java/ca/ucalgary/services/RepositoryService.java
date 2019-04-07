@@ -38,7 +38,8 @@ public class RepositoryService {
             String JSON = mapper.writeValueAsString(accounts);
             System.out.println(JSON);
 
-            // Write String to file
+            /* write string to file */
+
             try {
                 Files.write(Paths.get("data-stores/account-repository.json"), mapper.writeValueAsBytes(accounts), new OpenOption[]{StandardOpenOption.TRUNCATE_EXISTING});
 
@@ -149,7 +150,7 @@ public class RepositoryService {
      */
     public void createDataStoresIfNotExist() {
         Path path = Paths.get("data-stores");
-        //if directory exists?
+        /* if directory exists? */
         if (!Files.exists(path)) {
             try {
                 Files.createDirectories(path);

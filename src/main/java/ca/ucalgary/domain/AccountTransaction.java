@@ -53,6 +53,11 @@ public class AccountTransaction {
                 '}';
     }
 
+    /**
+     * determine if two account tranactions are equal
+     * @param o account transaction to compare
+     * @return true / false depending on if transactions are equal
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -67,7 +72,7 @@ public class AccountTransaction {
     }
 
     /**
-     * @return	hash for an account
+     * @return hash for an account
      */
     @Override
     public int hashCode() {
@@ -77,59 +82,65 @@ public class AccountTransaction {
     }
 
     /**
-     * @return	status for transaction
+     * @return status for transaction
      */
     public String getStatus() {
         return status;
     }
 
     /**
-     * @param status	set status for a transaction
+     * @param status set status for a transaction
      */
     public void setStatus(String status) {
         this.status = status;
     }
 
     /**
-     * @return	the id of a transaction
+     * @return the id of a transaction
      */
     public String getId() {
         return id;
     }
 
     /**
-     * @return	an account id
+     * @return an account id
      */
     public String getAccountId() {
         return accountId;
     }
 
     /**
-     * @return	type of transaction (withdrawal, deposit)
+     * @return type of transaction (withdrawal, deposit)
      */
     public String getType() {
         return type;
     }
 
     /**
-     * @return	amount of money (dollars) in a transaction
+     * @return amount of money (dollars) in a transaction
      */
     public double getAmount() {
         return amount;
     }
 
     /**
-     * @return	date / time of transaction
+     * @return date / time of transaction
      */
     public LocalDateTime getTxDate() {
         return txDate;
     }
 
+    /**
+     * @return substring of transaction number
+     */
     @JsonIgnore
     public String getTransactionNo(){
         return this.id.substring(0,8).toUpperCase();
     }
 
+    /**
+     * @return transaction time/date formatted
+     */
     @JsonIgnore
     public String getTxDateFormat(){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");

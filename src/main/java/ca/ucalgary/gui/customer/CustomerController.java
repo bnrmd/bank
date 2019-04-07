@@ -38,6 +38,9 @@ public class CustomerController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
     }
 
+    /**
+     * Adds an account to the customer's account list
+     */
     @FXML
     public void addAccount() {
         String accountTypeString;
@@ -47,7 +50,6 @@ public class CustomerController implements Initializable {
             accountTypeString = "Savings";
         }
         Account account = accountService.createAccount(accountTypeString.toUpperCase());
-        //accountService.deposit(account.getId(), 0);
         customer.addAccountId(account.getId());
         repositoryService.saveAllRepositories();
         updateAccountsTable();
@@ -59,26 +61,45 @@ public class CustomerController implements Initializable {
         accountInfo.setText(accountTypeString + " Account " + account.getId().substring(0,8).toUpperCase() + " Created");
     }
 
+    /**
+     * sets the context customer
+     * @param customer
+     */
     public void setCustomer(Customer customer){
         this.customer = customer;
     }
 
+    /**
+     * fills up the form within the GUI with the user's list of accounts that they own
+     * @param customer
+     */
     public void populateForm(Customer customer){
         this.customer = customer;
         setName(customer.getFirstName() + " " + customer.getLastName());
         updateAccountsTable();
     }
 
+    /**
+     * sets account info within GUI
+     * @param str string to be set
+     */
     public void setString(String str){
         this.str = str;
         System.out.println(str);
         this.accountInfo.setText(str);
     }
 
+    /**
+     * sets account name within GUI
+     * @param name name of user
+     */
     public void setName(String name){
         this.name.setText(name);
     }
 
+    /**
+     * Updates the account table within the GUI
+     */
     public void updateAccountsTable(){
         accountsTable.getItems().clear();
         accountIdColumn.setCellValueFactory(new PropertyValueFactory<Account,String>("accountNo"));
@@ -91,6 +112,11 @@ public class CustomerController implements Initializable {
         }
     }
 
+    /**
+     * gets the row within the table of the GUI that the user clicks on
+     * used for selecting an account
+     * @throws Exception
+     */
     public void getSelectedRow() throws Exception{
         TablePosition cell = (TablePosition)accountsTable.getSelectionModel().getSelectedCells().get(0);
         System.out.println(((Account)accountsTable.getItems().get(cell.getRow())).getId());

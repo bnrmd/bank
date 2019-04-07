@@ -2,7 +2,6 @@ package ca.ucalgary.services;
 
 import ca.ucalgary.datastore.AccountTransactionRepository;
 import ca.ucalgary.domain.AccountTransaction;
-
 import java.util.List;
 
 public class AccountTransactionService {
@@ -14,7 +13,12 @@ public class AccountTransactionService {
         return AccountTransactionRepository.getAllTransactionsOfAllAccounts();
     }
 
-    public List<AccountTransaction> getAllTransactions(String accountId){
+	/**
+	 *
+	 * @param accountId account id
+	 * @return all transactions of account based on id
+	 */
+	public List<AccountTransaction> getAllTransactions(String accountId){
     	return AccountTransactionRepository.getAllAccountTransactions(accountId);
 	}
 }

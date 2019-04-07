@@ -6,10 +6,12 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 import java.util.UUID;
 
+/**
+ * This Customer Access is a representation of keeping track of the user login
+ */
 public class CustomerAccess {
 
-    // this customer access is representation of keeping track of the user login
-    private static String salt = "somesalt";
+    private static String salt = "somesalt"; // salt for hash
     private String id;
     private String customerId;
     private String email;
@@ -19,11 +21,17 @@ public class CustomerAccess {
 
     }
 
+    /**
+     *
+     * @param customerId id of a user
+     * @param email email of a user
+     * @param password password of a user
+     */
     public CustomerAccess(String customerId, String email, String password){
         this.id = UUID.randomUUID().toString();
         this.customerId = customerId;
         this.email = email;
-
+        /* hashing password */
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
             String pwd = password + salt;
@@ -36,18 +44,33 @@ public class CustomerAccess {
 
     }
 
+    /**
+     * @return id
+     */
     public String getId() {
         return id;
     }
 
+    /**
+     * @return a customer id
+     */
     public String getCustomerId() {
         return customerId;
     }
 
+    /**
+     * @return email
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * verifies that credentials are correct (for login page)
+     * @param email user's email (entered by user)
+     * @param password user's password (entered by user)
+     * @return true / false depending on if credentials exist in data-store
+     */
     public boolean verifyCredentials(String email, String password) {
         String hashed;
         try {

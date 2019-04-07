@@ -8,6 +8,14 @@ public class BankService {
     private CustomerService customerService = new CustomerService();
     private CustomerAccessService customerAccessService = new CustomerAccessService();
 
+    /**
+     * signs up a customer
+     * @param firstName first name of user
+     * @param lastName last name of user
+     * @param email email of user
+     * @param password password of user
+     * @return customer that has been signed up
+     */
     public Customer signUpCustomer(String firstName, String lastName, String email, String password){
         Customer customer = customerService.createCustomer(firstName,lastName,email);
         customerAccessService.createCustomerAccess(customer.getId(),email,password);
@@ -15,6 +23,12 @@ public class BankService {
         return customer;
     }
 
+    /**
+     * signs in a customer
+     * @param email email of user
+     * @param password password of user
+     * @return customer that has been signed in
+     */
     public Customer signIn(String email, String password){
         CustomerAccess customerAccess = null;
         Customer customer = null;
