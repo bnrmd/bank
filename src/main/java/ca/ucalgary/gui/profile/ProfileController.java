@@ -24,6 +24,10 @@ public class ProfileController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) { }
 
+    /**
+     * sets the profile stage of the application with the user's information
+     * @param c context customer
+     */
     @FXML
     public void setProfile(Customer c){
         this.fname.setText(c.getFirstName());
@@ -31,6 +35,10 @@ public class ProfileController implements Initializable {
         this.clientId.setText(c.getEmail());
     }
 
+    /**
+     * setter for customer
+     * @param customer
+     */
     public void setCustomer(Customer customer){
         this.customer = customer;
     }
