@@ -1,5 +1,6 @@
-package ca.ucalgary.domain;
+package ca.ucalgary.tui;
 import ca.ucalgary.datastore.BudgetRepository;
+import ca.ucalgary.domain.Budget;
 import ca.ucalgary.tui.CLI;
 
 import java.util.Scanner;

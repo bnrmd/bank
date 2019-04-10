@@ -2,7 +2,7 @@ package ca.ucalgary.tui;
 
 // Imports
 import java.util.Scanner;
-import ca.ucalgary.domain.Bank;
+
 import ca.ucalgary.domain.Customer;
 import ca.ucalgary.services.BankService;
 import ca.ucalgary.services.RepositoryService;

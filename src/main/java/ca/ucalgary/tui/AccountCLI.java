@@ -1,8 +1,11 @@
-package ca.ucalgary.domain;
+package ca.ucalgary.tui;
 
 // Imports
 //import ca.ucalgary.domain.Account;
 //import ca.ucalgary.domain.AccountTransaction;
+import ca.ucalgary.domain.Account;
+import ca.ucalgary.domain.AccountTransaction;
+import ca.ucalgary.domain.Customer;
 import ca.ucalgary.services.AccountService;
 import ca.ucalgary.services.AccountTransactionService;
 

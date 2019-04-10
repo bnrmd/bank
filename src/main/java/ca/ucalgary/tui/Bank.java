@@ -1,11 +1,9 @@
-package ca.ucalgary.domain;
+package ca.ucalgary.tui;
 
 // Imports 
 import java.util.Scanner;
-import ca.ucalgary.domain.Budget;
-import ca.ucalgary.domain.Invest;
-import ca.ucalgary.domain.RegistrationForm;
-import ca.ucalgary.domain.Goal;
+
+import ca.ucalgary.domain.*;
 import ca.ucalgary.services.BankService;
 
 /**
