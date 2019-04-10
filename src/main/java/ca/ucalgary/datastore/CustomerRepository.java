@@ -11,12 +11,22 @@ public class CustomerRepository {
 
     private static Map<String,Customer> store = new HashMap<>();
 
+    /**
+     *
+     * @param customer
+     * @return
+     */
     public static Customer addCustomer(Customer customer){
         store.put(customer.getId(),customer);
 
         return customer;
     }
 
+    /**
+     *
+     * @param customerId
+     * @return
+     */
     public static Customer getCustomer(String customerId){
         if(store.containsKey(customerId)){
             return store.get(customerId);
@@ -25,6 +35,10 @@ public class CustomerRepository {
         throw new RuntimeException("This customer ID does not exist: " + customerId);
     }
 
+    /**
+     *
+     * @param customerId
+     */
     public static void deleteCustomer(String customerId) {
         if(store.containsKey(customerId)){
             store.remove(customerId);
@@ -34,15 +48,25 @@ public class CustomerRepository {
         throw new RuntimeException("This customer ID does not exist and cannot be deleted: " + customerId);
     }
 
+    /**
+     *
+     * @return
+     */
     public static List<Customer> getAllCustomers(){
         return store.values().stream().collect(Collectors.toList());
     }
 
+    /**
+     *
+     * @param customers
+     */
     public static void setAllCustomers(List<Customer> customers){
         store = customers.stream().collect(Collectors.toMap(Customer::getId,customer -> customer));
     }
 
-    /* used to print all accounts */
+    /**
+     * used to print all accounts
+     */
     public static void printAllCustomers(){
         store.entrySet().stream().forEach(entry -> System.out.println(entry.getValue()));
     }

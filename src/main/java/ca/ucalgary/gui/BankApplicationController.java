@@ -31,6 +31,11 @@ public class BankApplicationController implements Initializable {
         this.customer = customer;
     }
 
+    /**
+     * bottom bar button event to load accounts stage into body of application
+     * @param event
+     * @throws Exception
+     */
     @FXML
     public void accountButton(ActionEvent event) throws Exception{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/accounts.fxml"));
@@ -41,6 +46,11 @@ public class BankApplicationController implements Initializable {
         body.getChildren().setAll(customerParent);
     }
 
+    /**
+     * bottom bar button event to load budget stage into body of application
+     * @param event
+     * @throws Exception
+     */
     @FXML
     public void budgetButton(ActionEvent event) throws Exception{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Budget.fxml"));
@@ -49,14 +59,23 @@ public class BankApplicationController implements Initializable {
 
         body.getChildren().setAll(budgetParent);
     }
-    
-    // Invest Button
+
+    /**
+     * bottom bar button event to load invest stage into body of application
+     * @param event
+     * @throws Exception
+     */
     @FXML
     public void investButton(ActionEvent event) throws Exception{
     	InvestGUI myInvest = new InvestGUI();
     	myInvest.start(primaryStage);
     }
 
+    /**
+     * bottom bar button event to load profile stage into body of application
+     * @param event
+     * @throws Exception
+     */
     @FXML
     public void profileButton(ActionEvent event) throws Exception{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/profile.fxml"));

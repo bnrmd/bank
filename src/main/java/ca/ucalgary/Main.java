@@ -5,6 +5,12 @@ import ca.ucalgary.tui.CLI;
 
 public class Main {
 
+    /**
+     * main method to launch application once compiled
+     * if user's argument is "tui", TUI is launched
+     * if user's argument is "gui", GUI is launched
+     * @param args
+     */
     public static void main(String args[]){
         if (args.length == 0){
             CLI.main(args);

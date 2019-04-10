@@ -6,9 +6,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+ * This class represents the repository of all the accounts
+ */
 public class AccountRepository {
 
-    /* 
+    /**
      * Represents a HashMap that stores accounts, based on their 1) id and 2) account properties
      * String = key, Account = object
      * String is the UUID (identifier of an account)
@@ -121,11 +124,18 @@ public class AccountRepository {
         store = accounts.stream().collect(Collectors.toMap(Account::getId,account -> account));
     }
 
-    /* used to print all accounts */
+    /**
+     * print all accounts
+     */
     public static void printAllAccounts(){
         store.entrySet().stream().forEach(entry -> System.out.println(entry.getValue()));
     }
 
+    /**
+     * get all accounts by ids
+     * @param accountIds list of account ids
+     * @return list of accounts
+     */
     public static List<Account> getAllAccountsByIds(List<String> accountIds){
         return store.entrySet().stream().filter(entry -> accountIds.contains(entry.getKey())).map(entry -> entry.getValue()).collect(Collectors.toList());
     }
