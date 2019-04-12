@@ -53,7 +53,7 @@ public class AccountTransaction {
     }
 
     /**
-     * determine if two account tranactions are equal
+     * determine if two account transactions are equal
      * @param o account transaction to compare
      * @return true / false depending on if transactions are equal
      */

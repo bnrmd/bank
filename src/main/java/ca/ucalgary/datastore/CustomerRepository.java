@@ -14,7 +14,7 @@ public class CustomerRepository {
     /**
      *
      * @param customer
-     * @return
+     * @return customer that has been added
      */
     public static Customer addCustomer(Customer customer){
         store.put(customer.getId(),customer);
@@ -24,8 +24,8 @@ public class CustomerRepository {
 
     /**
      *
-     * @param customerId
-     * @return
+     * @param customerId customer's id
+     * @return customer id if it exists in store
      */
     public static Customer getCustomer(String customerId){
         if(store.containsKey(customerId)){
@@ -36,8 +36,8 @@ public class CustomerRepository {
     }
 
     /**
-     *
-     * @param customerId
+     * delete's a customer from repo
+     * @param customerId customer's id
      */
     public static void deleteCustomer(String customerId) {
         if(store.containsKey(customerId)){
@@ -49,16 +49,16 @@ public class CustomerRepository {
     }
 
     /**
-     *
-     * @return
+     * returns list of all customers
+     * @return list of customers
      */
     public static List<Customer> getAllCustomers(){
         return store.values().stream().collect(Collectors.toList());
     }
 
     /**
-     *
-     * @param customers
+     * sets all customers
+     * @param customers list of customers
      */
     public static void setAllCustomers(List<Customer> customers){
         store = customers.stream().collect(Collectors.toMap(Customer::getId,customer -> customer));
