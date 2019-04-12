@@ -1,5 +1,6 @@
 package ca.ucalgary.gui;
 
+// Imports
 import ca.ucalgary.domain.Customer;
 import ca.ucalgary.gui.customer.CustomerController;
 import ca.ucalgary.gui.budget.BudgetController;
@@ -11,22 +12,40 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * BankApplicationController Class
+ * controller class for bank fxml
+ */
 public class BankApplicationController implements Initializable {
-    private Customer customer;
+   
+	// Declare Variables
+	private Customer customer;
     private Stage primaryStage;
     @FXML private AnchorPane body;
 
+    /**
+     * initialize
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) { }
 
+    /**
+     * set primary stage
+     * @param stage
+     */
     public void setPrimaryStage(Stage stage){
         this.primaryStage = stage;
     }
 
+    /**
+     * set customer
+     * @param customer
+     */
     public void setCustomer(Customer customer){
         this.customer = customer;
     }
@@ -55,8 +74,6 @@ public class BankApplicationController implements Initializable {
     public void budgetButton(ActionEvent event) throws Exception{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Budget.fxml"));
         Parent budgetParent = (Parent)loader.load();
-        //BudgetController controller = loader.<CustomerController>getController();
-
         body.getChildren().setAll(budgetParent);
     }
 
@@ -67,8 +84,12 @@ public class BankApplicationController implements Initializable {
      */
     @FXML
     public void investButton(ActionEvent event) throws Exception{
-    	InvestGUI myInvest = new InvestGUI();
-    	myInvest.start(primaryStage);
+    	/*InvestGUI myInvest = new InvestGUI();
+    	myInvest.start(primaryStage);*/
+    	
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/Budget.fxml"));
+        Parent budgetParent = (Parent)loader.load();
+        body.getChildren().setAll(budgetParent);
     }
 
     /**
@@ -81,12 +102,16 @@ public class BankApplicationController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/profile.fxml"));
         Parent profileParent = (Parent)loader.load();
         ProfileController controller = loader.<ProfileController>getController();
-        //controller.setCustomer(BankApplication.getCustomer());
         controller.setProfile(BankApplication.getCustomer());
         body.getChildren().setAll(profileParent);
     }
 
-   // @FXML
+    /**
+     * change the scene (body) in the stage 
+     * @param fxmlScene
+     * @return
+     * @throws Exception
+     */
     public FXMLLoader changeBody(String fxmlScene) throws Exception{
         FXMLLoader loader = new FXMLLoader((BankApplicationController.class.getResource(fxmlScene)));
         Parent accountParent = (Parent)loader.load();
