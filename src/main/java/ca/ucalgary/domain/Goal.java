@@ -1,3 +1,4 @@
+//DELETE
 package ca.ucalgary.domain;
 
 //Imports

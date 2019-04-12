@@ -1,9 +1,16 @@
 package ca.ucalgary.domain;
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.util.List;
+
+/**
+ * A class that acts as a budget. Stores expenses
+ *
+ */
 public class Budget {
 	
+	/**
+	 * setting instance variables
+	 */
 	private String customerID;
 	private double income;
 	private List<Expense> expenses = new ArrayList<Expense>();
@@ -30,11 +37,20 @@ public class Budget {
 		this.expenses = toCopy.getExpenses();
 		this.customerID = toCopy.getCustomerID();
 	}
+	/**
+	 * Constructor that takes an income and an expense list
+	 * @param income
+	 * @param expenses
+	 */
 	public Budget(double income, List<Expense> expenses) {
 		this.income = income;
 		this.expenses = (ArrayList<Expense>) expenses;
 		this.customerID = "000";
 	}
+	/**
+	 * constructor that takes an id
+	 * @param id
+	 */
 	public Budget (String id) {
 		this.customerID = id;
 		this.income = 0;
@@ -47,9 +63,17 @@ public class Budget {
 	public void setIncome(double toSet) {
 		this.income = toSet;
 	}
+	/**
+	 * sets all expenses using list
+	 * @param expense
+	 */
 	public void setExpenses(ArrayList<Expense> expense) {
 		this.expenses=expense;
 	}
+	/**
+	 * sets the id using string
+	 * @param id
+	 */
 	public void setCustomerID(String id) {
 		this.customerID = id;
 	}
@@ -86,6 +110,10 @@ public class Budget {
 		throw new RuntimeException("Entered expense does not exist");
 		
 	}
+	/**
+	 * returns the customer id of this object
+	 * @return
+	 */
 	public String getCustomerID() {
 		return customerID;
 	}
@@ -131,7 +159,9 @@ public class Budget {
 	}
 	
 	/**
-	 * 
+	 * checks if the name of an expense is used already
+	 * @param name
+	 * @return true if used
 	 */
 	public boolean nameUsed(String name) {
 		for (Expense x: this.getExpenses()) {
@@ -152,7 +182,11 @@ public class Budget {
 		str += "Total Left: " + this.leftoverIncome();
 		return str;
 	}
-	
+	/**
+	 * removes the expense from the array
+	 * @param name
+	 * @return 1 if the expense is removed, otherwise -1
+	 */
 	public int removeExpense(String name) {
 		int count = 0;
 		for (Expense x:expenses) {

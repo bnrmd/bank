@@ -19,17 +19,30 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+/**
+ * Used to save the budget information
+ *
+ */
 public class BudgetRepository {
+	
+	/**
+	 * instance variables
+	 */
 	private static Map<String,Budget> store = new HashMap<>();
 	
+	/**
+	 * Default constructor that calls load budget to load the budget
+	 */
 	public BudgetRepository() {
 		loadBudget();
 	}
 	
+	/**
+	 * saves the budget to a json file
+	 * @param none
+	 */
 	public void saveBudget() {
 		try {
-		//ObjectMapper objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
 			List<Budget> toSave = setAsList();
 			ObjectMapper objectMapper = new ObjectMapper();
 			String JSON = objectMapper.writeValueAsString(toSave);
@@ -40,33 +53,36 @@ public class BudgetRepository {
 		} catch(IOException e){
 			e.printStackTrace();
 		}
-		/*try {
-			 File budgetStore = new File("data-stores/budget-repository.json");
-		        Files.write(budgetStore.toPath(), objectMapper.writeValueAsBytes(toSave), new OpenOption[]{StandardOpenOption.TRUNCATE_EXISTING});
-		}catch (IOException e) {
-			e.printStackTrace();
-		}*/ catch (URISyntaxException e) {
-			// TODO Auto-generated catch block
+		catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		}
+	}
+	
+	/**
+	 * loads the budget from the json file
+	 * @param none
+	 */
 	public void loadBudget() {
 		try {
-			//ObjectMapper objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
 			ObjectMapper objectMapper = new ObjectMapper().enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY);
-			//File budgetLoad = getFile("data-stores/budget-repository.json");
 			Scanner scanner = new Scanner(getFile(""));
 			String json = scanner.useDelimiter("\\A").next();
 			List<Budget> list = objectMapper.readValue(json, new TypeReference<List<Budget>>(){});
 			restoreBudgets(list);
 		}catch(Exception e) {
-			//e.printStackTrace();
 		}
 		
 	}
+	
+	/**
+	 * gets the file to load
+	 * @param path
+	 * @return File
+	 * @throws URISyntaxException
+	 */
 	public File getFile(String path) throws URISyntaxException {
 		URL url = Budget.class.getClassLoader().getResource("data-stores/budget-repository.json");
 		
@@ -74,6 +90,10 @@ public class BudgetRepository {
 		return location.toFile();
 	}
 	
+	/**
+	 * Takes a list and converts it to a map
+	 * @param list
+	 */
 	public void restoreBudgets(List<Budget> list) {
 		for (Budget x:list) {
 			try{
@@ -84,21 +104,27 @@ public class BudgetRepository {
 		}
 	}
 	
+	/**
+	 * gets the budget to return from the list
+	 * @param id
+	 * @return budget
+	 */
 	public Budget getBudget(String id) {
 		try {
-			//System.out.print("budget loaded with id" + id);
 			if (store.get(id) == null) {
 				store.put(id,new Budget(id));
-				//store.get(id).setNew(id);
 			}
-
 			return store.get(id);
 		} catch(Exception e) {
 			System.out.print("Budget does not exist for id");
-			//store.put(id,new Budget(0));
 			return store.get(id);
 		}
 	}
+	
+	/**
+	 * saves the map as a list
+	 * @return list
+	 */
 	public List<Budget> setAsList(){
 		List<Budget> toReturn = new ArrayList<>(store.values());
 		return toReturn;

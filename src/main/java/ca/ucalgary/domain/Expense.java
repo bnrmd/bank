@@ -4,10 +4,11 @@ package ca.ucalgary.domain;
  */
 import ca.ucalgary.domain.Expense;
 
-//package ca.ucalgary.domain;
 
 public class Expense{
-	
+	/**
+	 * setting instance variables
+	 */
 	private String name;
 	private double amountOfIncomeCAD;
 	
