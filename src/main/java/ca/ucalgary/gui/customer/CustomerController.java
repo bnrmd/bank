@@ -53,11 +53,6 @@ public class CustomerController implements Initializable {
         customer.addAccountId(account.getId());
         repositoryService.saveAllRepositories();
         updateAccountsTable();
-        /*
-        accountInfo.setText(account.getId().substring(0,8).toUpperCase() + "\n" +
-                            account.getBalance() + "\n" +
-                            account.getType());
-                            */
         accountInfo.setText(accountTypeString + " Account " + account.getId().substring(0,8).toUpperCase() + " Created");
     }
 
@@ -85,7 +80,6 @@ public class CustomerController implements Initializable {
      */
     public void setString(String str){
         this.str = str;
-        System.out.println(str);
         this.accountInfo.setText(str);
     }
 
