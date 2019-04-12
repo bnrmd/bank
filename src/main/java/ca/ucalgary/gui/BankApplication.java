@@ -15,13 +15,21 @@ import javafx.stage.Stage;
  */
 public class BankApplication extends Application {
 
+	// Declare BankApplication Variables
     private RepositoryService repositoryService = new RepositoryService();
     private static Customer customer;
 
+    /**
+     * main
+     * @param args
+     */
     public static void main(String[] args) {
         launch(args);
     }
 
+    /**
+     * start
+     */
     @Override
     public void start(Stage primaryStage) throws Exception{
         repositoryService.restoreAllRepositories();

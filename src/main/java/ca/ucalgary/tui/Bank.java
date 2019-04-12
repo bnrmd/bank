@@ -2,7 +2,6 @@ package ca.ucalgary.tui;
 
 // Imports 
 import java.util.Scanner;
-
 import ca.ucalgary.domain.*;
 import ca.ucalgary.services.BankService;
 
@@ -67,6 +66,7 @@ public class Bank {
 		String lname = input.nextLine();
 		Customer customer = bankService.signUpCustomer(fname, lname, email, password);
 		
+		// return customer
 		return customer;
 		
 	}
@@ -97,105 +97,6 @@ public class Bank {
 		// run CLI
 		BudgetCLI budgetCLI = new BudgetCLI();
 		budgetCLI.main(null);
-	}
-	
-	/**
-	 * Goals Selected Method
-	 */
-	public static void GoalsSelected() {
-		
-		// declare variables 
-		Goal myGoal;
-		Scanner input ;
-		String userSelection, userInput;
-		int time;
-		boolean run;
-
-		// initialize variables
-		myGoal = new Goal();
-		input = new Scanner(System.in);  
-		userSelection = "";
-		userInput = "";
-		time = 0;
-		run = true;
-
-		// run application
-		while (run) {
-			
-			// message
-			System.out.println("\n--------------------------------------------");
-			System.out.println("                    Goal");
-			System.out.println("--------------------------------------------");
-			System.out.println("[1] Set Goal  [2] Set Time Period  [3] View Goal  [q] Quit \n");
-
-			// selection 
-			System.out.print("Enter Selection: ");
-			userSelection = input.nextLine();
-			
-			while (!(userSelection.equals("1")||userSelection.equals("2")||userSelection.equals("3")||userSelection.equals("q"))) {
-				// invalid input
-				System.out.println("Invalid Input! Try again... \n");
-				System.out.print("Enter Selection: ");
-				userSelection = input.nextLine();
-			}
-			
-			switch (userSelection) {
-			
-			case "1":
-				// set goal;
-				System.out.print("\nEnter Goal Name: ");
-				userInput = input.nextLine();
-				myGoal.setGoalName(userInput);
-				System.out.print("Enter Goal Amount: ");
-				userInput = input.nextLine();
-				myGoal.setGoalAmount(Double.valueOf(userInput));
-				break;
-				
-			case "2":
-				// set time period
-				System.out.print("\nSelect Time Period: [y = Years, m = Months, w = Weeks, d = Days] ");
-				userInput = input.nextLine();
-				switch (userInput) {
-				case "y":
-					time = 365;
-					myGoal.setTimePeriod("Years");
-					break;
-				case "m":
-					time = 30;
-					myGoal.setTimePeriod("Months");
-					break;
-				case "w":
-					time = 7;
-					myGoal.setTimePeriod("Weeks");
-					break;
-				case "d":
-					time = 1;
-					myGoal.setTimePeriod("Days");
-					break;
-				default:
-					break;
-				}
-				System.out.print("Enter Time Period: ");
-			    userInput = input.nextLine();
-			    myGoal.setTimePeriodInput(Integer.parseInt(userInput));
-				myGoal.setTimePeriodDays(Integer.parseInt(userInput) * time);
-				break;
-				
-			case "3":
-				// view goal
-				System.out.println("\n" + myGoal.toString());
-				break;
-				
-			case "q":
-				run = false;
-				break;
-				
-			default:  // will never run
-				break;
-			}
-			
-		}
-
 	}
 
 	/**

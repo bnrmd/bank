@@ -11,32 +11,31 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 
 public class BudgetController implements Initializable{
-	private BudgetRepository br = new BudgetRepository();
-	private Budget budget = br.getBudget(BankApplication.getCustomer().getId());
 	
 	/**
 	 * Setting all the variables that will be used
 	 */
-	//Main scene
+	// BudgetController Variables
+	private BudgetRepository br = new BudgetRepository();
+	private Budget budget = br.getBudget(BankApplication.getCustomer().getId());
+	
+	// Main scene
 	@FXML
 	AnchorPane budgetPane;
 	@FXML
 	Button editBudgetButton;
 	@FXML
 	Label expenseLabel;
-	//menu scene 
+	
+	// Menu scene 
 	@FXML
 	AnchorPane menuPane;
 	@FXML
@@ -48,7 +47,7 @@ public class BudgetController implements Initializable{
 	@FXML
 	Button backButton;
 	
-	//add expense scene
+	// Add Expense scene
 	@FXML
 	AnchorPane expensePane;
 	@FXML
@@ -64,7 +63,7 @@ public class BudgetController implements Initializable{
 	@FXML
 	Label expenseSuccessLabel;
 	
-	//remove expense scene
+	// Remove expense scene
 	@FXML
 	AnchorPane removePane;
 	@FXML
@@ -96,15 +95,10 @@ public class BudgetController implements Initializable{
 	 */
 	@FXML
 	private void openMenu(ActionEvent event) throws Exception {
-		System.out.print("button");
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/BudgetMenu.fxml"));
 		Parent menuParent = (Parent)fxmlLoader.load();
-		//Scene menuScene = new Scene(menuParent);
 		budgetPane.getChildren().clear();
-		budgetPane.getChildren().addAll(menuParent);
-		//Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        //window.setScene(menuScene);
-       // window.show();	
+		budgetPane.getChildren().addAll(menuParent);	
 	}
 	
 	//Menu Buttons

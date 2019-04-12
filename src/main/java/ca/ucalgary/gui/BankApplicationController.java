@@ -3,7 +3,6 @@ package ca.ucalgary.gui;
 // Imports
 import ca.ucalgary.domain.Customer;
 import ca.ucalgary.gui.customer.CustomerController;
-import ca.ucalgary.gui.budget.BudgetController;
 import ca.ucalgary.gui.profile.ProfileController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,7 +20,7 @@ import java.util.ResourceBundle;
  */
 public class BankApplicationController implements Initializable {
    
-	// Declare Variables
+	// Declare BankApplicationController Variables
 	private Customer customer;
     private Stage primaryStage;
     @FXML private AnchorPane body;
@@ -84,12 +83,11 @@ public class BankApplicationController implements Initializable {
      */
     @FXML
     public void investButton(ActionEvent event) throws Exception{
-    	/*InvestGUI myInvest = new InvestGUI();
-    	myInvest.start(primaryStage);*/
-    	
-    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/Budget.fxml"));
-        Parent budgetParent = (Parent)loader.load();
-        body.getChildren().setAll(budgetParent);
+    	if (BankApplication.getCustomer().getId() != null) {
+	    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/investMain.fxml"));
+	        Parent budgetParent = (Parent)loader.load();
+	        body.getChildren().setAll(budgetParent);
+    	} 
     }
 
     /**

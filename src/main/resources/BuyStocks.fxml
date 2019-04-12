@@ -28,7 +28,7 @@
                         <Font name="Corbel" size="15.0" />
                      </font>
                   </JFXTextField>
-                  <Label fx:id="txtNotification" layoutX="197.0" layoutY="295.0" text="*Bought Stocks Label*" />
+                  <Label fx:id="txtNotification" layoutX="89.0" layoutY="302.0" prefHeight="21.0" prefWidth="368.0" />
                </children>
             </Pane>
             <Label alignment="CENTER" contentDisplay="CENTER" layoutY="-1.0" prefHeight="48.0" prefWidth="500.0" text="Invest" textFill="#000000a4">

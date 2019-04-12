@@ -5,17 +5,16 @@ import ca.ucalgary.datastore.InvestRepository;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextAreaBuilder;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.scene.Node;
 import java.io.IOException;
 
 /**
@@ -23,9 +22,6 @@ import java.io.IOException;
  * controller class for invest fxml
  */
 public class InvestController{
-	
-	// Declare Variables
-	//InvestRepository myInvestRepository = 
 	
 	// Declare Menu Scene Variables
 	@FXML
@@ -123,18 +119,10 @@ public class InvestController{
 	 */
 	@FXML
 	private void SearchStock(ActionEvent event) throws IOException{
-		Parent view2 = FXMLLoader.load(getClass().getResource("/SearchStock.fxml"));
-		Scene scene2 = new Scene(view2);
-		Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-		window.setScene(scene2);
-		window.show();
-		
-		/*
-		FXMLLoader fxmlLoader = FXMLLoader.load(getClass().getResource("SearchStock.fxml"));
-		Parent parent = (Parent)fxmlLoader.load();
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/SearchStock.fxml"));
+		Parent addParent = (Parent)fxmlLoader.load();
 		homePane.getChildren().clear();
-		homePane.getChildren().addAll(parent);*/
-		
+		homePane.getChildren().addAll(addParent);
 	}
 	
 	/**
@@ -144,21 +132,19 @@ public class InvestController{
 	 */
 	@FXML
 	private void ViewStocks(ActionEvent event) throws IOException{
-		Parent view2 = FXMLLoader.load(getClass().getResource("/ViewStocks.fxml"));
-		Scene scene2 = new Scene(view2);
-		Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-		window.setScene(scene2);
-		window.show();
-	
+		
 		// declare variables
-		Label resultView; 
+		VBox verti; 
+		ScrollPane resultPane11;
+		Label result11; 
 		InvestRepository myInvestRepository;
 		String[] line;
 		String txtString;
 		
 		// initialize variables
-		resultPane = new ScrollPane();
-		resultView = new Label();
+		verti = new VBox();
+		resultPane11 = new ScrollPane();
+		result11 = new Label();
 		myInvestRepository = new InvestRepository();
 		line = new String[5];
 		txtString = "";
@@ -169,10 +155,20 @@ public class InvestController{
 			txtString += line[0] + " - " + line[1] + "\n";
 		}
 		
-		//System.out.println(txtString);
+		// set text 
+		result11.setText(txtString);
+		resultPane11.setContent(result11);
 		
-		resultView.setText(txtString);
-		resultPane.setContent(resultView);
+		// set verti
+		verti.getChildren().add(new Label("Available Stocks"));
+		verti.getChildren().add(resultPane11);
+		verti.setAlignment(Pos.TOP_CENTER);
+		verti.setSpacing(15);		
+		
+		// set stage
+		Stage searchWindow = new Stage();
+		searchWindow.setScene(new Scene(verti, 300, 400));
+		searchWindow.show();
 		
 	}
 	
@@ -204,24 +200,19 @@ public class InvestController{
 			txtString = "none.";
 		}
 		
-		System.out.println(txtString);
+		// set VBox scene
+		VBox verti = new VBox();
+
+		verti.getChildren().add(new Label("My Portfolio"));
+		verti.getChildren().add(new Label(txtString));
+		verti.setAlignment(Pos.TOP_CENTER);
+		verti.setSpacing(15);		
 		
-		lblMyPortfolio = new Label();
-		lblMyPortfolio.setText(txtString);
+		// stage
+		Stage searchWindow = new Stage();
+		searchWindow.setScene(new Scene(verti, 300, 400));
+		searchWindow.show();
 		
-		
-		Parent view2 = FXMLLoader.load(getClass().getResource("/Portfolio.fxml"));
-		Scene scene2 = new Scene(view2);
-		Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-		window.setScene(scene2);
-		window.show();
-		
-		/*
-		try {
-			PortfolioMethod(event);
-		} catch (Exception e) {
-			//
-		}*/
 	}
 	
 	/**
@@ -231,13 +222,10 @@ public class InvestController{
 	 */
 	@FXML
 	private void BuyStocks(ActionEvent event) throws IOException{
-		Parent view2 = FXMLLoader.load(getClass().getResource("/BuyStocks.fxml"));
-		
-		Scene scene2 = new Scene(view2);
-		
-		Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-		window.setScene(scene2);
-		window.show();
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/BuyStocks.fxml"));
+		Parent addParent = (Parent)fxmlLoader.load();
+		homePane.getChildren().clear();
+		homePane.getChildren().addAll(addParent);
 	}
 	
 	/**
@@ -285,66 +273,7 @@ public class InvestController{
 		} else {
 			result.setText("Stock is Not Available.");
 		}
-	}
-	
-	/**
-	 * View method
-	 * @param event
-	 * @throws Exception
-	 */
-	private void ViewMethod(ActionEvent event) throws Exception{
 		
-		// declare variables
-		Label result; 
-		InvestRepository myInvestRepository;
-		String[] line;
-		String txtString;
-		
-		// initialize variables
-		result = new Label();
-		myInvestRepository = new InvestRepository();
-		line = new String[5];
-		txtString = "";
-		
-		// display all stocks
-		for (String stock : myInvestRepository.getStocksList()) {
-			line = stock.split(",");
-			txtString += line[0] + " - " + line[1] + "\n";
-		}
-		
-		result.setText(txtString);
-		resultPane.setContent(result);
-		
-	}
-	
-	/**
-	 * Portfolio method
-	 * @param event
-	 * @throws Exception
-	 */
-	private void PortfolioMethod(ActionEvent event) throws Exception{
-		
-		// declare variables
-		InvestRepository myInvestRepository;
-		String[] line;
-		String txtString;
-		
-		// initialize variables
-		myInvestRepository = new InvestRepository();
-		line = new String[2];
-		txtString = "";
-		
-		// display all stocks in portfolio
-		for (String stock : myInvestRepository.getPortfolioList()) {
-			line = stock.split(";");
-			txtString += line[0] + ": " + line[1] + " Shares \n";
-		}
-		
-		if (myInvestRepository.getPortfolioList().size() == 0) {
-			txtString = "none.";
-		}
-		
-		lblMyPortfolio.setText(txtString);
 	}
 	
 	/**

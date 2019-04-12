@@ -2,7 +2,6 @@ package ca.ucalgary.tui;
 
 // Imports
 import java.util.Scanner;
-
 import ca.ucalgary.domain.Customer;
 import ca.ucalgary.services.BankService;
 import ca.ucalgary.services.RepositoryService;
@@ -23,6 +22,7 @@ public class CLI {
 	 */
 	public static void main(String[] args) {
 
+		// setup RepositoryService 
 		RepositoryService recoveredService = new RepositoryService();
 		recoveredService.restoreAllRepositories();
 		
@@ -33,7 +33,6 @@ public class CLI {
 		// initialize variables
 		input = new Scanner(System.in);  
 		userSelection = "";
-
 		
 		while (true) {
 			
@@ -64,11 +63,8 @@ public class CLI {
 
 			case "2":
 				// call SignUpSelected method
-				//BankApplication.SignUpSelected();
-				//Menu();
 				contextCustomer = signUp();
 				Menu();
-
 				break;
 			
 			case "q":
@@ -79,11 +75,8 @@ public class CLI {
 			default:  // will never run 
 				break;
 			}
-
-
 			
 		}
-
 				
 	}
 
@@ -112,8 +105,6 @@ public class CLI {
 	 * Menu method
 	 */
 	public static void Menu() {
-
-
 		
 		// declare variables 
 		Scanner input ;
@@ -128,7 +119,6 @@ public class CLI {
 		// menu
 		try {
 			while (run) {
-
 
 				// message
 				System.out.println("\n--------------------------------------------");
@@ -168,8 +158,6 @@ public class CLI {
 						repositoryService.saveAllRepositories();
 						break;
 
-
-
 					case "q":
 						System.out.println();
 						run = false;
@@ -180,8 +168,9 @@ public class CLI {
 				}
 			}
 		} finally {
-
+			// TODO Auto-generated method stub
 		}
+		
 	}
 	
 }
