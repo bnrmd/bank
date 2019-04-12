@@ -1,1 +1,22 @@
-[ ]
+[ {
+  "id" : "90fcf9dd-a17d-4588-b5f3-3461b11afbed",
+  "accountId" : "c63aafb8-ce76-432f-b591-3501caf076c4",
+  "type" : "DEPOSIT",
+  "amount" : 100.0,
+  "status" : "PENDING",
+  "txDate" : "2019-04-12 17:26:14"
+}, {
+  "id" : "2a076d6b-b4e0-4a95-9499-3c727d754768",
+  "accountId" : "c63aafb8-ce76-432f-b591-3501caf076c4",
+  "type" : "WITHDRAW",
+  "amount" : 10.0,
+  "status" : "PENDING",
+  "txDate" : "2019-04-12 17:26:17"
+}, {
+  "id" : "162e08df-590b-4278-b27e-8ab29396baf5",
+  "accountId" : "c63aafb8-ce76-432f-b591-3501caf076c4",
+  "type" : "CREATE",
+  "amount" : 0.0,
+  "status" : "PENDING",
+  "txDate" : "2019-04-12 17:26:09"
+} ]
