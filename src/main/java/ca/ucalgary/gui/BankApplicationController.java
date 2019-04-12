@@ -56,12 +56,17 @@ public class BankApplicationController implements Initializable {
      */
     @FXML
     public void accountButton(ActionEvent event) throws Exception{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/accounts.fxml"));
-        Parent customerParent = (Parent)loader.load();
-        CustomerController controller = loader.<CustomerController>getController();
-        controller.populateForm(BankApplication.getCustomer());
-        controller.setString("Accounts");
-        body.getChildren().setAll(customerParent);
+    	try {
+    		BankApplication.getCustomer().getId();
+	    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/accounts.fxml"));
+	        Parent customerParent = (Parent)loader.load();
+	        CustomerController controller = loader.<CustomerController>getController();
+	        controller.populateForm(BankApplication.getCustomer());
+	        controller.setString("Accounts");
+	        body.getChildren().setAll(customerParent);
+    	} catch (Exception e)  {
+	    	// user must first create an account
+	    }
     }
 
     /**
@@ -71,9 +76,13 @@ public class BankApplicationController implements Initializable {
      */
     @FXML
     public void budgetButton(ActionEvent event) throws Exception{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Budget.fxml"));
-        Parent budgetParent = (Parent)loader.load();
-        body.getChildren().setAll(budgetParent);
+	    try {    
+	    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/Budget.fxml"));
+	        Parent budgetParent = (Parent)loader.load();
+	        body.getChildren().setAll(budgetParent);
+    	} catch (Exception e)  {
+	    	// user must first create an account
+	    }    
     }
 
     /**
@@ -83,11 +92,14 @@ public class BankApplicationController implements Initializable {
      */
     @FXML
     public void investButton(ActionEvent event) throws Exception{
-    	if (BankApplication.getCustomer().getId() != null) {
-	    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/investMain.fxml"));
-	        Parent budgetParent = (Parent)loader.load();
-	        body.getChildren().setAll(budgetParent);
-    	} 
+    	try {
+    		BankApplication.getCustomer().getId();
+    		FXMLLoader loader = new FXMLLoader(getClass().getResource("/investMain.fxml"));
+            Parent budgetParent = (Parent)loader.load();
+            body.getChildren().setAll(budgetParent);
+    	} catch (Exception e) {
+    		// user must first create an account
+    	}
     }
 
     /**
@@ -97,11 +109,16 @@ public class BankApplicationController implements Initializable {
      */
     @FXML
     public void profileButton(ActionEvent event) throws Exception{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/profile.fxml"));
-        Parent profileParent = (Parent)loader.load();
-        ProfileController controller = loader.<ProfileController>getController();
-        controller.setProfile(BankApplication.getCustomer());
-        body.getChildren().setAll(profileParent);
+    	try {
+    		BankApplication.getCustomer().getId();
+	        FXMLLoader loader = new FXMLLoader(getClass().getResource("/profile.fxml"));
+	        Parent profileParent = (Parent)loader.load();
+	        ProfileController controller = loader.<ProfileController>getController();
+	        controller.setProfile(BankApplication.getCustomer());
+	        body.getChildren().setAll(profileParent);
+    	} catch (Exception e)  {
+	    	// user must first create an account
+	    }
     }
 
     /**
