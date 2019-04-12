@@ -91,4 +91,9 @@ public class AccountDetailsController implements Initializable {
             transactionTable.getItems().add(tx);
         }
     }
+    
+    public Account getAccount() {
+    	return this.account;
+    }
+    
 }
