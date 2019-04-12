@@ -58,4 +58,5 @@ public class BankApplication extends Application {
     public static Customer getCustomer() {
         return customer;
     }
+    
 }

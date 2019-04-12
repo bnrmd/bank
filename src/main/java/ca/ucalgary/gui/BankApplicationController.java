@@ -53,8 +53,13 @@ public class BankApplicationController implements Initializable {
     // Invest Button
     @FXML
     public void investButton(ActionEvent event) throws Exception{
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/InvestMain.fxml"));
+        Parent budgetParent = (Parent)loader.load();
+        body.getChildren().setAll(budgetParent);
+        /*
     	InvestGUI myInvest = new InvestGUI();
     	myInvest.start(primaryStage);
+    	*/
     }
 
     @FXML
