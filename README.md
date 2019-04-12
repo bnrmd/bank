@@ -1,6 +1,6 @@
 # myBank 
 
-myBank is a Java banking application designed to help users organize their finances more efficiently. It has three main features: Accounts, Budget, and Invest.
+myBank is a Java banking application designed to help users organize their finances more efficiently.
 
 ## How to Run
 1. Clone the project
@@ -13,6 +13,9 @@ git clone https://github.com/dlnet/bank.git
     - For IntelliJ IDEA:
        - `New > Project from Existing Sources > Select the pom.xml file`	 
 3. Run `BankApplication` in `bank/src/main/java/ca/ucalgary/gui`
+
+Note: You may also compile our code using `mvn clean install` in a terminal. However, doing this may not allow the `Budget` and `Invest` repositories to save. This is because we originally saved our `data-stores` inside of the `src` folder, which is not accessible once the code has been compiled, and we did not have time to refactor everything towards the end.
+In this case, it is better to just run the application directly from an IDE, instead of trying to compile.
 
 ## Demo Locations
 + Demo 1: `bank/src/main/java/ca/ucalgary/tui`
