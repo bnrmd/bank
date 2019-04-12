@@ -134,13 +134,13 @@ public class CLI {
 				System.out.println("\n--------------------------------------------");
 				System.out.println("                   Menu");
 				System.out.println("--------------------------------------------");
-				System.out.println("[1] Account  [2] Budget  [3] Goal  [4] Invest  [5] Save Accounts  [6] Load Accounts  [q] Quit \n");
+				System.out.println("[1] Account  [2] Budget  [3] Invest  [4] Save Accounts  [5] Load Accounts  [q] Quit \n");
 
 				// selection
 				System.out.print("Enter Selection: ");
 				userSelection = input.nextLine();
 
-				while (!(userSelection.equals("1") || userSelection.equals("2") || userSelection.equals("3") || userSelection.equals("4") || userSelection.equals("5") || userSelection.equals("6") || userSelection.equals("q"))) {
+				while (!(userSelection.equals("1") || userSelection.equals("2") || userSelection.equals("3") || userSelection.equals("4") || userSelection.equals("5") || userSelection.equals("q"))) {
 					// invalid input1
 					System.out.println("Invalid Input! Try again... \n");
 					System.out.print("Enter Selection: ");
@@ -157,18 +157,13 @@ public class CLI {
 						// call BudgetSelected method
 						Bank.BudgetSelected();
 						break;
-
+						
 					case "3":
-						// call GoalsSelected method
-						Bank.GoalsSelected();
-						break;
-
-					case "4":
 						// call InvestSelected method
 						Bank.InvestSelected();
 						break;
 
-					case "5":
+					case "4":
 						RepositoryService repositoryService = new RepositoryService();
 						repositoryService.saveAllRepositories();
 						break;
