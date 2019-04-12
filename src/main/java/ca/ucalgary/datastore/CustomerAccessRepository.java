@@ -1,7 +1,6 @@
 package ca.ucalgary.datastore;
 
 import ca.ucalgary.domain.CustomerAccess;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,8 +12,8 @@ public class CustomerAccessRepository {
 
     /**
      *
-     * @param customerAccess
-     * @return
+     * @param customerAccess customer access
+     * @return customerAccess customer access
      */
     public static CustomerAccess addCustomerAccess(CustomerAccess customerAccess){
         store.put(customerAccess.getEmail(),customerAccess);
@@ -24,8 +23,8 @@ public class CustomerAccessRepository {
 
     /**
      *
-     * @param customerAccessId
-     * @return
+     * @param customerAccessId customer access id as string
+     * @return customer access id from store
      */
     public static CustomerAccess getCustomerAccess(String customerAccessId){
         if(store.containsKey(customerAccessId)){
@@ -37,7 +36,7 @@ public class CustomerAccessRepository {
 
     /**
      *
-     * @param customerAccessId
+     * @param customerAccessId access id of a customer
      */
     public static void deleteCustomerAccess(String customerAccessId) {
         if(store.containsKey(customerAccessId)){
@@ -58,9 +57,9 @@ public class CustomerAccessRepository {
 
     /**
      *
-     * @param email
-     * @param password
-     * @return
+     * @param email user's email
+     * @param password user's password
+     * @return CustomerAccess on if user is verified
      */
     public static CustomerAccess getAccessFor(String email, String password) {
         CustomerAccess customerAccess = null;
@@ -78,15 +77,15 @@ public class CustomerAccessRepository {
 
     /**
      *
-     * @return
+     * @return list of customers
      */
     public static List<CustomerAccess> getAllCustomerAccess(){
         return store.values().stream().collect(Collectors.toList());
     }
 
     /**
-     *
-     * @param customerAccesses
+     * sets all customer accesses
+     * @param customerAccesses list of customer accesses
      */
     public static void setAllCustomerAccess(List<CustomerAccess> customerAccesses){
         store = customerAccesses.stream().collect(Collectors.toMap(CustomerAccess::getEmail,customerAccess -> customerAccess));

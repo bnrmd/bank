@@ -6,7 +6,7 @@ import ca.ucalgary.tui.CLI;
 public class Main {
 
     /**
-     * main method to launch application once compiled
+     * main method to launch application
      * if user's argument is "tui", TUI is launched
      * if user's argument is "gui", GUI is launched
      * @param args
