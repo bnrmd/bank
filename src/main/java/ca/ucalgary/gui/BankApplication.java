@@ -1,5 +1,6 @@
 package ca.ucalgary.gui;
 
+// Imports
 import ca.ucalgary.domain.Customer;
 import ca.ucalgary.services.RepositoryService;
 import javafx.application.Application;
@@ -58,4 +59,5 @@ public class BankApplication extends Application {
     public static Customer getCustomer() {
         return customer;
     }
+    
 }
