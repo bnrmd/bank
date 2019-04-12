@@ -48,15 +48,26 @@ public class Bank {
 	/**
 	 * Sign-Up Selected Method
 	 */
-	public static void SignUpSelected() {
+	public static Customer SignUpSelected() {
 		
 		// message
 		System.out.println("\n--------------------------------------------");
 		System.out.println("                   Sign-Up");
 		System.out.println("--------------------------------------------");
 		
-		// call RegistrationForm class
-		RegistrationForm.main(null);  
+		// get user info
+		Scanner input =  new Scanner(System.in);
+		System.out.print("Enter Email: ");
+		String email = input.nextLine();
+		System.out.print("Enter Password: ");
+		String password = input.nextLine();
+		System.out.print("Enter First Name: ");
+		String fname = input.nextLine();
+		System.out.print("Enter Last Name: ");
+		String lname = input.nextLine();
+		Customer customer = bankService.signUpCustomer(fname, lname, email, password);
+		
+		return customer;
 		
 	}
 	
