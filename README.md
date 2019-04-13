@@ -12,7 +12,8 @@ git clone https://github.com/dlnet/bank.git
        - `File > Import > Existing Maven Projects > Select the root directory (the one containing pom.xml)`
     - For IntelliJ IDEA:
        - `New > Project from Existing Sources > Select the pom.xml file`	 
-3. Run `BankApplication` in `bank/src/main/java/ca/ucalgary/gui`
+3. Run `BankApplication` in `bank/src/main/java/ca/ucalgary/gui` to start GUI
+4. Run `CLI` in `bank/src/main/java/ca/ucalgary/tui` to start text-based UI
 
 Note: You may also compile our code using `mvn clean install` in a terminal. However, doing this may not allow the `Budget` and `Invest` repositories to save. This is because we originally saved our `data-stores` inside of the `src` folder, which is not accessible once the code has been compiled, and we did not have time to refactor everything towards the end.
 In this case, it is better to just run the application directly from an IDE, instead of trying to compile.
