@@ -11,6 +11,7 @@ import java.util.UUID;
  */
 public class Customer {
 
+	// Declare Variables 
     private String id;
     private String firstName;
     private String lastName;
@@ -142,6 +143,10 @@ public class Customer {
         return Objects.hash(id, firstName, lastName, email);
     }
 
+    /** 
+     * toString
+     * @return String 
+     */
     @Override
     public String toString() {
         return "Customer{" +

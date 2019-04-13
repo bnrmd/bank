@@ -2,7 +2,6 @@ package ca.ucalgary.gui.budget;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import ca.ucalgary.datastore.BudgetRepository;
 import ca.ucalgary.domain.Budget;
 import ca.ucalgary.domain.Expense;
@@ -18,11 +17,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
+/**
+ * BudgetController
+ * contrller class for Budget feature 
+ */
 public class BudgetController implements Initializable{
 	
-	/**
-	 * Setting all the variables that will be used
-	 */
+	// Setting all the variables that will be used
+	
 	// BudgetController Variables
 	private BudgetRepository br = new BudgetRepository();
 	private Budget budget = br.getBudget(BankApplication.getCustomer().getId());
@@ -87,7 +89,7 @@ public class BudgetController implements Initializable{
 	@FXML
 	Button returnFromIncomeButton;
 	
-	//controllers
+	// controllers
 	/**
 	 * Opens the menu from the budget scene
 	 * @param event
@@ -101,7 +103,7 @@ public class BudgetController implements Initializable{
 		budgetPane.getChildren().addAll(menuParent);	
 	}
 	
-	//Menu Buttons
+	// Menu Buttons
 	/**
 	 * Moves into the expense option
 	 * @param event
@@ -150,7 +152,8 @@ public class BudgetController implements Initializable{
 		menuPane.getChildren().clear();
 		menuPane.getChildren().addAll(closeParent);
 	}
-	//Add expense buttons
+	
+	// Add expense buttons
 	/**
 	 * Adds an expense to the budget
 	 * @param event
@@ -183,7 +186,7 @@ public class BudgetController implements Initializable{
 		expensePane.getChildren().addAll(closeParent);
 	}
 	
-	//remove expense buttons
+	// remove expense buttons
 	/**
 	 * Removes the expense from the budget
 	 * @param event
@@ -209,7 +212,8 @@ public class BudgetController implements Initializable{
 		removePane.getChildren().clear();
 		removePane.getChildren().addAll(toMenu);
 	}
-	//edit income buttons
+	
+	// edit income buttons
 	/**
 	 * allows the user to set a new income
 	 * @param event
@@ -242,6 +246,12 @@ public class BudgetController implements Initializable{
 		incomePane.getChildren().clear();
 		incomePane.getChildren().addAll(toMenu);
 	}
+	
+	/**
+	 * initialize
+	 * @param location
+	 * @param resources 
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub

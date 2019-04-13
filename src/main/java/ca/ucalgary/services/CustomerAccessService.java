@@ -3,6 +3,10 @@ package ca.ucalgary.services;
 import ca.ucalgary.datastore.CustomerAccessRepository;
 import ca.ucalgary.domain.CustomerAccess;
 
+/**
+ * CustomerAccessService
+ * service class for CustomerAccess
+ */
 public class CustomerAccessService {
 
     /**

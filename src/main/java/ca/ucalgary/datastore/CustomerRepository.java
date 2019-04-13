@@ -1,14 +1,18 @@
 package ca.ucalgary.datastore;
 
 import ca.ucalgary.domain.Customer;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+ * CustomerRepository Class
+ * contains the Customer Repository 
+ */
 public class CustomerRepository {
 
+	// Declare Variables 
     private static Map<String,Customer> store = new HashMap<>();
 
     /**

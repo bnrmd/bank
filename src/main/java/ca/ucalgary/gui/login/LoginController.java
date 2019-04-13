@@ -14,16 +14,20 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * LoginController
+ * controller class for Login
+ */
 public class LoginController implements Initializable {
+	
+	// Declare Variables
     private BankService bankService = new BankService();
     private Customer customer = null;
     private String message;
     private RepositoryService recoveredService = new RepositoryService();
-
     public TextField firstName;
     public TextField lastName;
     public TextField emailSignUp;
@@ -33,6 +37,11 @@ public class LoginController implements Initializable {
     public Label testLabel;
     public AnchorPane main;
 
+    /**
+     * initialize
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         firstName.setText(message);

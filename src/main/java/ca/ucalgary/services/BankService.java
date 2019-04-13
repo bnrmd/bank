@@ -3,8 +3,13 @@ package ca.ucalgary.services;
 import ca.ucalgary.domain.Customer;
 import ca.ucalgary.domain.CustomerAccess;
 
+/**
+ * BankService
+ * service class for Bank
+ */
 public class BankService {
 
+	// Declare variables 
     private CustomerService customerService = new CustomerService();
     private CustomerAccessService customerAccessService = new CustomerAccessService();
 

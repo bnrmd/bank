@@ -1,18 +1,20 @@
 package ca.ucalgary.gui.profile;
 
 import ca.ucalgary.domain.Customer;
-import ca.ucalgary.services.AccountService;
-import ca.ucalgary.services.CustomerService;
-import ca.ucalgary.services.RepositoryService;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * ProfileController
+ * controller class for profile 
+ */
 public class ProfileController implements Initializable {
+	
+	// Declare Variables 
     private Customer customer;
     @FXML
     private AnchorPane main;
@@ -21,6 +23,11 @@ public class ProfileController implements Initializable {
     public Label lname;
     public Label clientId;
 
+    /**
+     * initialize
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) { }
 
@@ -42,4 +49,5 @@ public class ProfileController implements Initializable {
     public void setCustomer(Customer customer){
         this.customer = customer;
     }
+    
 }

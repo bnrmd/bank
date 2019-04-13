@@ -13,12 +13,17 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * CustomerController
+ * controller class for Customer
+ */
 public class CustomerController implements Initializable {
+	
+	// Declare Variables
     private Customer customer;
     private CustomerService customerService = new CustomerService();
     private AccountService accountService = new AccountService();
@@ -34,6 +39,11 @@ public class CustomerController implements Initializable {
     public TableColumn accountId;
     public ComboBox accountType;
 
+    /** 
+     * initialize
+     * @param location
+     * @param resources 
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     }

@@ -15,8 +15,13 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-
+/** 
+ * AccountDetailsController
+ * controller class for AccountDetails
+ */
 public class AccountDetailsController implements Initializable {
+	
+	// Declare Variables
     private Account account;
     private AccountService accountService = new AccountService();
     private AccountTransactionService accountTransactionService = new AccountTransactionService();
@@ -37,11 +42,20 @@ public class AccountDetailsController implements Initializable {
     public TableView transactionTable;
 
 
+    /** 
+     * initialize
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
     }
 
+    /**
+     * setLabels
+     * sets the labels 
+     */
     public void setLabels(){
         if(account!=null){
             accountNoText.setText(account.getAccountNo());
@@ -52,6 +66,10 @@ public class AccountDetailsController implements Initializable {
         }
     }
 
+    /**
+     * withdrawAction
+     * @param event
+     */
     @FXML
     public void withdrawAction(ActionEvent event){
         try {
@@ -64,6 +82,10 @@ public class AccountDetailsController implements Initializable {
         }
     }
 
+    /**
+     * depositAction
+     * @param event
+     */
     @FXML
     public void depositAction(ActionEvent event){
         double amount = Double.parseDouble(depositAmount.getText());
@@ -72,14 +94,25 @@ public class AccountDetailsController implements Initializable {
         setAccountTransactions();
     }
 
+    /**
+     * setAccount
+     * @param account
+     */
     public void setAccount(Account account) {
         this.account = account;
     }
 
+    /**
+     * setCustomer
+     * @param customer
+     */
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
 
+    /**
+     * setAccountTransactions
+     */
     public void setAccountTransactions(){
         List<AccountTransaction> accountTransactions = accountTransactionService.getAllTransactions(account.getId());
         transactionTable.getItems().clear();
@@ -92,6 +125,10 @@ public class AccountDetailsController implements Initializable {
         }
     }
     
+    /**
+     * getAccount
+     * @return account
+     */
     public Account getAccount() {
     	return this.account;
     }

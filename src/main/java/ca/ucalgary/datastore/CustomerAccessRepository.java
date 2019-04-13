@@ -6,8 +6,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+ * CustomerAccessRepository 
+ * contains access methods to the Customer Repository 
+ */
 public class CustomerAccessRepository {
 
+	// Declare Variables
     private static Map<String, CustomerAccess> store = new HashMap<>();
 
     /**
@@ -17,7 +22,7 @@ public class CustomerAccessRepository {
      */
     public static CustomerAccess addCustomerAccess(CustomerAccess customerAccess){
         store.put(customerAccess.getEmail(),customerAccess);
-
+        
         return customerAccess;
     }
 
