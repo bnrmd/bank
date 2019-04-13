@@ -1,18 +1,20 @@
 package ca.ucalgary.domain;
+
+import ca.ucalgary.domain.Expense;
+
 /**
  * Expense
  */
-import ca.ucalgary.domain.Expense;
-
-
 public class Expense{
-	/**
-	 * setting instance variables
-	 */
+	
+	// setting instance variables
 	private String name;
 	private double amountOfIncomeCAD;
 	
-	//constructors
+	// constructors
+	/**
+	 * Constructor 
+	 */
 	public Expense() {
 		name = "";
 		amountOfIncomeCAD = 0;
@@ -34,8 +36,8 @@ public class Expense{
 		this.name = toCopy.getName();
 		this.amountOfIncomeCAD = toCopy.getAmountPerMonth();
 	}
-	//setters
 	
+	//setters
 	/**
 	 * Set how much an expense costs per month based on a dollar amount
 	 * @param amount

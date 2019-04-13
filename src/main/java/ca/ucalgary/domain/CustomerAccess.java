@@ -11,12 +11,16 @@ import java.util.UUID;
  */
 public class CustomerAccess {
 
+	// Declare Variables 
     private static String salt = "somesalt"; // salt for hash
     private String id;
     private String customerId;
     private String email;
     private String hash;
 
+    /**
+     * CustomerAccess constructor
+     */
     public CustomerAccess(){
 
     }

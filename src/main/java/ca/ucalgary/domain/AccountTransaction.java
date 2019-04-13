@@ -12,6 +12,8 @@ import java.util.UUID;
  * Representation of an audit trail of all the operations done on an account domain object
  */
 public class AccountTransaction {
+	
+	// Declare Variables
     private String id; // Identify individual transactions
     private String accountId; // Identify account
     private String type; // Type of a transaction, e.g. 'Deposit', 'Withdraw', or 'Create'
@@ -21,12 +23,15 @@ public class AccountTransaction {
     @JsonSerialize(using = JsonDateSerializer.class)
     private LocalDateTime txDate; // Transaction date/time
 
+    /**
+     * AccounTransaction constructor 
+     */
     private AccountTransaction(){
         /* REMINDER: We should never create an empty transaction */
     }
 
     /**
-     * 
+     * AccountTransaction constructor 
      * @param accountId	 UUID in String format of an account
      * @param type	type of account (SAVINGS, CHEQUING)
      * @param amount	amount to initialize for account (in dollars)
@@ -40,6 +45,10 @@ public class AccountTransaction {
         this.txDate = LocalDateTime.now();
     }
 
+    /**
+     * toString
+     * @return String
+     */
     @Override
     public String toString() {
         return "AccountTransaction{" +

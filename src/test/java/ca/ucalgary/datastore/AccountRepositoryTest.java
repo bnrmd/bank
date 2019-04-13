@@ -1,15 +1,19 @@
 package ca.ucalgary.datastore;
 
 import ca.ucalgary.domain.Account;
-
 import ca.ucalgary.datastore.AccountRepository;
-
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+ * AccountRepositoryTest
+ * test class for the AccountRepository class
+ */
 public class AccountRepositoryTest {
 
-    //private static AccountRepository accountRepository = new AccountRepository();
+    /**
+     * createAccount_withValidAccountType
+     */
     @Test
     public void createAccount_withValidAccountType(){
         // ARRANGE
@@ -22,6 +26,9 @@ public class AccountRepositoryTest {
         Assert.assertEquals(0.0, a.getBalance(), 0.001);
     }
 
+    /**
+     * deleteAccount_whenAccountExists
+     */
     @Test
     public void deleteAccount_whenAccountExists(){
         // ARRANGE
@@ -36,16 +43,8 @@ public class AccountRepositoryTest {
         // ACT
         AccountRepository.printAllAccounts();
         System.out.println("Account ID: " + accountId);
-
-        AccountRepository.deleteAccount(accountId);
         // ASSERT
-        /*
-        try {
-            AccountRepository.getAccount(accountId);
-        }catch(RuntimeException e){
-            Assert.assertEquals("This account ID does not exist and cannot be returned: " + accountId, e.getMessage());
-        }
-        */
-
+        AccountRepository.deleteAccount(accountId);
     }
+    
 }

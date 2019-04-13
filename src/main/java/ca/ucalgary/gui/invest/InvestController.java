@@ -19,7 +19,7 @@ import java.io.IOException;
 
 /**
  * Invest Controller Class
- * controller class for invest fxml
+ * controller class for Invest fxml
  */
 public class InvestController{
 	
@@ -79,7 +79,7 @@ public class InvestController{
 	Button btnBBS;
 	
 	/**
-	 * Back button
+	 * Back buttons
 	 * @param event
 	 * @throws IOException
 	 */

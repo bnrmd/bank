@@ -3,6 +3,10 @@ package ca.ucalgary;
 import ca.ucalgary.gui.BankApplication;
 import ca.ucalgary.tui.CLI;
 
+/**
+ * Main Class
+ * contains main method to launch application
+ */
 public class Main {
 
     /**

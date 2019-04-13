@@ -4,6 +4,10 @@ import ca.ucalgary.datastore.CustomerRepository;
 import ca.ucalgary.domain.Customer;
 import java.util.List;
 
+/**
+ * CustomerService
+ * service class for Customer
+ */
 public class CustomerService {
 
     /**
